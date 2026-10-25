@@ -146,8 +146,13 @@
     width:calc(100% * var(--K));height:calc(100% * var(--K));transform:scale(calc(1 / var(--K)));transform-origin:0 0}
   .hero .herosign{flex:0 0 auto;display:flex;align-items:center;justify-content:center;gap:36px;padding:6px 0 16px}
   .hero .herosign img{display:block;height:72px;width:auto}
-  .hero .webqr{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--mut)} .hero .herosign .webqr img{height:96px;width:96px;image-rendering:pixelated}
-  .hero .webqr span{font-size:14px;line-height:1.35;font-variant-numeric:tabular-nums} .hero .webqr b{display:block;font-size:15px;color:var(--accent)}
+  /* 웹 게시본 QR · 주소(1 · 29쪽) — 링크는 QR 그림과 '웹 게시본' 글자만, 주소는 링크 없는 글자라 끌어서 선택 · 복사할 수 있다 */
+  .webqr{display:flex;align-items:center;gap:10px;color:var(--mut)} .webqr a{text-decoration:none;color:inherit}
+  .webqr img, .hero .herosign .webqr img{display:block;height:96px;width:96px;image-rendering:pixelated}
+  .webqr .wq{display:flex;flex-direction:column;font-size:14px;line-height:1.35;font-variant-numeric:tabular-nums}
+  .webqr .wq b{font-size:15px;color:var(--accent)} .webqr .wq a:hover b{text-decoration:underline}
+  .webqr .url{user-select:text;-webkit-user-select:text;cursor:text;max-width:180px} .webqr .url span{white-space:nowrap}
+  .webqr.end{gap:14px} .webqr.end img{height:110px;width:110px} .webqr.end .wq{font-size:17px} .webqr.end .wq b{font-size:18px} .webqr.end .url{max-width:none}
 
   /* ── 5쪽(#s-scale) 좌 글 · 우 그림 판 ── */
   .sk{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:clamp(24px,calc(3 * var(--vw)),52px);align-items:stretch}
@@ -723,7 +728,7 @@
         </div>
         <div class="herosign">
           <!-- 웹 게시본(2026-10-25 사용자 지시) — QR 은 scripts/build_qr_web.py, 게시는 scripts/publish_web.py(공개 저장소 kosae69-deck · GitHub Pages) -->
-          <a class="webqr" href="https://jeong-peelsoo.github.io/kosae69-deck/" target="_blank" rel="noopener"><img src="image/qr_web.svg" alt="웹 게시본 QR — jeong-peelsoo.github.io/kosae69-deck"><span><b>웹 게시본</b>jeong-peelsoo.github.io<br>/kosae69-deck</span></a>
+          <div class="webqr"><a class="qr" href="https://jeong-peelsoo.github.io/kosae69-deck/" target="_blank" rel="noopener"><img src="image/qr_web.svg" alt="웹 게시본 QR — jeong-peelsoo.github.io/kosae69-deck"></a><span class="wq"><a href="https://jeong-peelsoo.github.io/kosae69-deck/" target="_blank" rel="noopener"><b>웹 게시본</b></a><span class="url"><span>jeong-peelsoo.github.io/</span><wbr><span>kosae69-deck</span></span></span></div>
           <img src="image/logo-kunhwa-header-retina-en-2.png" alt="kunhwa Engineering &amp; Consulting">
           <img src="image/anyang_univ_emblem.png" alt="안양대학교">
         </div>
@@ -1510,6 +1515,8 @@
       <p>정필수 · 주식회사 건화 환경평가부</p>
       <p class="mail"><b>연락처</b>pala77@empas.com</p>
       <p class="ack"><b>사사</b> 이 성과는 정부(기후에너지환경부)의 재원으로 한국환경산업기술원의 미세먼지관리 특성화대학원 사업의 지원을 받아 수행된 연구임.</p>
+      <!-- 웹 게시본 — 표지와 같은 QR · 주소(2026-10-25 사용자 지시) -->
+      <div class="webqr end"><a class="qr" href="https://jeong-peelsoo.github.io/kosae69-deck/" target="_blank" rel="noopener"><img src="image/qr_web.svg" alt="웹 게시본 QR — jeong-peelsoo.github.io/kosae69-deck"></a><span class="wq"><a href="https://jeong-peelsoo.github.io/kosae69-deck/" target="_blank" rel="noopener"><b>웹 게시본</b></a><span class="url"><span>jeong-peelsoo.github.io/</span><wbr><span>kosae69-deck</span></span></span></div>
     </div>
     <div class="globebox"><iframe class="heroglobe" id="end-globe" title="동아시아 대기오염 농도장과 그래프망이 도는 지구본" tabindex="-1" aria-hidden="true"
       data-src="module/globe-sdgs-day.html?panel=1&amp;view=globe&amp;assets=min&amp;case=spring&amp;sp=cycle"></iframe></div>
