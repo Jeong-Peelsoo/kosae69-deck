@@ -243,6 +243,10 @@
   .amap .fd{opacity:0;offset-rotate:0deg;pointer-events:none}
   .amap.focus .it.on .fd{opacity:1;animation:amdot 1.5s cubic-bezier(.45,0,.55,1) infinite}
   @keyframes amdot{from{offset-distance:0%}to{offset-distance:100%}}
+  .amap .fcard{opacity:0;pointer-events:none;transition:opacity .45s ease} .amap.focus .fcard.on{opacity:1}
+  .amap .fcard .cbg{fill:#fff;stroke:#B4234F;stroke-width:3} .amap .fcard .ck{font-size:20px;font-weight:800;fill:#B4234F}
+  .amap .fcard .cf{font-size:62px;font-weight:800;fill:#11151a;letter-spacing:-.01em} .amap .fcard .cs{font-size:46px;font-weight:800}
+  .amap .fcard .cd{font-size:22px;font-weight:800;fill:#11151a} .amap .fcard .cl{font-size:16.5px;font-weight:600;fill:#4b555e} .amap .fcard .cn{font-size:15.5px;font-weight:600;fill:#6f7a84}
   .amap .flnote{font-size:15px;font-weight:700;fill:#6f7a84;opacity:0;transition:opacity .45s ease} .amap.focus .flnote{opacity:1}
   @keyframes amflow{to{stroke-dashoffset:-18}}
   .anar{display:grid;grid-template-columns:210px minmax(0,1fr);gap:24px;height:100%;box-sizing:border-box;padding:12px 18px 0;border-top:2px solid #D5DCE2;font-family:var(--f)}
@@ -1631,6 +1635,9 @@
       return g; }
     function lab(k, x, y, s, c, anchor){ const g = G(k); T(g, x, y, s, 'al', anchor || 'start').setAttribute('fill', C[c][0]); return g; }
     cfg.draw({ box, arr, lab, T, G, el, C });
+    /* 단계 카드(2026-10-25 사용자 지시) — cfg.cards[key](h) 가 그린다. 그 단계에서만 지도 가운데에 크게(.fcard.on) */
+    const cards = [];
+    Object.entries(cfg.cards || {}).forEach(([key, fn]) => { const g = el('g', { class: 'fcard' }, svg); g.dataset.key = key; fn({ g, T, el, C }); cards.push(g); });
 
     const fo = el('foreignObject', { x: 22, y: 708, width: 1556, height: 178 }, svg);
     const nar = document.createElement('div'); nar.className = 'anar'; fo.appendChild(nar);
@@ -1646,6 +1653,7 @@
       place(k > 0);
       const key = KEY[k]; svg.classList.toggle('focus', !!key);
       svg.querySelectorAll('.it').forEach(g => g.classList.toggle('on', !!key && g.dataset.k.split(' ').includes(key)));
+      cards.forEach(g => g.classList.toggle('on', g.dataset.key === key));
       const [tag, ttl, li, viz] = NAR[k]; nar.className = 'anar' + (viz ? ' v' : '');
       nar.innerHTML = `<div class="tg"><b>${k < 2 ? '' : (k - 1) + ' / ' + NS2}</b><span>${tag}</span></div><div class="tx"><h5>${ttl}</h5><ul>${li.map(s => `<li>${s}</li>`).join('')}</ul></div>`
         + (viz ? `<div class="vz">${viz}</div>` : '');
@@ -1667,8 +1675,39 @@
     o += `<text x="${x + 8}" y="70" font-size="20" font-weight="800" fill="#11151a">= 304</text>`;
     o += `<path d="M${x0 + 110} 112 L${x0 + 110} 126" stroke="#1E3F86" stroke-width="2.4"/><path d="M${x0 + 104} 122 L${x0 + 110} 131 L${x0 + 116} 122Z" fill="#1E3F86"/>`;
     o += `<rect x="${x0}" y="134" width="${128 * k - 2}" height="30" rx="4" fill="#1E3F86"/><text x="${x0 + 64 * k}" y="155" text-anchor="middle" font-size="15" font-weight="800" fill="#fff">h_read 128</text>`;
-    o += `<text x="${x0 + 128 * k + 12}" y="155" font-size="15" font-weight="700" fill="#2b3640">Linear 304 → 128 · 물질별 헤드 × 7 → δ</text>`;
+    // h_read → 물질별 헤드 × 7 → δ(G × 7) — 2026-10-25 사용자 지시로 δ 까지 잇는다
+    const hx = x0 + 128 * k, ar = (a, b) => `<path d="M${a} 149 L${b - 6} 149" stroke="#1E3F86" stroke-width="2.4"/><path d="M${b - 8} 143 L${b} 149 L${b - 8} 155Z" fill="#1E3F86"/>`;
+    o += ar(hx + 4, hx + 26) + `<rect x="${hx + 28}" y="134" width="150" height="30" rx="4" fill="#fff" stroke="#1E3F86" stroke-width="2"/><text x="${hx + 103}" y="155" text-anchor="middle" font-size="14" font-weight="800" fill="#1E3F86">헤드 × 7 · 128 → 1</text>`;
+    o += ar(hx + 182, hx + 204) + `<rect x="${hx + 206}" y="134" width="150" height="30" rx="4" fill="#B4234F"/><text x="${hx + 281}" y="155" text-anchor="middle" font-size="15" font-weight="800" fill="#fff">δ  G × 7</text>`;
     return `<svg viewBox="0 0 600 166">${o}</svg>`; })();
+  /* 8 · 9쪽 8/8 최종 농도식 카드(2026-10-25 사용자 지시) — 공용. COL = [기호, 차원, [설명 두 줄], 색] 다섯 칸 */
+  const amFormulaCard = (title, COL, note, cSym = 'c') => ({ g, T, el }) => {
+    el('rect', { x: 230, y: 206, width: 1140, height: 398, rx: 18, class: 'cbg' }, g);
+    T(g, 800, 256, title, 'ck');
+    const f = T(g, 800, 350, '', 'cf');
+    [['ŷ', '#B4234F'], [' = softplus( ', '#11151a'], ['α', '#A86A12'], [' ⊙ ', '#11151a'], [cSym, '#A86A12'], [' + ', '#11151a'], ['β', '#A86A12'], [' + ', '#11151a'], ['δ', '#2753A5'], [' )', '#11151a']]
+      .forEach(([t, c]) => { const sp = el('tspan', { fill: c }, f); sp.textContent = t; });
+    COL.forEach(([sym, dim, ln, c], i) => { const x = 330 + i * 235;
+      T(g, x, 440, sym, 'cs').setAttribute('fill', c); T(g, x, 476, dim, 'cd');
+      ln.forEach((l, k) => T(g, x, 504 + k * 22, l, 'cl')); });
+    T(g, 800, 588, note, 'cn');
+  };
+  /* 9쪽 2/8 Stage 1 U-Net — 21 레포 a21-004(src2/models/stage1_unet.py · src2/configs/a21-004_stage1_full.yaml ·
+     docs/report/arch2/a21_stage1_cases/tables/tab01_run_record.md a21004_full 행, 커밋 61d6ba8). 막대 높이 = 수준(깊이), 숫자 = 채널 */
+  const amVizUnet = (() => {
+    const B = [[8, 18, '87', '#1F7A5C'], [60, 18, '48', '#5E8A0F'], [112, 54, '96', '#5E8A0F'], [164, 90, '192', '#5E8A0F'], [216, 126, '384', '#2753A5'],
+      [268, 90, '192', '#5E8A0F'], [320, 54, '96', '#5E8A0F'], [372, 18, '48', '#5E8A0F'], [424, 18, '7', '#B4234F']];
+    let o = '';
+    B.forEach(([x, y], i) => { if (i) { const [px, py] = B[i - 1]; o += `<path d="M${px + 46} ${py + 12} L${x} ${y + 12}" stroke="#7d8790" stroke-width="1.6"/>`; } });
+    [[1, 7], [2, 6], [3, 5]].forEach(([a, b]) => { const [ax, ay] = B[a], [bx] = B[b];
+      o += `<path d="M${ax + 46} ${ay + 6} L${bx} ${ay + 6}" stroke="#5E8A0F" stroke-width="1.4" stroke-dasharray="4 3" fill="none"/>`; });
+    B.forEach(([x, y, t, c]) => { o += `<rect x="${x}" y="${y}" width="46" height="24" rx="4" fill="${c}"/><text x="${x + 23}" y="${y + 17}" text-anchor="middle" font-size="14" font-weight="800" fill="#fff">${t}</text>`; });
+    o += `<text x="134" y="160" text-anchor="middle" font-size="13" font-weight="700" fill="#5E8A0F">인코더 · stem</text><text x="346" y="160" text-anchor="middle" font-size="13" font-weight="700" fill="#5E8A0F">디코더 · skip(점선)</text>`;
+    o += `<text x="447" y="58" text-anchor="middle" font-size="12" font-weight="700" fill="#B4234F">1×1 head</text>`;
+    const L = [['파라미터', 13, '#6f7a84', 500], ['4,635,811', 22, '#11151a', 800], ['124 × 114 칸 · 5 km', 13.5, '#2b3640', 700],
+      ['residual + GN · SiLU + SE', 13, '#2b3640', 700], ['best 13 / 38 epoch', 13, '#2b3640', 700], ['학습 50.8 분(a21-004 full)', 12.5, '#6f7a84', 600]];
+    L.forEach(([t, fs, c, w], i) => { o += `<text x="482" y="${[24, 50, 78, 100, 122, 146][i]}" font-size="${fs}" font-weight="${w}" fill="${c}">${t}</text>`; });
+    return `<svg viewBox="0 0 640 166">${o}</svg>`; })();
   const amVizOut = (n, t1, l1) => {
     const N = 90, c = x => 10 + 6 * Math.sin(2 * Math.PI * x * .9 + .5), A = 1.6, B = -5,
       d = x => 8 * Math.exp(-((x - .3) ** 2) / .0032) - 9.5 * Math.exp(-((x - .72) ** 2) / .005) + 1.4 * Math.sin(2 * Math.PI * x * 4),
@@ -1798,11 +1837,19 @@
       ['Phase 2', '이종 GNN 메시지 패싱', ['Bottom-up 2층 — Grid→Region · Region→Station · Grid→Station + 노드 유형별 kNN', 'Top-down 2층 — Station→Region · Station→Grid(거리 감쇠) + kNN', '관계별 attention 4 head × 32 · Region→Grid 엣지 제외 · 세 노드 폭 128 유지']],
       ['Phase 3', '정제 — 평활 · 관측 인지 권역 배경', ['GNN 격자 경로 공간 평활 — depthwise Conv2d 3 × 3(채널별)', 'Region Background Bias — S→R 관측 문맥 gate → bilinear R→G → 128 → 32', '32 = 학습된 보정 표현 — 농도 · 물리 변수 아님']],
       ['skip', '스킵 연결 — 국지 표현의 GNN 우회', ['h_local 128 — GNN · 평활 미경유, readout 에 직접 합류', '+ region bias 32 + LC 임베딩 16(국지 인코더와 별도 파라미터 표) = skip 176', '1 km 국지 정보 경로의 보존 — 메시지 패싱 경로와 병렬']],
-      ['304 융합', '잠재표현 결합 → 물질별 증분 δ', ['평활 후 GNN 128 + skip 176 = 304 → Linear 304 → 128 = h_read', '304 = 잠재표현 결합 폭 — 원자료 304개 아님', '물질별 독립 헤드 × 7 → 증분 δ (G × 7)'], amVizFuse],
+      ['304 융합', '잠재표현 결합 → 물질별 증분 δ', ['GNN 128 · local 128 · region 32 · LC 16 = 304 → Linear 304 → 128 = h_read → 물질별 헤드 × 7 → δ (G × 7)', '304 = 잠재표현 결합 폭 — 원자료 304개 아님', '모델 전체 학습 파라미터 1,673,346개(약 167만) — 박사논문 표 ≈ 1.67 M'], amVizFuse],
       ['CTM prior', '물리량 직행 경로', ['GEOS-CF 원단위 7열 — 인코더 · GNN 미경유', '출력 순서 정렬 PM₂.₅ · PM₁₀ · NO₂ · O₃ · CO · SO₂ · NO — PM₁₀ 은 PM₂.₅ 대용 앵커', 'α ⊙ c + β — 물질별 학습 스칼라(α = 2σ(a)) · 전 격자 · 전 시각 공유'], amVizOut(1)],
       ['최종 농도식', 'ŷ = softplus(α ⊙ c + β + δ)', ['GEOS-CF 배경장 c 를 물질별 스칼라 α · β 로 보정', 'δ = GNN 이 학습한 1 km 국지 잔차(±) — 배경 위 잔차 분해', 'softplus = 비음수 제약 · 감독은 격자 병치 셀 ↔ 측정망(L_grid)'], amVizOut(3)],
+      ['최종 농도식', '기호와 차원 — 배경 앵커 · 물질별 스칼라 · 국지 증분', ['CTM · δ · ŷ = G × 7 — 1 km 격자마다 7물질', 'α · β = 7 — 물질마다 하나, 전 격자 · 전 시각 공유', 'CTM 배경 = GEOS-CF 원단위 7열 — 인코더 · GNN 미경유'], amVizOut(3)],
     ],
-    KEY: ['p1', 'p2', 'p3', 'skip', 'fuse', 'ctm', 'out'] });
+    cards: {
+      /* 8/8 최종 농도식 카드(7/7 다음 한 번 더 — 2026-10-25 사용자 지시) — 근거 docs/아키텍처/2026-10-06_A1_피처차원과_임베딩차원_데이터흐름.md 95 · 352–356행
+         (α_p = 2σ(a_p) · α · β 는 물질마다 하나 · 전 격자 · 전 시각 공유 · c = GEOS-CF 원단위 7열 · δ G×7 · ŷ G×7) */
+      formula: amFormulaCard('최종 농도식 — 1 km 격자 · 7물질', [['ŷ', 'G × 7', ['1 km 격자 농도', '7물질 · softplus 출력'], '#B4234F'], ['α', '7', ['물질별 스칼라', 'α = 2σ(a)'], '#A86A12'],
+        ['CTM', 'G × 7', ['CTM 배경 = GEOS-CF', '원단위 7열 · GNN 미경유'], '#A86A12'], ['β', '7', ['물질별 스칼라', '전 격자 · 전 시각 공유'], '#A86A12'],
+        ['δ', 'G × 7', ['GNN 국지 증분(±)', '304 융합 → 헤드 × 7', '파라미터 1,673,346'], '#2753A5']], 'G = 1 km 격자 수 · 7 = PM₂.₅ · PM₁₀ · NO₂ · O₃ · CO · SO₂ · NO · ⊙ = 물질별 원소곱 · 파라미터 = 모델 전체(α · β 포함)', 'CTM'),
+    },
+    KEY: ['p1', 'p2', 'p3', 'skip', 'fuse', 'ctm', 'out', 'formula'] });
 
   /* 9쪽 Arch 2 — 21 레포 Stage 1 a21-004(e3, 확정) · Stage 2 a22-102A(프로토콜 v3, 인터페이스 A 본선). 근거(읽기만)
      src2/models/stage1_unet.py(입력 87 · 3-branch stem · U-Net 48 · h_LF 48 투영 없음) · src2/configs/a21-004_stage1_full.yaml(λ_cmaq 1.0 · λ_station 0.1)
@@ -1859,14 +1906,20 @@
     NAR: [
       ['전체 지도', 'Stage 1 5 km 배경 emulator → 산출 캐시 → Stage 2 1 km 잔차 GNN → 배경 + 잔차', ['Stage 1 학습 · 동결 → 캐시 → Stage 2 학습 — 두 단계 분리 학습', '실선 = 순방향 · 점선 = 감독 · skip · 배경 경로', 'Stage 1 산출 둘 — 농도 z_LF 7물질 · 잠재 h_LF 48ch — Stage 2 는 그중 하나를 쓴다']],
       ['Stage 1 입력', '3-branch stem — 87ch → 48ch', ['종관 36ch(MET 12 · GEOS-CF 7 · CAMS FC 9 · LagWind 8) → StemA k = 5 → 24', '국지 28ch(GFAS · BIO · CAPSS 시간 7 · static 16) → StemB k = 3 → 16', '범주 · 시간 23ch(LC 히스토그램 15 · Time 8) → StemD k = 1 → 8 · 합 48ch']],
-      ['Stage 1 학습', 'CMAQ-DA emulator U-Net · 5 km', ['U-Net 3 level 48 → 96 → 192 · bottleneck 384 · 124 × 114 격자 · 파라미터 4,635,811', '감독 — CMAQ-DA 7물질 Knowledge Distillation(λ 1.0) + 측정소 보조(λ 0.1)', 'CMAQ-DA = 학습 전용 교사장 — 추론 입력 아님']],
+      ['Stage 1 학습', 'CMAQ-DA emulator U-Net · 5 km', ['U-Net 3 level 48 → 96 → 192 · bottleneck 384 · 124 × 114 격자 · 파라미터 4,635,811', '감독 — CMAQ-DA 7물질 Knowledge Distillation(λ 1.0) + 측정소 보조(λ 0.1)', 'CMAQ-DA = 학습 전용 교사장 — 추론 입력 아님'], amVizUnet],
       ['Stage 1 산출', '두 캐시 — 농도 z_LF 7물질 · 잠재 h_LF 48ch', ['z_LF — 7물질 pre-softplus 5 km(pm25 · pm10 · no2 · o3 · so2 · co · no)', 'h_LF — 디코더 마지막 48ch 특징, 투영 없이 저장(48 → 32 투영 미사용)', 'Stage 2 는 둘 중 하나 — A 농도 7D(본선) / B 잠재 48D(비교) · bilinear 5 → 1 km'], amVizIf],
       ['Stage 2 인코딩', '국지 · 배경 · 관측 노드 인코딩', ['국지 55(static 16 · CAPSS 시간 7 · LC 임베딩 32) → 128 · 기상 anomaly 4 gate — 원시 MET · GEOS-CF 미입력', 'BgEncoder — A: z_LF↑ 7 / B: h_LF↑ 48 → 128 → local 과 fusion 256 → 128', '측정소 350 — 관측 7 × 24 h(t−23 … t) + 유효성 168 + 배경 y_LF 7 + 유형 5 · 좌표 2 → 128']],
       ['Stage 2 GNN', '1 km 3-level HeteroGNN 4층', ['1 km 격자 · 5 km region · 측정소 — BU 2층 → TD 2층 · hidden 128 · heads 4', '하향 관측 주입 — region 마다 80 km 안 보이는 측정소 k = 8 · σ 30 km 거리감쇠 × 바람 attention', 'region → grid broadcast · grid kNN k = 12 — 별도 평활 층 없음(δ 평활 손실 λ 0.002)'], amVizGnn9],
       ['skip', 'DeltaReadout — 국지 skip 결합', ['GNN grid 128 + local_h 128 skip → 128 → 64 → 7 = 국지 잔차 δ', '배경 정보는 Stage 1 산출로만 — 원시 MET · GEOS-CF 는 Stage 2 에 없음', '보조 과제 — CAPSS 배출 재구성 head(128 → 64 → 14, λ 2.0)']],
       ['최종 농도식', 'y = softplus(α · c + β + δ)', ['c = z_LF↑(A) · z_decode(h_LF↑)(B, 48 → 7) — Stage 1 배경 앵커', 'α = 4σ(a) ∈ [0, 4] · β — 물질별 스칼라 · 출력 7물질', '손실 — 가린 측정소 병치 셀 L_station(λ 1.0) · 격자 감독 없음 · CMAQ-DA 는 Stage 1 에서만'], amVizOut(3, 'Stage 1 배경 α·c + β', 'c = z_LF↑(점선) → α·c + β')],
+      ['최종 농도식', '기호와 차원 — Stage 1 배경 · 물질별 스칼라 · 1 km 잔차', ['c · δ · ŷ = G × 7 — 1 km 격자마다 7물질', 'α · β = 7 — 물질마다 하나 · α = 4σ(a) ∈ [0, 4]', 'c = Stage 1 산출 z_LF 5 km → bilinear 1 km — CMAQ-DA emulator 배경(A 본선)'], amVizOut(3, 'Stage 1 배경 α·c + β', 'c = z_LF↑(점선) → α·c + β')],
     ],
-    KEY: ['s1in', 's1net', 'if', 's2enc', 's2gnn', 'skip', 'out'] });
+    /* 8/8 — 근거 위 7/7 장면(21 레포 src2/models/stage2_gnn.py softplus(α·c + β + δ) · α = 4σ(a) · DeltaReadout 128 → 64 → 7) */
+    cards: { formula: amFormulaCard('최종 농도식 — Two-Stage · 1 km 격자 · 7물질', [['ŷ', 'G × 7', ['1 km 격자 농도', '7물질 · softplus 출력'], '#B4234F'],
+      ['α', '7', ['물질별 스칼라', 'α = 4σ(a) ∈ [0, 4]'], '#A86A12'], ['c', 'G × 7', ['Stage 1 배경 z_LF', '5 km → bilinear 1 km'], '#A86A12'],
+      ['β', '7', ['물질별 스칼라', '전 격자 · 전 시각 공유'], '#A86A12'], ['δ', 'G × 7', ['Stage 2 GNN 잔차(±)', 'Delta 128 → 64 → 7', '파라미터 1,486,161'], '#2753A5']],
+      'G = 1 km 격자 수 · 7 = PM₂.₅ · PM₁₀ · NO₂ · O₃ · SO₂ · CO · NO · ⊙ = 물질별 원소곱 · c 는 CTM 이 아닌 Stage 1 산출 · 파라미터 = Stage 2 전체(α · β 포함)') },
+    KEY: ['s1in', 's1net', 'if', 's2enc', 's2gnn', 'skip', 'out', 'formula'] });
 
   /* 5쪽 단계 그림 — 다중 규모 → 입력 층 → 세 branch → E2E · Two-Stage (2026-10-23 사용자 지시).
      자료  window.SCALE_STORY(graph/scale_story.js, scripts/build_scale_story.py) · window.RES_LAYERS(graph/res_layers.js) — 같은 36 프레임
