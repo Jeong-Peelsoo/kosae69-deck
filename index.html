@@ -946,8 +946,8 @@
              박사논문 판은 E2E 에 측정소 노드 예측 헤드(L_station)가 있고, L_grid · Stage 2 L_station 은 전 측정소 병치 셀에서 계산한다 -->
         <tr class="h fx"><th>농도 계산식</th><td><span class="f">ŷ = softplus(α · C<sub>CTM</sub> + β + δ)</span><span class="n">C<sub>CTM</sub> GEOS-CF 7물질, δ GNN 잔차</span></td>
           <td><span class="f">ŷ = softplus(α · ŷ<sub>LF</sub><sup>1km</sup> + β + Δŷ<sub>HF</sub>)</span><span class="n">ŷ<sub>LF</sub><sup>1km</sup> Stage 1 배경장 상향보간, Δŷ<sub>HF</sub> 1 km 잔차</span></td></tr>
-        <tr class="h fx"><th>손실 함수</th><td><span class="f"><i>L</i> = <i>L</i><sub>station</sub> + 0.5 <i>L</i><sub>grid</sub> + w(e) · <i>L</i><sub>emis</sub></span><span class="n"><i>L</i><sub>station</sub> 측정소 노드 예측(격자 출력 미경유), <i>L</i><sub>grid</sub> 측정소 병치 셀, w(e) = min(1, e/5)</span></td>
-          <td><span class="f">Stage 1&nbsp; <i>L</i> = <i>L</i><sub>CMAQ-DA</sub> + 0.1 <i>L</i><sub>station</sub></span><span class="f">Stage 2&nbsp; <i>L</i> = <i>L</i><sub>station</sub> + 0.002 <i>L</i><sub>Δsmooth</sub> + 2.0 w(e) · <i>L</i><sub>emis</sub></span><span class="n"><i>L</i><sub>station</sub> 측정소 병치 셀</span></td></tr>
+        <tr class="h fx"><th>손실 함수</th><td><span class="f"><i>L</i> = <i>L</i><sub>station</sub> + 0.5 <i>L</i><sub>grid</sub> + w(e) · <i>L</i><sub>emis</sub></span><span class="n"><i>L</i><sub>station</sub> 측정소 노드 예측(격자 출력 미경유), <i>L</i><sub>grid</sub> 측정소 위치 격자, w(e) = min(1, e/5)</span></td>
+          <td><span class="f">Stage 1&nbsp; <i>L</i> = <i>L</i><sub>CMAQ-DA</sub> + 0.1 <i>L</i><sub>station</sub></span><span class="f">Stage 2&nbsp; <i>L</i> = <i>L</i><sub>station</sub> + 0.002 <i>L</i><sub>Δsmooth</sub> + 2.0 w(e) · <i>L</i><sub>emis</sub></span><span class="n"><i>L</i><sub>station</sub> 측정소 위치 격자</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -1624,10 +1624,10 @@
     T(svg, 32, 52, cfg.title, 'ttl', 'start'); T(svg, 1568, 52, cfg.sub, 'ttl2', 'end');
     T(svg, 34, 88, '움직이는 점 — 정보가 흐르는 방향의 개념 표시(실제 attention · gradient · 수송 경로 아님)', 'flnote', 'start');
     cfg.panels.forEach(([x, w, s, c]) => { el('rect', { x, y: 118, width: w, height: 576, rx: 12, class: 'ph', stroke: c }, svg); T(svg, x + 16, 146, s, 'phl', 'start').setAttribute('fill', c); });
-    function box(k, x, y, w, h, c, t, lines, big){
+    function box(k, x, y, w, h, c, t, lines, big, lh0){   // lh0 — 첨자가 아랫줄과 겹치는 상자만 줄 간격을 넓힌다
       const g = G(k), [s, f] = C[c];
       el('rect', { x, y, width: w, height: h, rx: 10, fill: f, stroke: s, class: 'bx' }, g);
-      const n = lines.length, th = big ? 26 : 19, lh = 19, top = y + h / 2 - ((n ? th + 6 + n * lh : th) / 2) + th - 3;
+      const n = lines.length, th = big ? 26 : 19, lh = lh0 || 19, top = y + h / 2 - ((n ? th + 6 + n * lh : th) / 2) + th - 3;
       T(g, x + w / 2, top, t, big ? 'bt3' : 'bt').setAttribute('fill', s);
       lines.forEach((l, i) => T(g, x + w / 2, top + 6 + (i + 1) * lh, l, 'bl'));
       return g;
@@ -1822,7 +1822,7 @@
       box('fuse', 1424, 162, 140, 272, 'lat', '융합 304', ['GNN 128', '+ skip 176', '', 'Linear', '304 → 128', 'h_read']);
       box('fuse out', 1272, 454, 292, 70, 'lat', '물질별 헤드 × 7', ['128 → 128 → 128 → 1 · δ (G × 7)']);
       box('ctm out', 990, 548, 260, 76, 'pri', 'α ⊙ c + β', ['물질별 스칼라 · α = 2σ(a)']);
-      box('out', 1272, 544, 292, 136, 'out', 'ŷ = softplus(α⊙c + β + δ)', ['1 km 격자 농도 G × 7', '병치 셀 ↔ 측정망 → L_grid'], true);
+      box('out', 1272, 544, 292, 136, 'out', 'ŷ = softplus(α⊙c + β + δ)', ['1 km 격자 농도 G × 7', '측정소 위치 격자 ↔ 측정망 → L_grid'], true);
       arr('p3', 'M940 282 L986 205', 'lat'); arr('p3', 'M940 352 L986 296', 'emb'); arr('p3', 'M940 422 L986 326', 'sta');
       lab('p3', 946, 306, 'h_G', 'lat'); lab('p3', 946, 372, 'h_R', 'emb'); lab('p3', 946, 444, 'h_S', 'sta');
       arr('fuse', 'M1250 200 L1420 200', 'lat'); arr('skip', 'M1250 300 L1268 300', 'lat'); arr('skip', 'M1250 403 L1268 403', 'emb');
@@ -1834,14 +1834,14 @@
       lab('ctm', 300, 630, 'CTM prior — 인코더 · GNN 미경유', 'pri');
     },
     NAR: [
-      ['전체 지도', '입력 → Phase 1 노드 인코딩 → Phase 2 이종 GNN → Phase 3 정제 · 융합 → 1 km 농도', ['실선 = 순방향 흐름 · 점선 = 우회 경로(skip · CTM prior)', '녹색 데이터 · 청색 잠재표현 · 보라 범주 임베딩 · 황색 물리량 앵커 · 적색 농도 출력', '측정소 전용 리드아웃 없음 — 격자 출력의 병치 셀로 감독']],
+      ['전체 지도', '입력 → Phase 1 노드 인코딩 → Phase 2 이종 GNN → Phase 3 정제 · 융합 → 1 km 농도', ['실선 = 순방향 흐름 · 점선 = 우회 경로(skip · CTM prior)', '녹색 데이터 · 청색 잠재표현 · 보라 범주 임베딩 · 황색 물리량 앵커 · 적색 농도 출력', '감독 — 측정소 위치 격자 출력(L_grid), 측정소 노드 예측(L_station)은 격자 출력 미경유']],
       ['Phase 1', '특징 추출 · 노드 인코딩', ['국지 28 + LC 32 = 60 · 광역 27 — 역할별 분리 MLP → 각 128', 'concat 256 → 128 = Grid 노드 h_G⁰ · Region = h_G⁰ 5 km 평균 + 통계 4 → 128', '측정소 = 과거 24 h(t−23 … t) 7물질 + 유효성 14채널 → Conv1d 시간 요약 → 128']],
       ['Phase 2', '이종 GNN 메시지 패싱', ['Bottom-up 2층 — Grid→Region · Region→Station · Grid→Station + 노드 유형별 kNN', 'Top-down 2층 — Station→Region · Station→Grid(거리 감쇠) + kNN', '관계별 attention 4 head × 32 · Region→Grid 엣지 제외 · 세 노드 폭 128 유지']],
       ['Phase 3', '정제 — 평활 · 관측 인지 권역 배경', ['GNN 격자 경로 공간 평활 — depthwise Conv2d 3 × 3(채널별)', 'Region Background Bias — S→R 관측 문맥 gate → bilinear R→G → 128 → 32', '32 = 학습된 보정 표현 — 농도 · 물리 변수 아님']],
       ['skip', '스킵 연결 — 국지 표현의 GNN 우회', ['h_local 128 — GNN · 평활 미경유, readout 에 직접 합류', '+ region bias 32 + LC 임베딩 16(국지 인코더와 별도 파라미터 표) = skip 176', '1 km 국지 정보 경로의 보존 — 메시지 패싱 경로와 병렬']],
       ['304 융합', '잠재표현 결합 → 물질별 증분 δ', ['GNN 128 · local 128 · region 32 · LC 16 = 304 → Linear 304 → 128 = h_read → 물질별 헤드 × 7 → δ (G × 7)', '304 = 잠재표현 결합 폭 — 원자료 304개 아님', '모델 전체 학습 파라미터 1,673,346개(약 167만) — 박사논문 표 ≈ 1.67 M'], amVizFuse],
       ['CTM prior', '물리량 직행 경로', ['GEOS-CF 원단위 7열 — 인코더 · GNN 미경유', '출력 순서 정렬 PM₂.₅ · PM₁₀ · NO₂ · O₃ · CO · SO₂ · NO — PM₁₀ 은 PM₂.₅ 대용 앵커', 'α ⊙ c + β — 물질별 학습 스칼라(α = 2σ(a)) · 전 격자 · 전 시각 공유'], amVizOut(1)],
-      ['최종 농도식', 'ŷ = softplus(α ⊙ c + β + δ)', ['GEOS-CF 배경장 c 를 물질별 스칼라 α · β 로 보정', 'δ = GNN 이 학습한 1 km 국지 잔차(±) — 배경 위 잔차 분해', 'softplus = 비음수 제약 · 감독은 격자 병치 셀 ↔ 측정망(L_grid)'], amVizOut(3)],
+      ['최종 농도식', 'ŷ = softplus(α ⊙ c + β + δ)', ['GEOS-CF 배경장 c 를 물질별 스칼라 α · β 로 보정', 'δ = GNN 이 학습한 1 km 국지 잔차(±) — 배경 위 잔차 분해', 'softplus = 비음수 제약 · 감독은 측정소 위치 격자 ↔ 측정망(L_grid)'], amVizOut(3)],
       ['최종 농도식', '기호와 차원 — 배경 앵커 · 물질별 스칼라 · 국지 증분', ['CTM · δ · ŷ = G × 7 — 1 km 격자마다 7물질', 'α · β = 7 — 물질마다 하나, 전 격자 · 전 시각 공유', 'CTM 배경 = GEOS-CF 원단위 7열 — 인코더 · GNN 미경유'], amVizOut(3)],
     ],
     cards: {
@@ -1900,7 +1900,7 @@
       arr('skip', 'M1436 300 L1450 300', 'lat');
       arr('skip', 'M1216 162 L1216 112 Q1216 100 1228 100 L1498 100 Q1510 100 1510 112 L1510 158', 'emb', true);
       lab('skip', 1240, 92, 'skip — h_local 128 · GNN 우회', 'emb');
-      box('out', 1298, 574, 268, 106, 'out', 'y = softplus(α·c + β + δ)', ['c = z_LF↑ (A) · α = 4σ(a)', '가린 측정소 → L_station'], true);
+      box('out', 1298, 574, 268, 106, 'out', 'y = softplus(α·c + β + δ)', ['c = z_LF↑ (A) · α = 4σ(a)', '측정소 위치 격자 → L_station'], true, 25);
       arr('out', 'M1510 408 L1510 570', 'out');
       arr('out', 'M848 690 L1270 690 Q1282 690 1282 678 L1282 627 L1294 627', 'pri', true);
       lab('out', 1060, 682, '배경 c — Stage 1 산출', 'pri');
@@ -1913,7 +1913,7 @@
       ['Stage 2 인코딩', '국지 · 배경 · 관측 노드 인코딩', ['국지 55(static 16 · CAPSS 시간 7 · LC 임베딩 32) → 128 · 기상 anomaly 4 gate — 원시 MET · GEOS-CF 미입력', 'BgEncoder — A: z_LF↑ 7 / B: h_LF↑ 48 → 128 → local 과 fusion 256 → 128', '측정소 350 — 관측 7 × 24 h(t−23 … t) + 유효성 168 + 배경 y_LF 7 + 유형 5 · 좌표 2 → 128']],
       ['Stage 2 GNN', '1 km 3-level HeteroGNN 4층', ['1 km 격자 · 5 km region · 측정소 — BU 2층 → TD 2층 · hidden 128 · heads 4', '하향 관측 주입 — region 마다 80 km 안 보이는 측정소 k = 8 · σ 30 km 거리감쇠 × 바람 attention', 'region → grid broadcast · grid kNN k = 12 — 별도 평활 층 없음(δ 평활 손실 λ 0.002)'], amVizGnn9],
       ['skip', 'DeltaReadout — 국지 skip 결합', ['GNN grid 128 + local_h 128 skip → 128 → 64 → 7 = 국지 잔차 δ', '배경 정보는 Stage 1 산출로만 — 원시 MET · GEOS-CF 는 Stage 2 에 없음', '보조 과제 — CAPSS 배출 재구성 head(128 → 64 → 14, λ 2.0)']],
-      ['최종 농도식', 'y = softplus(α · c + β + δ)', ['c = z_LF↑(A) · z_decode(h_LF↑)(B, 48 → 7) — Stage 1 배경 앵커', 'α = 4σ(a) ∈ [0, 4] · β — 물질별 스칼라 · 출력 7물질', '손실 — 가린 측정소 병치 셀 L_station(λ 1.0) · 격자 감독 없음 · CMAQ-DA 는 Stage 1 에서만'], amVizOut(3, 'Stage 1 배경 α·c + β', 'c = z_LF↑(점선) → α·c + β')],
+      ['최종 농도식', 'y = softplus(α · c + β + δ)', ['c = z_LF↑(A) · z_decode(h_LF↑)(B, 48 → 7) — Stage 1 배경 앵커', 'α = 4σ(a) ∈ [0, 4] · β — 물질별 스칼라 · 출력 7물질', '손실 — 측정소 위치 격자 L_station(λ 1.0) · 격자 감독 없음 · CMAQ-DA 는 Stage 1 에서만'], amVizOut(3, 'Stage 1 배경 α·c + β', 'c = z_LF↑(점선) → α·c + β')],
       ['최종 농도식', '기호와 차원 — Stage 1 배경 · 물질별 스칼라 · 1 km 잔차', ['c · δ · ŷ = G × 7 — 1 km 격자마다 7물질', 'α · β = 7 — 물질마다 하나 · α = 4σ(a) ∈ [0, 4]', 'c = Stage 1 산출 z_LF 5 km → bilinear 1 km — CMAQ-DA emulator 배경(A 본선)'], amVizOut(3, 'Stage 1 배경 α·c + β', 'c = z_LF↑(점선) → α·c + β')],
     ],
     /* 8/8 — 근거 위 7/7 장면(21 레포 src2/models/stage2_gnn.py softplus(α·c + β + δ) · α = 4σ(a) · DeltaReadout 128 → 64 → 7) */
