@@ -270,10 +270,8 @@
   .cmp tbody th{width:150px;font-size:19px;color:var(--dim);letter-spacing:.04em;white-space:nowrap}
   .cmp tr.h td,.cmp tr.h th{background:var(--soft)}
   .cmp tr.h th{color:var(--mut)}
-  .ident{margin-top:20px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:26px;align-items:center;border-top:2px solid var(--ink);padding-top:14px}
-  .ident .eq{font-family:'Cambria Math','Times New Roman',serif;font-size:27px;color:var(--ink);white-space:nowrap}
-  .ident .tx{font-size:20px;line-height:1.5;color:var(--mut)}
-  .ident .tx b{color:var(--ink)}
+  .cmp tr.g td{text-align:center;font-weight:700;color:var(--ink)} .cmp tr.g th{color:var(--ink)}
+  .cmp tr.fx .f{display:block;font-family:'Cambria Math','Times New Roman',serif;font-size:22px;color:var(--ink);white-space:nowrap} .cmp tr.fx .n{display:block;font-size:15px;color:var(--dim)}
 
 
   /* 12쪽 — 위 네 줄(2 × 2) · 아래 6패널 영상 둘(원본 1650 × 1160) */
@@ -363,10 +361,8 @@
   .fnrx .fxp{min-height:0;background:var(--soft);border-top:7px solid var(--accent);padding:27px 30px;display:flex;flex-direction:column;gap:17px}
   .fnrx .fxp.right{border-top-color:var(--gray-d)}
   .fnrx h3{font-size:30px;line-height:1.25;margin:0;letter-spacing:-.02em}
-  .fnrx .small{margin:0;color:var(--mut);font-size:20px;line-height:1.4}
   .fnrx .fxmath{background:#fff;border-left:5px solid var(--brand);padding:18px 20px;font-size:28px;font-weight:700;line-height:1.65}
   .fnrx .fxmath em{font-style:normal;color:var(--accent)}
-  .fnrx .fxlead{margin:0;font-size:23px;line-height:1.4;font-weight:700}
   .fnrx .fxp ol{list-style:none;counter-reset:fx;margin:0;padding:0;display:flex;flex-direction:column;gap:18px}
   .fnrx .fxp li{counter-increment:fx;position:relative;padding-left:43px;font-size:23px;font-weight:700;line-height:1.4}
   .fnrx .fxp li::before{content:counter(fx);position:absolute;left:0;top:1px;width:31px;height:31px;display:grid;place-items:center;border-radius:50%;background:var(--gray-d);color:#fff;font-size:18px}
@@ -377,11 +373,6 @@
   .fnrx.fnc{grid-template-columns:minmax(0,.82fr) minmax(0,1.38fr);gap:28px}
   .fnc .fxp{padding:22px 26px;gap:13px} .fnc h3{font-size:27px}
   .fnc .fxmath{font-size:23px;padding:13px 16px;line-height:1.6}
-  .fnc .fxp .small{font-size:18.5px}
-  .fcm{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px}
-  .fnc .fxp .fcm li{counter-increment:none;padding-left:0;font-size:18.5px;font-weight:500;line-height:1.4;color:var(--mut)}
-  .fnc .fxp .fcm li::before{content:none} .fnc .fxp .fcm li span{display:inline;margin:0;font-size:inherit;font-weight:700;color:var(--ink)}
-  .fcm b{display:inline-block;min-width:52px;margin-right:8px;color:var(--ink)}
   /* 20 · 28쪽 개조식(2026-10-25 사용자 지시 — 쉬운 대기환경 용어) — .fxp li 의 번호 원을 쓰지 않는다 */
   .fnc .fxp ul.fl li, .fnb .fxp ul.fl li{counter-increment:none}
   ul.fl{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
@@ -401,18 +392,15 @@
   .fcp svg, .fbp svg{display:block;width:100%;height:auto;flex:1;min-height:0}
   svg.fcs text{font-family:var(--f)} svg.fcs .ax{font-size:15px;fill:var(--dim)} svg.fcs .lb{font-size:17px;fill:var(--ink);font-weight:600}
   svg.fcs .pt{font-size:16px;fill:var(--ink);font-weight:700} svg.fcs .hd{font-size:18px;font-weight:800;fill:var(--ink)}
-  .fc-land{margin-top:auto!important}
   .fnb{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1.18fr) minmax(0,1fr);gap:28px;align-items:stretch}
   .fnb .fxp{background:var(--soft);border-top:7px solid var(--accent);padding:20px 26px;display:flex;flex-direction:column;gap:10px;min-height:0}
   .fnb .fxp.right{border-top-color:var(--gray-d)}
   .fnb h3{margin:0;font-size:25px;line-height:1.25;letter-spacing:-.02em}
-  .fb-k{margin:0;font-size:18px;line-height:1.4;color:var(--mut)} .fb-k b{display:inline-block;min-width:76px;margin-right:8px;color:var(--ink)}
   .fb-s{margin:4px 0 0;font-size:19px;line-height:1.35;font-weight:700} .fb-s small{display:block;font-size:15.5px;font-weight:500;color:var(--dim)}
   .hbar.fb-bar{grid-template-columns:178px minmax(0,1fr) 70px;font-size:17px;margin:2px 0}
   .hbar.fb-bar i{height:22px} .hbar.fb-bar i.e{background:#3E86D6} .hbar.fb-bar i.t{background:var(--accent)}
   .hbar.fb-bar i.c{background:var(--gray-d)} .hbar.fb-bar i.n{background:var(--gray-l)}
   .hbar.fb-bar.ho{grid-template-columns:178px minmax(0,1fr) 150px;gap:4px 10px} .hbar.fb-bar.ho i{height:18px} .hbar.fb-bar b small{font-size:14px;font-weight:600;color:var(--dim)}
-  .fb-n{margin:auto 0 0;padding-top:8px;border-top:1px solid var(--rule);font-size:17.5px;line-height:1.4;color:var(--mut)}
   .fbx{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:14px;padding-top:12px;border-top:2px solid var(--rule)}
   .fbx div{font-size:19px;line-height:1.4} .fbx b{display:block;font-size:17px;color:var(--accent);letter-spacing:.02em}
   .fbx small{display:block;font-size:15.5px;color:var(--dim)}
@@ -468,7 +456,6 @@
 
   /* ── 3쪽 대기환경 AI 연구 지형 — eia 덱 5장(#wf-task) 조판을 그대로 옮겼다(.wf · .wf2) ── */
   @keyframes vzInR{from{opacity:0;transform:translateX(40px)}}
-  @keyframes vzRing{0%{opacity:.95;transform:scale(.35)}100%{opacity:0;transform:scale(1.7)}}
   .wf .htop{margin-bottom:clamp(12px,calc(2 * var(--vh)),24px)}
   #s-landscape h2.htop{font-size:clamp(28px,calc(2.4 * var(--vw)),38px)}
   .wf .tag{display:inline-block;padding:2px 9px;font-size:clamp(16px,calc(1.05 * var(--vw)),17px);font-weight:700;line-height:1.35;
@@ -488,8 +475,6 @@
   .wf2 .tk.core b{color:#fff}
   .slide.wf.on .wf2 .tk.me{animation:wfLit .7s ease both;animation-delay:var(--d)}
   @keyframes wfLit{from{background:var(--soft);border-color:transparent;color:var(--mut)}}
-  .wf2 .tk.core::after{content:'';position:absolute;inset:-4px;border:2px solid var(--brand);pointer-events:none}
-  .slide.wf.on .wf2 .tk.core::after{animation:vzRing 1.8s ease-out 1.4s 2 both}
   .wf2 .key{margin:10px 0 0;display:flex;gap:16px;flex-wrap:wrap;font-size:16px;color:var(--mut)}
   .wf2 .key i{display:inline-block;width:14px;height:14px;margin-right:6px;vertical-align:-2px;background:#e2f1e6;border:1px solid var(--brand)}
   .wf2 .tk.use{background:#fff;border:1.5px dashed var(--brand);color:var(--ink)} .wf2 .key i.u{background:#fff;border:1.5px dashed var(--brand)}
@@ -606,8 +591,8 @@
     display:flex;flex-direction:column;gap:4px;font-size:16px;line-height:1.45;color:var(--mut)}
   .memo p{margin:0;display:grid;grid-template-columns:62px minmax(0,1fr);gap:10px;align-items:baseline}
   .memo .t{display:inline-block;text-align:center;font-size:13px;font-weight:700;letter-spacing:.04em;color:#fff;background:var(--gray);padding:2px 0;border-radius:2px}
-  .memo .t.need{background:var(--accent)} .memo .t.inf{background:var(--blue)} .memo .t.trn{background:var(--deep)}
-  .memo .t.dec{background:var(--gray-d)} .memo .t.mid{background:#5E8A0F}
+  .memo .t.need{background:var(--accent)}
+  .memo .t.dec{background:var(--gray-d)}
   .memo code{font-family:Consolas,'D2Coding',monospace;font-size:.92em;color:var(--gray-d)}
   body.nomemo .memo{display:none}
   /* 중간 결과 띠 — 진행 중 수치·그림이 든 장에는 반드시 단다(CLAUDE.md 절대 규칙). 메모와 달리 발표에도 남는다 */
@@ -680,6 +665,7 @@
   .closing h2{margin:0;font-size:64px;letter-spacing:-.04em;line-height:1.15}
   .closing p{margin:0;font-size:20px;line-height:1.6;color:var(--mut);max-width:62ch}
   .closing .ack{border-top:2px solid var(--ink);padding-top:14px}
+  .closing .authors{font-size:26px;color:var(--ink);font-weight:700} .closing .affil{margin-top:-18px;font-size:19px}   /* 26쪽 저자 · 소속 — 표지와 같은 짜임 */
   /* 맺음 — 왼쪽 인사 · 연락처 · 사사, 오른쪽 표지와 같은 지구본(2026-10-24 사용자 지시 — eia 덱 46장처럼). 마지막 두 장에 있을 때만 불러온다 */
   .endw{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:30px;align-items:stretch}
   .closing .mail{display:inline-flex;align-items:baseline;gap:12px;font-size:24px;color:var(--ink);font-weight:600;letter-spacing:.01em}
@@ -719,7 +705,7 @@
         <h1 class="doctitle">다중 규모 이종 그래프 기반<br>고해상도 대기질 추론:<br><em>잠재 공간 융합과<br>명시적 스케일 분해의 비교</em></h1>
         <p class="entitle">Multi-Scale Heterogeneous Graph-Based High-Resolution Air Quality Inference:<br>Comparison of Latent Fusion and Explicit Scale Decomposition</p>
         <p class="authors">정필수<sup>1)</sup>, 윤희영<sup>2)</sup></p>
-        <p class="affil"><sup>1)</sup>주식회사 건화 환경평가부 · <sup>2)</sup>안양대학교 환경에너지공학과</p>
+        <p class="affil"><sup>1)</sup>(주)건화 환경평가부 · <sup>2)</sup>안양대학교 환경에너지공학과</p>
         <p class="evtinfo"><b>제69회 한국대기환경학회 정기학술대회</b>2026.10.30<i>|</i>대구 EXCO<br>Session 5C 대기환경모델링·AI<i>|</i>5C1<i>|</i>09:00–09:20</p>
         <ol class="toc">
           <li><span class="n">1</span><span class="tx">연구 배경 및 설계 철학 — 관측 공백 · 다중 규모 중첩</span></li>
@@ -733,10 +719,10 @@
                   src="module/globe-sdgs-day.html?panel=1&amp;view=globe&amp;assets=min&amp;case=spring&amp;sp=cycle"></iframe>
         </div>
         <div class="herosign">
-          <!-- 웹 게시본(2026-10-25 사용자 지시) — QR 은 scripts/build_qr_web.py, 게시는 scripts/publish_web.py(공개 저장소 kosae69-deck · GitHub Pages) -->
-          <div class="webqr"><a class="qr" href="https://jeong-peelsoo.github.io/kosae69-deck/" target="_blank" rel="noopener"><img src="image/qr_web.svg" alt="웹 게시본 QR — jeong-peelsoo.github.io/kosae69-deck"></a><span class="wq"><a href="https://jeong-peelsoo.github.io/kosae69-deck/" target="_blank" rel="noopener"><b>웹 게시본</b></a><span class="url"><span>jeong-peelsoo.github.io/</span><wbr><span>kosae69-deck</span></span></span></div>
           <img src="image/logo-kunhwa-header-retina-en-2.png" alt="kunhwa Engineering &amp; Consulting">
           <img src="image/anyang_univ_emblem.png" alt="안양대학교">
+          <!-- 웹 게시본(2026-10-25 사용자 지시 · 2026-10-26 로고 오른쪽으로) — QR 은 scripts/build_qr_web.py, 게시는 scripts/publish_web.py(공개 저장소 kosae69-deck · GitHub Pages) -->
+          <div class="webqr"><a class="qr" href="https://jeong-peelsoo.github.io/kosae69-deck/" target="_blank" rel="noopener"><img src="image/qr_web.svg" alt="웹 게시본 QR — jeong-peelsoo.github.io/kosae69-deck"></a><span class="wq"><a href="https://jeong-peelsoo.github.io/kosae69-deck/" target="_blank" rel="noopener"><b>웹 게시본</b></a><span class="url"><span>jeong-peelsoo.github.io/</span><wbr><span>kosae69-deck</span></span></span></div>
         </div>
       </div>
     </div>
@@ -943,21 +929,27 @@
 <section class="slide">
   <div class="head"><span class="rh"><span class="n c2">2</span>아키텍처 설계</span>
     <span class="r">동일 정보, 상이한 결합 경로</span></div>
-  <!-- 대조표 — 보고서 §2.1 표를 그대로 옮겼다(문구만 발표 투로 줄였다). 아래 식은 §6.5 식별성. -->
+  <!-- 대조표 — 보고서 §2.1 표를 그대로 옮겼다(문구만 발표 투로 줄였다). §6.5 식별성 식은 직관적이지 않아 뺐다(2026-10-26 사용자 지시). -->
   <div class="body">
     <table class="cmp">
       <thead><tr><th></th><th class="a1">잠재 공간 융합 · End-to-End</th><th class="a2">명시적 스케일 분해 · Two-Stage</th></tr></thead>
       <tbody>
+        <!-- 공통 목표 · 기대 효과 — 보고서 §2.2 · §2.3 · §6.4(2026-10-26 사용자 지시). CMAQ-DA 는 E2E 입력에 없고 Two-Stage 는 학습 때만 교사장으로 쓴다 -->
+        <tr class="g"><th>공통 목표</th><td colspan="2">CMAQ-DA 없이 공개 자료만으로 1 km 농도장 추론</td></tr>
         <tr><th>기본 관점</th><td>다중 출처 특징의 잠재 표현 내 공동 결합</td><td>광역 배경 추정 · 국지 보정의 단계적 역할 분리</td></tr>
-        <tr><th>주요 구조</th><td>측정소 · 격자 · 광역 3계층 이종 그래프</td><td>5 km 배경장 추정기 + 1 km 국지 이종 그래프</td></tr>
+        <tr><th>주요 구조</th><td>5 km 보간 공개 자료 직접 입력 +<br>측정소 · 1 km 격자 · 5 km 권역 3계층 이종 그래프</td><td>5 km 보간 공개 자료 → U-Net 배경장 +<br>측정소 · 1 km 격자 · 5 km 권역 3계층 이종 그래프</td></tr>
         <tr><th>최적화</th><td>최종 관측 손실 기반 end-to-end 공동 학습</td><td>Stage 1 학습 · 동결 → Stage 2 학습</td></tr>
-        <tr><th>배경 정보 경로</th><td>잠재 특징 + CTM affine anchor</td><td>동결 배경장의 명시적 출력 경로 + 국지 보정 경로</td></tr>
-        <tr class="h"><th>강점 가설</th><td>유연한 상호작용, 관측 조건 적응</td><td>역할 분리, 안정적 배경 참조, teacher 정보 전이</td></tr>
-        <tr class="h"><th>위험 가설</th><td>역할 중복, shortcut learning, 성분 해석 불확정성</td><td>배경 오차 고정, 단계 간 정보 손실, 국지 보정 부담</td></tr>
+        <tr><th>배경 정보 경로</th><td>잠재 특징 + GEOS-CF 원단위 선형 보정(α·c + β)</td><td>동결 Stage 1 배경장 z_LF 선형 보정(α·c + β) + 잔차 경로 입력</td></tr>
+        <tr><th>기대 효과</th><td>배경 · 국지 정보 상호작용의 자유로운 학습, 관측 조건에 따른 정보 비중 적응</td><td>희소 관측에서 역할 중복 억제, 무관측 지역의 배경장 하한, CMAQ-DA 지식의 학습 시 전이</td></tr>
+        <!-- 농도 계산식 · 손실 — 박사논문 최종제본 식 (3.3) · (3.5) · (3.4), Two-Stage 손실은 번호 식이 없어 §5.3.2 본문 · Table 5.3 의 가중치를 식으로 적었다(2026-10-26 사용자 지시로 강점 · 위험 가설 줄을 바꿈).
+             손실 줄도 박사논문 판이다 — 한때 21 프로토콜 v2 판(L_station 제거 · 가린 측정소 병치 셀)으로 바꿨다가 14 · 15쪽 결과(test70 · test304)와 학습 손실이 어긋나 되돌렸다(2026-10-26 사용자 지시).
+             박사논문 판은 E2E 에 측정소 노드 예측 헤드(L_station)가 있고, L_grid · Stage 2 L_station 은 전 측정소 병치 셀에서 계산한다 -->
+        <tr class="h fx"><th>농도 계산식</th><td><span class="f">ŷ = softplus(α · C<sub>CTM</sub> + β + δ)</span><span class="n">C<sub>CTM</sub> GEOS-CF 7물질, δ GNN 잔차</span></td>
+          <td><span class="f">ŷ = softplus(α · ŷ<sub>LF</sub><sup>1km</sup> + β + Δŷ<sub>HF</sub>)</span><span class="n">ŷ<sub>LF</sub><sup>1km</sup> Stage 1 배경장 상향보간, Δŷ<sub>HF</sub> 1 km 잔차</span></td></tr>
+        <tr class="h fx"><th>손실 함수</th><td><span class="f"><i>L</i> = <i>L</i><sub>station</sub> + 0.5 <i>L</i><sub>grid</sub> + w(e) · <i>L</i><sub>emis</sub></span><span class="n"><i>L</i><sub>station</sub> 측정소 노드 예측(격자 출력 미경유), <i>L</i><sub>grid</sub> 측정소 병치 셀, w(e) = min(1, e/5)</span></td>
+          <td><span class="f">Stage 1&nbsp; <i>L</i> = <i>L</i><sub>CMAQ-DA</sub> + 0.1 <i>L</i><sub>station</sub></span><span class="f">Stage 2&nbsp; <i>L</i> = <i>L</i><sub>station</sub> + 0.002 <i>L</i><sub>Δsmooth</sub> + 2.0 w(e) · <i>L</i><sub>emis</sub></span><span class="n"><i>L</i><sub>station</sub> 측정소 병치 셀</span></td></tr>
       </tbody>
     </table>
-    <div class="ident"><span class="eq">B′ = B + g,&nbsp; r′ = r − g &nbsp;⇒&nbsp; B′ + r′ = B + r</span>
-      <span class="tx"><b>분리 ≠ 식별.</b> 출력 성능만으로 배경 담당 성분의 결정 불가 — 배경 동결은 식별 보조 제약이며 식별의 증명이 아님</span></div>
   </div>
   <div class="foot"><span>두 아키텍처의 차이 — 정보가 아닌 결합 경로</span><span class="r"></span></div>
 </section>
@@ -1049,7 +1041,7 @@
   <div class="head"><span class="rh"><span class="n c3">3</span>검증 및 결과</span>
     <span class="r">추론 단계 가림 홀드아웃</span></div>
   <div class="body">
-    <h2 class="htop hoh"><em class="inf">추론 단계 가림</em> 홀드아웃 — 전체 학습 · 두 구조 비교<span class="sub">전 측정소로 학습한 모델 하나, 추론 때만 fold 측정소의 관측 입력 차단, 박사논문 판(test70 · test304)</span></h2>
+    <h2 class="htop hoh"><em>추론 단계 가림</em> 홀드아웃 — 전체 학습 · 두 구조 비교<span class="sub">전 측정소로 학습한 모델 하나, 추론 때만 fold 측정소의 관측 입력 차단, 박사논문 판(test70 · test304)</span></h2>
     <div class="qres">
       <figure class="qfig"><img src="image/fig6_23_comp_aggregate.png" alt="End-to-End 와 Two-Stage 의 물질별 2023 시간 독립 검증 R² 와 북부 5-fold 공간 홀드아웃 R² 비교 막대그림">
         <figcaption>(a) 전국 측정소 R² · 2022 학습 → 2023 시간 독립 검증 &nbsp;|&nbsp; (b) 2023 5-fold 공간 홀드아웃 R²(북부)</figcaption></figure>
@@ -1413,7 +1405,9 @@
   <div class="body endw">
     <div class="closing">
       <h2>감사합니다</h2>
-      <p>정필수 · 주식회사 건화 환경평가부</p>
+      <!-- 저자 두 명 — 표지 · 초록(docs/초록/정필수2026.pdf)과 같다(2026-10-26 사용자 지시). 윤희영 연락처는 정본에 없어 싣지 않는다 -->
+      <p class="authors">정필수<sup>1)</sup>, 윤희영<sup>2)</sup></p>
+      <p class="affil"><sup>1)</sup>(주)건화 환경평가부 · <sup>2)</sup>안양대학교 환경에너지공학과</p>
       <p class="mail"><b>연락처</b>pala77@empas.com</p>
       <p class="ack"><b>사사</b> 이 성과는 정부(기후에너지환경부)의 재원으로 한국환경산업기술원의 미세먼지관리 특성화대학원 사업의 지원을 받아 수행된 연구임.</p>
       <!-- 웹 게시본 — 표지와 같은 QR · 주소(2026-10-25 사용자 지시) -->
@@ -1958,11 +1952,17 @@
       res: lutFrom([[0, [59, 130, 246]], [.42, [40, 70, 110]], [.5, [26, 36, 48]], [.58, [120, 50, 40]], [1, [248, 90, 60]]], 1),
       lat: lutFrom([[0, [30, 20, 60]], [.5, [110, 70, 200]], [1, [210, 190, 255]]], 1) };
 
-    /* ── 프레임 아틀라스(회색조 PNG, 가로로 프레임) → 프레임 사이를 섞은 색 그림 ── */
+    /* ── 프레임 아틀라스(회색조 PNG, 가로로 프레임) → 프레임 사이를 섞은 색 그림 ──
+       해독은 load() 때 — 같은 PNG(1 km E2E 는 e2e · lat 두 층)는 한 번만 해독해 나눠 쓴다 */
+    const RAW = {};
+    const decode = (src, fn) => { let r = RAW[src];
+      if (!r) { r = RAW[src] = { fns: [] }; const im = new Image();
+        im.onload = () => { const c = mk(im.width, im.height), x = c.getContext('2d'); x.drawImage(im, 0, 0); r.data = x.getImageData(0, 0, im.width, im.height).data; r.W = im.width; r.fns.forEach(f => f(r)); };
+        im.src = src; }
+      r.data ? fn(r) : r.fns.push(fn); };
     function atlas(src, w, h, lut){
-      const A = { cv: mk(w, h), w, h, raw: null, key: -1 }, im = new Image();
-      im.onload = () => { const c = mk(im.width, im.height), x = c.getContext('2d'); x.drawImage(im, 0, 0); A.raw = x.getImageData(0, 0, im.width, im.height).data; A.W = im.width; };
-      im.src = src;
+      const A = { cv: mk(w, h), w, h, raw: null, key: -1 };
+      A.load = () => decode(src, r => { A.raw = r.data; A.W = r.W; });
       A.paint = (f, L2) => { if (!A.raw) return false; const key = Math.round(f * 8) / 8 + (L2 ? 1000 : 0); if (key === A.key) return true; A.key = key;
         const lt = L2 || lut, f0 = Math.floor(f) % NF, f1 = (f0 + 1) % NF, wt = f - Math.floor(f), x = A.cv.getContext('2d'), o = x.createImageData(w, h), d = o.data, Rw = A.raw, W2 = A.W;
         for (let j = 0; j < h; j++) for (let i = 0; i < w; i++) { const a = Rw[(j * W2 + f0 * w + i) * 4], b = Rw[(j * W2 + f1 * w + i) * 4], p = (j * w + i) * 4;
@@ -1970,13 +1970,16 @@
         x.putImageData(o, 0, 0); return true; };
       return A;
     }
-    const tex = src => { const im = new Image(); im.src = src; return im; };
+    const tex = src => { const im = new Image(); im.dataset.src = src; return im; };
     const AT = { A: atlas(D.zoom.A.img, D.zoom.A.w, D.zoom.A.h, LUT.conc), B: atlas(D.zoom.B.img, D.zoom.B.w, D.zoom.B.h, LUT.conc),
       geo: atlas(R.conc.c25, N, N, LUT.conc), cams: atlas(D.region.cams, N, N, LUT.conc), cmaq: atlas(R.conc.c5, N, N, LUT.conc), e2e: atlas(R.conc.c1, N, N, LUT.conc),
       emis: atlas(D.region.emis_h, N, N, LUT.emis), zlf: atlas(D.region.zlf, N, N, LUT.conc), ts: atlas(D.region.ts, N, N, LUT.conc),
       res: atlas(D.region.res, N, N, LUT.res), lat: atlas(R.conc.c1, N, N, LUT.lat) };
     const TX = { dem: tex(R.tex.dem), lc: tex(R.tex.lc) };
-    const z5 = mk(30, 30);   // z_LF 5 km 칸 — 1 km 그림에서 칸 가운데를 집어 블록으로 보인다
+    let loaded = false;
+    const load = () => { if (loaded) return; loaded = true; Object.values(AT).forEach(A => A.load()); Object.values(TX).forEach(im => { im.src = im.dataset.src; }); };
+    addEventListener('load', () => setTimeout(load, 1500));   // 덱을 여는 순간에는 해독하지 않는다 — 5쪽에 닿기 전에 미리
+    const z5 = mk(30, 30);   // z_LF 5 km 칸 — 1 km 그림에서 칸 가운데를 집어 블록으로 보인다(아틀라스가 다시 칠해졌을 때만 다시 집는다)
     const noise = mk(N, N); { const x = noise.getContext('2d'), o = x.createImageData(N, N); let s = 7;
       for (let k = 0; k < N * N; k++) { s = (s * 16807) % 2147483647; const v = 40 + (s % 150); o.data.set([v * .55, v * .4, v, 255], k * 4); } x.putImageData(o, 0, 0); }
 
@@ -2023,8 +2026,10 @@
       out:  { a: '1 km 농도장', b: 'E2E · NO₂', draw: (g, f) => { img(g, AT.e2e, f); seoul(g); } },
       aux:  { a: '보조 proxy', b: 'GFAS · BIO · CAPSS 시간 · 정적', draw: (g, f) => { if (TX.dem.complete) { g.globalAlpha = .6; g.drawImage(TX.dem, 0, 0, N, N); }
               g.globalAlpha = .9; g.globalCompositeOperation = 'lighter'; img(g, AT.emis, f); g.globalCompositeOperation = 'source-over'; g.globalAlpha = 1; } },
-      zlf:  { a: 'z_LF · 5 km', b: 'Stage 1 출력 · 5종 중 NO₂', draw: (g, f) => { if (AT.zlf.paint(f)) { const x = z5.getContext('2d'); x.clearRect(0, 0, 30, 30);
-              for (let j = 0; j < 30; j++) for (let i = 0; i < 30; i++) x.drawImage(AT.zlf.cv, i * 5 + 2, j * 5 + 2, 1, 1, i, j, 1, 1);
+      zlf:  { a: 'z_LF · 5 km', b: 'Stage 1 출력 · 5종 중 NO₂', draw: (g, f) => { if (AT.zlf.paint(f)) { if (z5.key !== AT.zlf.key) { z5.key = AT.zlf.key;
+              const s = AT.zlf.cv.getContext('2d').getImageData(0, 0, N, N).data, x = z5.getContext('2d'), o = x.createImageData(30, 30);
+              for (let j = 0; j < 30; j++) for (let i = 0; i < 30; i++) o.data.set(s.subarray(((j * 5 + 2) * N + i * 5 + 2) * 4, ((j * 5 + 2) * N + i * 5 + 2) * 4 + 4), (j * 30 + i) * 4);
+              x.putImageData(o, 0, 0); }
               g.imageSmoothingEnabled = false; g.drawImage(z5, 0, 0, N, N); } kor(g, .3); } },
       res:  { a: '국지 잔차 δ', b: '화면용 차분 · ±20 ppb', draw: (g, f) => { img(g, AT.res, f); } },
       ts:   { a: 'Two-Stage 1 km', b: 'y = softplus(z_LF↑ + δ)', draw: (g, f) => { img(g, AT.ts, f); seoul(g); } },
@@ -2226,7 +2231,7 @@
       prevStep = instant ? k : step; snap = instant ? {} : JSON.parse(JSON.stringify(cur)); step = k; tStep = performance.now() - (instant ? 99999 : 0);
       slide.classList.toggle('full', k > 0);
     }
-    function init(){ ({ g, W, H } = cvSetup(cv)); const ph = slide.querySelector('.dpanel'), r0 = cv.getBoundingClientRect(), r1 = ph.getBoundingClientRect(), sc = W / r0.width; PX = (r1.left - r0.left) * sc; }
+    function init(){ load(); ({ g, W, H } = cvSetup(cv)); const ph = slide.querySelector('.dpanel'), r0 = cv.getBoundingClientRect(), r1 = ph.getBoundingClientRect(), sc = W / r0.width; PX = (r1.left - r0.left) * sc; }
     function frame(){
       const now = performance.now(), τ = now - tStep, f = (now / FMS) % NF, TR = 900;
       g.clearRect(0, 0, W, H);
@@ -2492,7 +2497,6 @@
     const LIVE = {};   // 절 번호 → frame(t ms)
     const W = 672, H = 900, F = "'Inter','Noto Sans KR',sans-serif";
     const rng = seed => () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
-    const ramp = (stops, v) => { v = Math.max(0, Math.min(1, v)); for (let s = 1; s < stops.length; s++) if (v <= stops[s][0]) { const [a, A] = stops[s-1], [b, B] = stops[s], u = (v - a) / (b - a); return `rgb(${A.map((c, k) => Math.round(c + (B[k] - c) * u)).join(',')})`; } return `rgb(${stops[stops.length-1][1].join(',')})`; };
     const label = (g, s, x, y, size, color, align, wt) => { g.font = `${wt || 700} ${size}px ${F}`; g.fillStyle = color; g.textAlign = align || 'left'; g.fillText(s, x, y); };
 
     // 1 — 같은 공기를 25 km → 5 km → 1 km 로(2026-10-15 사용자 지시로 다시 그림): 수도권 150 × 150 km 의 실제 NO₂ 농도장 세 층이
@@ -2743,11 +2747,11 @@
     const whisk = (svg, x0, x1, y, col) => { E(svg, 'line', { x1: x0, x2: x1, y1: y, y2: y, stroke: col, 'stroke-width': 2.4 });
       [x0, x1].forEach(x => E(svg, 'line', { x1: x, x2: x, y1: y - 6, y2: y + 6, stroke: col, 'stroke-width': 2.4 })); };
 
-    /* 20쪽 — 통제 단계 × 두 위성. E2E 막대 + 95 % 구간, GEOS-CF ◇ · CMAQ-DA ● */
+    /* 20쪽 — 통제 단계 × 두 위성. E2E 막대 + 95 % 구간 */
     { const svg = document.getElementById('fc-partial'); if (svg) { svg.classList.add('fcs');
       /* 2026-10-25 사용자 지시로 단순화 — 세 단계만, CTM 표식은 본문 줄로 옮겼다(값은 JSON 에 그대로 있다) */
       const P = D.stats.matched.partial, ROWS = [['none', ['제거 없음']], ['geo_urban', ['지리 · 도시화', '제거']], ['sat_no2', ['위성 NO₂ 칼럼', '제거']]];
-      const PAN = [['gems', 'GEMS', 190], ['tropomi', 'TROPOMI', 545]], W = 280, LO = -1, HI = 0.5, y0 = 76, dy = 70, NOCTM = true;
+      const PAN = [['gems', 'GEMS', 190], ['tropomi', 'TROPOMI', 545]], W = 280, LO = -1, HI = 0.5, y0 = 76, dy = 70;
       PAN.forEach(([key, name, px]) => {
         const sx = v => px + (v - LO) / (HI - LO) * W;
         E(svg, 'text', { x: px + W / 2, y: 22, 'text-anchor': 'middle', class: 'hd' }, name);
@@ -2759,10 +2763,6 @@
           if (ci) whisk(svg, sx(ci[0]), sx(ci[1]), y, C_INK);
           const tx = v < 0 ? Math.min(sx(v), ci ? sx(ci[0]) : sx(v)) - 8 : Math.max(sx(v), ci ? sx(ci[1]) : sx(v)) + 8;
           E(svg, 'text', { x: tx, y: y + 6, 'text-anchor': v < 0 ? 'end' : 'start', class: 'pt' }, f(v, 2));
-          if (NOCTM) return;
-          if (r.r_geoscf != null) { const gx = sx(r.r_geoscf), gy = y + 22;
-            E(svg, 'rect', { x: gx - 6, y: gy - 6, width: 12, height: 12, fill: '#fff', stroke: C_GD, 'stroke-width': 2.5, transform: `rotate(45 ${gx} ${gy})` }); }
-          if (r.r_cmaq != null) E(svg, 'circle', { cx: sx(r.r_cmaq), cy: y + 22, r: 6.5, fill: C_INK });
         });
       });
       ROWS.forEach(([, lines], i) => label(svg, 0, y0 + i * dy, lines, 'lb'));
