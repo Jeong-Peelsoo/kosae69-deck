@@ -6,7 +6,7 @@
 
      장 순서(화면 쪽 번호, JS PNO 가 위치로 매긴다 — 30쪽)
        1 표지
-       2–5 Ⅰ 연구 배경 및 설계 철학 — 2 갑지 · 3 연구 지형 · 4 관측 공백 · 5 다중 규모(#s-scale)
+       2–5 Ⅰ 연구 배경 및 설계 관점 — 2 갑지 · 3 연구 지형 · 4 관측 공백 · 5 다중 규모(#s-scale)
        6–10 Ⅱ 아키텍처 설계 — 6 갑지 · 7 비교 영상 · 8 Arch 1 지도 · 9 Arch 2 지도 · 10 대조표
        11–25 Ⅲ 검증 및 결과 — 11 갑지 · 12 농도장 영상 · 13 통계 검증 설계 · 14 추론 단계 가림(Fig. 6.23) ·
          15 학습 단계 가림 · 16 검증 프로토콜 · 17 주말효과 · 18 r · FNR 기준 · 19 위성 FNR · 20 NO₂ 공간 구배 점검 · 21–23 E2E 분석 · 24 산화제 분배 두 구조 · 25 결론
@@ -272,6 +272,8 @@
   .cmp tr.h th{color:var(--mut)}
   .cmp tr.g td{text-align:center;font-weight:700;color:var(--ink)} .cmp tr.g th{color:var(--ink)}
   .cmp tr.fx .f{display:block;font-family:'Cambria Math','Times New Roman',serif;font-size:22px;color:var(--ink);white-space:nowrap} .cmp tr.fx .n{display:block;font-size:15px;color:var(--dim)}
+  /* 같은 이름 L_station 의 두 뜻 — 위첨자(node · grid) + 아래첨자(station)를 겹쳐 쌓는다(2026-10-26 사용자 지시) */
+  .cmp tr.fx .ss{display:inline-flex;flex-direction:column;align-items:flex-start;vertical-align:.5em;font-size:.62em;line-height:1.05;margin-left:1px}
 
 
   /* 12쪽 — 위 네 줄(2 × 2) · 아래 6패널 영상 둘(원본 1650 × 1160) */
@@ -708,7 +710,7 @@
         <p class="affil"><sup>1)</sup>(주)건화 환경평가부 · <sup>2)</sup>안양대학교 환경에너지공학과</p>
         <p class="evtinfo"><b>제69회 한국대기환경학회 정기학술대회</b>2026.10.30<i>|</i>대구 EXCO<br>Session 5C 대기환경모델링·AI<i>|</i>5C1<i>|</i>09:00–09:20</p>
         <ol class="toc">
-          <li><span class="n">1</span><span class="tx">연구 배경 및 설계 철학 — 관측 공백 · 다중 규모 중첩</span></li>
+          <li><span class="n">1</span><span class="tx">연구 배경 및 설계 관점 — 관측 공백 · 다중 규모 중첩</span></li>
           <li><span class="n">2</span><span class="tx">아키텍처 설계 — 잠재 공간 융합 vs 명시적 분해</span></li>
           <li><span class="n">3</span><span class="tx">검증 및 결과 — 남한 1 km 농도장</span></li>
         </ol>
@@ -739,7 +741,7 @@
   <div class="dvl">
     <div class="dn">1</div>
     <div class="dk">1 / 3</div>
-    <h2>연구 배경 및<br>설계 철학</h2>
+    <h2>연구 배경 및<br>설계 관점</h2>
     <p class="ds">관측은 점, 추론 대상은 면 — 농도장의 다중 규모 중첩 구조</p>
     <ol class="dl"></ol>
     <div class="dp"></div>
@@ -750,7 +752,7 @@
 <!-- 3쪽 — 대기환경 AI 연구 지형과 이 연구의 위치(2026-10-23 사용자 지시). eia 덱 5장(#wf-task) 15개 과제 지도를 옮기고 문구를 아키텍처 제안 발표에 맞췄다.
      과제 분류 · 참고문헌 줄은 eia 덱 그대로(서지 필드는 Crossref 메타데이터에서 생성 — eia sources.md '4–6장' 절). -->
 <section class="slide wf" id="s-landscape">
-  <div class="head"><span class="rh"><span class="n">1</span>연구 배경 및 설계 철학</span>
+  <div class="head"><span class="rh"><span class="n">1</span>연구 배경 및 설계 관점</span>
     <span class="r">대기환경 AI 연구 지형 · 이 연구의 위치</span></div>
   <div class="body">
     <h2 class="htop">이 연구는 <em>관측 희소 공간의 고해상도 농도장 추론</em> 아키텍처에 선다</h2>
@@ -802,7 +804,7 @@
 
 <!-- 4쪽 — 초록 둘째 문장(A2). 보고서 §1.2 과업 정의 -->
 <section class="slide">
-  <div class="head"><span class="rh"><span class="n">1</span>연구 배경 및 설계 철학</span>
+  <div class="head"><span class="rh"><span class="n">1</span>연구 배경 및 설계 관점</span>
     <span class="r">관측은 점, 추론 대상은 면</span></div>
   <!-- 우측 관측 패널은 eia 덱 14장(#s-krgap)을 그대로 옮겼다 — 장에 들어설 때마다 스캔선이 1 km 격자를 훑고 측정소가 점등된다.
        수치는 박사논문 동결 정본(4-도메인 core 107,158 · 측정소 664)이다. 22 의 적격 626곳 · 육지 97,996 셀은 다른 정의라 쓰지 않는다. -->
@@ -836,7 +838,7 @@
 
 <!-- 5쪽 — 초록 첫 문장(A1). 보고서 §1.1. 다음 키로 8단계(0–2 확대 세 수준 GEOS-CF → CMAQ-DA → E2E 1 km · 3 입력 층 · 4 세 branch · 5 E2E · 6 Two-Stage Stage 1 · 7 Two-Stage Stage 2)를 넘긴다 -->
 <section class="slide" id="s-scale">
-  <div class="head"><span class="rh"><span class="n">1</span>연구 배경 및 설계 철학</span>
+  <div class="head"><span class="rh"><span class="n">1</span>연구 배경 및 설계 관점</span>
     <span class="r">농도장의 다중 규모 중첩 구조</span></div>
   <div class="body">
     <div class="sk wide">
@@ -946,8 +948,8 @@
              박사논문 판은 E2E 에 측정소 노드 예측 헤드(L_station)가 있고, L_grid · Stage 2 L_station 은 전 측정소 병치 셀에서 계산한다 -->
         <tr class="h fx"><th>농도 계산식</th><td><span class="f">ŷ = softplus(α · C<sub>CTM</sub> + β + δ)</span><span class="n">C<sub>CTM</sub> GEOS-CF 7물질, δ GNN 잔차</span></td>
           <td><span class="f">ŷ = softplus(α · ŷ<sub>LF</sub><sup>1km</sup> + β + Δŷ<sub>HF</sub>)</span><span class="n">ŷ<sub>LF</sub><sup>1km</sup> Stage 1 배경장 상향보간, Δŷ<sub>HF</sub> 1 km 잔차</span></td></tr>
-        <tr class="h fx"><th>손실 함수</th><td><span class="f"><i>L</i> = <i>L</i><sub>station</sub> + 0.5 <i>L</i><sub>grid</sub> + w(e) · <i>L</i><sub>emis</sub></span><span class="n"><i>L</i><sub>station</sub> 측정소 노드 예측(격자 출력 미경유), <i>L</i><sub>grid</sub> 측정소 위치 격자, w(e) = min(1, e/5)</span></td>
-          <td><span class="f">Stage 1&nbsp; <i>L</i> = <i>L</i><sub>CMAQ-DA</sub> + 0.1 <i>L</i><sub>station</sub></span><span class="f">Stage 2&nbsp; <i>L</i> = <i>L</i><sub>station</sub> + 0.002 <i>L</i><sub>Δsmooth</sub> + 2.0 w(e) · <i>L</i><sub>emis</sub></span><span class="n"><i>L</i><sub>station</sub> 측정소 위치 격자</span></td></tr>
+        <tr class="h fx"><th>손실 함수</th><td><span class="f"><i>L</i> = <i>L</i><span class="ss"><span>(node)</span><span>station</span></span> + 0.5 <i>L</i><sub>grid</sub> + w(e) · <i>L</i><sub>emis</sub></span><span class="n">(node) 측정소 노드 예측, <i>L</i><sub>grid</sub> 측정소 위치 격자, w(e) = min(1, e/5)</span></td>
+          <td><span class="f">Stage 1&nbsp; <i>L</i> = <i>L</i><sub>CMAQ-DA</sub> + 0.1 <i>L</i><span class="ss"><span>(grid)</span><span>station</span></span></span><span class="f">Stage 2&nbsp; <i>L</i> = <i>L</i><span class="ss"><span>(grid)</span><span>station</span></span> + 0.002 <i>L</i><sub>Δsmooth</sub> + 2.0 w(e) · <i>L</i><sub>emis</sub></span><span class="n">(grid) 측정소 위치 격자 예측</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -2493,7 +2495,7 @@
      이 덱의 움직이는 그림 규약(window.LIVE — 처음 들어설 때 init, 그 장에 있을 때만 frame)에 싣는다. 30 fps 로 솎는다 */
   (function(){
     const DV = [...document.querySelectorAll('.slide.divider')]; if (!DV.length) return;
-    const NAMES = ['연구 배경 및 설계 철학', '아키텍처 설계', '검증 및 결과'];
+    const NAMES = ['연구 배경 및 설계 관점', '아키텍처 설계', '검증 및 결과'];
     const LIVE = {};   // 절 번호 → frame(t ms)
     const W = 672, H = 900, F = "'Inter','Noto Sans KR',sans-serif";
     const rng = seed => () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
