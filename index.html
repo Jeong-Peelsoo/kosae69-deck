@@ -4,23 +4,25 @@
 
      계획과 근거는 plan.md, 인용 대장은 sources.md(2026-10-24 지운 작업 메모 원문은 §7). .memo 스타일 · M 키는 새 메모용으로 남긴다.
 
-     장 순서(화면 쪽 번호, JS PNO 가 위치로 매긴다 — 30쪽)
+     장 순서(화면 쪽 번호, JS PNO 가 위치로 매긴다 — 32쪽)
        1 표지
-       2–5 Ⅰ 연구 배경 및 설계 관점 — 2 갑지 · 3 연구 지형 · 4 관측 공백 · 5 다중 규모(#s-scale)
-       6–10 Ⅱ 아키텍처 설계 — 6 갑지 · 7 비교 영상 · 8 Arch 1 지도 · 9 Arch 2 지도 · 10 대조표
-       11–25 Ⅲ 검증 및 결과 — 11 갑지 · 12 농도장 영상 · 13 통계 검증 설계 · 14 추론 단계 가림(Fig. 6.23) ·
-         15 학습 단계 가림 · 16 검증 프로토콜 · 17 주말효과 · 18 r · FNR 기준 · 19 위성 FNR · 20 NO₂ 공간 구배 점검 · 21–23 E2E 분석 · 24 산화제 분배 두 구조 · 25 결론
-       26 맺음
-       27–30 보조(질의응답) — 27 R² · RMSE 표 · 28 기준장 · 관측 재현(#s-fnr-base) · 29 공간 규모 · 대표성(#s-fnr-scale) · 30 Ox 와 위성 HCHO 직접 비교(#s-ox-hcho)
+       2–6 Ⅰ 연구 배경 및 설계 관점 — 2 갑지 · 3 연구 지형 · 4 관측 공백 · 5 다중 규모(#s-scale) · 6 자료동화 관점(#s-da)
+       7–11 Ⅱ 아키텍처 설계 — 7 갑지 · 8 비교 영상 · 9 Arch 1 지도 · 10 Arch 2 지도 · 11 대조표
+       12–26 Ⅲ 검증 및 결과 — 12 갑지 · 13 농도장 영상 · 14 통계 검증 설계 · 15 추론 단계 가림(Fig. 6.23) ·
+         16 학습 단계 가림 · 17 검증 프로토콜 · 18 주말효과 · 19 r · FNR 기준 · 20 위성 FNR · 21 NO₂ 공간 구배 점검 · 22–24 E2E 분석 · 25 산화제 분배 두 구조 · 26 결론
+       27 맺음
+       28–32 보조(질의응답) — 28 R² · RMSE 표 · 29 기준장 · 관측 재현(#s-fnr-base) · 30 공간 규모 · 대표성(#s-fnr-scale) · 31 Ox 와 위성 HCHO 직접 비교(#s-ox-hcho) ·
+         32 배경장 품질 vs 분리 학습(#s-da2)
          (2026-10-26 사용자 지시 — 종전 본편 22 · 23쪽을 맺음 뒤 보조로 넘겼다. 15분 발표에 위성 FNR 장이 넷이라 21쪽 판정만 본편에 둔다.
          같은 날 종전 본편 14쪽 R² 표도 보조 27쪽으로 넘겼다 — 본편 14쪽 이후는 한 쪽씩 당겨졌다)
-     ⚠ 장을 끼우거나 빼면 이 줄, 장마다 단 쪽 번호 주석, 16쪽 프로토콜 표의 '쪽' 열, plan.md §2 표를 함께 고친다.
+         (2026-10-27 사용자 지시 — 5쪽 뒤에 6쪽 자료동화 관점을 끼우고 그 단서를 보조 32쪽에 더했다. 종전 6–30쪽은 7–31쪽이 됐다. 원고 docs/아키텍처/2026-10-27_1장_…_2쪽안.md)
+     ⚠ 장을 끼우거나 빼면 이 줄, 장마다 단 쪽 번호 주석, 17쪽 프로토콜 표의 '쪽' 열, plan.md §2 표를 함께 고친다.
 
      근거의 위계 — 1 공식 초록(docs/초록/정필수2026.pdf, 접수 후 동결) · 2 발표참고보고서(docs/핵심_발표논지/) ·
        3 A1 데이터흐름(docs/아키텍처/) · 4 20 레포 docs/conference_kosae_69th/(초록을 쓴 원 기획).
-     초록 주장은 동결 정본(박사논문 · KOSAE 42(2))으로 세운다. 21 · 22 진행 중 결과는 13쪽 분할 지도 · 15쪽 학습 단계 가림(개발 중간 결과 띠)에만 둔다.
-       19 · 20 · 21 · 28–30쪽의 통제 분석 수치는 21 · 22 레포가 아니라 동결 20 레포 산출(박사논문 run)을 이 레포 스크립트로 다시 집계한 추가 분석이다(2026-10-25 사용자 결정 — context-notes).
-       8 · 9쪽 지도의 구성은 21 레포(A1-000 · a21-004 · a22-102A)를 따른다.
+     초록 주장은 동결 정본(박사논문 · KOSAE 42(2))으로 세운다. 21 · 22 진행 중 결과는 14쪽 분할 지도 · 16쪽 학습 단계 가림(개발 중간 결과 띠)에만 둔다.
+       20 · 21 · 22 · 29–31쪽의 통제 분석 수치는 21 · 22 레포가 아니라 동결 20 레포 산출(박사논문 run)을 이 레포 스크립트로 다시 집계한 추가 분석이다(2026-10-25 사용자 결정 — context-notes).
+       9 · 10쪽 지도의 구성은 21 레포(A1-000 · a21-004 · a22-102A)를 따른다.
 
      템플릿 — ppt/ppt-eia-ai전환-20260930발표/ 의 덱(1600×900 무대 · 머리/발 · 쪽 번호 · 키 조작 · 표지 지구본)에서
        엔진과 공통 CSS 만 옮겼다. eia 장 전용 CSS · 스크립트 · 영상 큐는 옮기지 않았다.
@@ -40,8 +42,8 @@
 <script src="graph/res_layers.js"></script>   <!-- 5쪽 수도권 25 · 5 · 1 km 층 · 정적 층(2쪽 갑지 그림도 쓴다) -->
 <script src="graph/scale_story.js"></script>   <!-- 5쪽 단계 그림 — 확대 · ERA5 · CAMS FC · CAPSS 시간 배분 · 측정소 · Two-Stage 층(scripts/build_scale_story.py) -->
 <script src="graph/kr_grid_stations.js"></script>   <!-- 4쪽 관측 패널 — 1 km 육지 격자 · 측정소 664 -->
-<script src="graph/holdout_folds.js"></script>   <!-- 13쪽 북부 5-fold 실제 분할 · 측정소 좌표(scripts/build_holdout_folds.py) -->
-<script src="graph/fnr_control.js"></script>   <!-- 19 · 20 · 21 · 28–30쪽 FNR–r 통제 분석 수치(scripts/build_fnr_control_js.py) -->
+<script src="graph/holdout_folds.js"></script>   <!-- 14쪽 북부 5-fold 실제 분할 · 측정소 좌표(scripts/build_holdout_folds.py) -->
+<script src="graph/fnr_control.js"></script>   <!-- 20 · 21 · 22 · 29–31쪽 FNR–r 통제 분석 수치(scripts/build_fnr_control_js.py) -->
 
 <style>
   :root{
@@ -148,7 +150,7 @@
     width:calc(100% * var(--K));height:calc(100% * var(--K));transform:scale(calc(1 / var(--K)));transform-origin:0 0}
   .hero .herosign{flex:0 0 auto;display:flex;align-items:center;justify-content:center;gap:36px;padding:6px 0 16px}
   .hero .herosign img{display:block;height:72px;width:auto}
-  /* 웹 게시본 QR · 주소(1 · 26쪽) — 링크는 QR 그림과 '웹 게시본' 글자만, 주소는 링크 없는 글자라 끌어서 선택 · 복사할 수 있다 */
+  /* 웹 게시본 QR · 주소(1 · 27쪽) — 링크는 QR 그림과 '웹 게시본' 글자만, 주소는 링크 없는 글자라 끌어서 선택 · 복사할 수 있다 */
   .webqr{display:flex;align-items:center;gap:10px;color:var(--mut)} .webqr a{text-decoration:none;color:inherit}
   .webqr img, .hero .herosign .webqr img{display:block;height:96px;width:96px;image-rendering:pixelated}
   .webqr .wq{display:flex;flex-direction:column;font-size:14px;line-height:1.35;font-variant-numeric:tabular-nums}
@@ -199,7 +201,7 @@
   .opsx .oc.a1 b{color:#2F6FB8} .opsx .oc.a2 b{color:var(--accent)} .opsx .oc.c b{color:var(--gray-d)}
   .opsx .oc ul{margin:0;padding-left:20px;font-size:19px;line-height:1.4}
 
-  /* ── 7쪽 영상 큐 — eia 덱 19장(.cuewrap · .cue · .go) 조판. 우측은 영상 대표 장면 4개(2 × 2) ── */
+  /* ── 8쪽 영상 큐 — eia 덱 19장(.cuewrap · .cue · .go) 조판. 우측은 영상 대표 장면 4개(2 × 2) ── */
   #s-film .cuewrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.12fr);gap:clamp(24px,calc(3 * var(--vw)),56px);align-items:center;flex:1;min-height:0}
   #s-film .cue{display:flex;flex-direction:column;align-items:flex-start;gap:clamp(12px,calc(1.8 * var(--vh)),20px)}
   #s-film .htop{margin:0;font-size:clamp(34px,calc(3.1 * var(--vw)),50px)}
@@ -225,11 +227,11 @@
   #film-close{position:fixed;right:24px;top:20px;z-index:61;display:none;border:1px solid rgba(255,255,255,.35);background:rgba(0,0,0,.55);
     color:#fff;font-family:var(--f);font-size:17px;font-weight:700;letter-spacing:.06em;padding:10px 16px;cursor:pointer}
   #film-close.on{display:block}
-  /* 12쪽 6패널 영상 전체 화면(eia 덱 #bigvid 규약) — 그 장의 단계 1 · 2. 원본 비율을 지키고 남는 자리는 흰 바탕 */
+  /* 13쪽 6패널 영상 전체 화면(eia 덱 #bigvid 규약) — 그 장의 단계 1 · 2. 원본 비율을 지키고 남는 자리는 흰 바탕 */
   #bigvid{position:fixed;inset:0;width:100%;height:100%;object-fit:contain;background:#fff;z-index:-1;opacity:0;pointer-events:none;transition:opacity .4s ease}
   #bigvid.on{opacity:1;pointer-events:auto;z-index:60}
 
-  /* ── 8 · 9쪽 아키텍처 지도 — 1600 × 900 SVG 하나. 단계 0 은 본문 자리로 줄이고, 1 부터 머릿말 · 꼬릿말까지 덮는 전체 화면. 흰 바탕 · 짙은 선 · 큰 글씨 ── */
+  /* ── 9 · 10쪽 아키텍처 지도 — 1600 × 900 SVG 하나. 단계 0 은 본문 자리로 줄이고, 1 부터 머릿말 · 꼬릿말까지 덮는 전체 화면. 흰 바탕 · 짙은 선 · 큰 글씨 ── */
   .archwrap{position:absolute;left:0;top:0;width:1600px;height:900px;transform-origin:0 0;z-index:6;transition:transform .7s cubic-bezier(.4,0,.2,1)}
   .amap{width:100%;height:100%;display:block;font-family:var(--f)}
   .amap .bg{fill:#fff;stroke:#D5DCE2;stroke-width:1.5}
@@ -261,7 +263,7 @@
   .anar li{position:relative;padding-left:20px;font-size:19px;line-height:1.5;color:#2b3640}
   .anar li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:8px;background:var(--brand)}
 
-  /* ── 10쪽 대조표 ── 열 머리는 두 구조 색(파랑 · 진녹). 가설 두 줄은 옅은 바탕 */
+  /* ── 11쪽 대조표 ── 열 머리는 두 구조 색(파랑 · 진녹). 가설 두 줄은 옅은 바탕 */
   table.cmp{width:100%;border-collapse:collapse;font-size:21px;line-height:1.42}
   .cmp th,.cmp td{padding:11px 16px;text-align:left;vertical-align:top;border-bottom:1px solid var(--rule)}
   .cmp thead th{font-size:22px;color:#fff;padding:10px 16px}
@@ -275,8 +277,33 @@
   /* 같은 이름 L_station 의 두 뜻 — 위첨자(node · grid) + 아래첨자(station)를 겹쳐 쌓는다(2026-10-26 사용자 지시) */
   .cmp tr.fx .ss{display:inline-flex;flex-direction:column;align-items:flex-start;vertical-align:.5em;font-size:.62em;line-height:1.05;margin-left:1px}
 
+  /* ── 6쪽 자료동화 관점(#s-da) · 32쪽 보조(#s-da2) — 2026-10-27. 위 분석식 셋(자료동화 · E2E · Two-Stage, 11쪽과 같은 색) · 대응표(.cmp) · 아래 .phil ── */
+  #s-da .body,#s-da2 .body{justify-content:flex-start;gap:14px}
+  #s-da h2.htop,#s-da2 h2.htop{margin-bottom:2px}
+  .daeq{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:12px}
+  .daeq > div{background:var(--soft);border-top:5px solid var(--gray-d);padding:8px 16px 10px}
+  .daeq > div.a1{border-top-color:#3E86D6} .daeq > div.a2{border-top-color:var(--accent)}
+  .daeq b{display:block;font-size:19px;font-weight:800;color:var(--gray-d)}
+  .daeq .a1 b{color:#2F6FB8} .daeq .a2 b{color:var(--accent)}
+  .daeq .f{display:block;margin-top:4px;font-family:'Cambria Math','Times New Roman',serif;font-size:25px;color:var(--ink);white-space:nowrap}
+  .daeq .n{display:block;margin-top:2px;font-size:17px;color:var(--dim);line-height:1.35}
+  table.cmp.da{font-size:21px;line-height:1.4} .cmp.da th,.cmp.da td{padding:8px 14px} .cmp.da thead th{font-size:21px;padding:7px 14px}
+  .cmp.da thead th.dz{background:var(--gray-d)} .cmp.da tbody th{width:150px}
+  .cmp.da td.c{text-align:center}
+  #s-da .phil,#s-da2 .phil{margin-top:6px} #s-da .phil li,#s-da2 .phil li{font-size:22px}
+  /* 32쪽 — 좌 교란 요인 · 우 통제 비교(미수행) */
+  .da2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .da2 > div{background:var(--soft);border-top:5px solid var(--gray-d);padding:10px 18px 12px}
+  .da2 > div.ctl{border-top-color:var(--accent)}
+  .da2 h3{margin:0 0 8px;font-size:25px;font-weight:800;letter-spacing:-.02em}
+  .da2 ul{margin:0;padding-left:24px;font-size:23px;line-height:1.45} .da2 li + li{margin-top:10px}
+  .da2 .q{display:block;font-size:20px;color:var(--mut);line-height:1.4}
+  .da2 > div{padding:14px 22px 18px}
+  #s-da2 .body{gap:22px}
+  .da2 em{font-style:normal;color:var(--accent);font-weight:700}
 
-  /* 12쪽 — 위 네 줄(2 × 2) · 아래 6패널 영상 둘(원본 1650 × 1160) */
+
+  /* 13쪽 — 위 네 줄(2 × 2) · 아래 6패널 영상 둘(원본 1650 × 1160) */
   #s-maps .body{justify-content:flex-start;gap:16px}
   #s-maps .pts.v2{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px 40px}
   #s-maps .pts.v2 li{position:relative;padding-left:20px;font-size:21px;line-height:1.38;color:var(--ink)}
@@ -287,7 +314,7 @@
   #s-maps .mvid video{flex:1;min-height:0;width:100%;object-fit:contain;background:#fff;border:1px solid var(--rule)}
   #s-maps .mvid figcaption{font-size:16px;color:var(--dim)} #s-maps .mvid figcaption b{font-size:19px;color:var(--accent);margin-right:10px}
 
-  /* ── 14쪽 추론 단계 가림(Fig. 6.23) — 좌 원 그림 · 우 요약 수치 ── */
+  /* ── 15쪽 추론 단계 가림(Fig. 6.23) — 좌 원 그림 · 우 요약 수치 ── */
   .qres{display:grid;grid-template-columns:minmax(0,1.75fr) minmax(0,1fr);gap:30px;align-items:center}
   .qfig{margin:0}
   .qfig img{display:block;width:100%;height:auto;border:1px solid var(--rule)}
@@ -298,9 +325,9 @@
   .kv .v{font-size:36px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:var(--ink)}
   .kv .v i{font-style:normal;font-weight:500;font-size:.6em;color:var(--dim);margin:0 6px}
   .kv .s{font-size:19px;color:var(--mut)}
-  /* ── 18쪽 r · FNR 3분류 기준 — 두 카드(눈금 막대 · 근거 · 참고문헌) + 아래 두 줄 ── */
+  /* ── 19쪽 r · FNR 3분류 기준 — 두 카드(눈금 막대 · 근거 · 참고문헌) + 아래 두 줄 ── */
   #s-crit .body{justify-content:flex-start;gap:18px;padding-top:6px}
-  /* ── 16쪽 검증 프로토콜 표 — 3계층 · 16항목. 이 덱 수록 행(.in)은 쪽 번호를 진하게 ── */
+  /* ── 17쪽 검증 프로토콜 표 — 3계층 · 16항목. 이 덱 수록 행(.in)은 쪽 번호를 진하게 ── */
   #s-proto .body{justify-content:flex-start;gap:12px}
   .proto-lead{margin:0;font-size:19px;line-height:1.45;color:var(--mut)} .proto-lead b{color:var(--ink)} .proto-lead em{font-style:normal;color:var(--accent);font-weight:700}
   table.proto{width:100%;border-collapse:collapse;font-size:16px;line-height:1.3}
@@ -330,7 +357,7 @@
   .crit-b{display:flex;flex-direction:column;gap:6px}
   .crit-b p{margin:0;font-size:21px;line-height:1.45;color:var(--ink)} .crit-b b{display:inline-block;min-width:64px;color:var(--accent);margin-right:10px}
 
-  /* ── 17 · 19 · 21–23쪽 E2E 분석 결과 — 좌 개조식 · 우 그림 하나(원본 비율 contain) ── */
+  /* ── 18 · 20 · 22–24쪽 E2E 분석 결과 — 좌 개조식 · 우 그림 하나(원본 비율 contain) ── */
   .anl{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,.78fr) minmax(0,1.62fr);gap:34px;align-items:center}
   .anl-t{display:flex;flex-direction:column;gap:16px}
   /* 분석 장 소제목 — 제목답게 크고 진하게, 아래 굵은 선으로 본문과 가른다(2026-10-24 사용자 지시) */
@@ -358,7 +385,7 @@
   #s-anl-fnr .anl{grid-template-columns:minmax(0,1fr) minmax(0,1.4fr)}
 
 
-  /* 20쪽 FNR–r NO₂ 통제 장(종전 20-1 덧장)의 두 칸 틀 — .fnc 가 20쪽 배치를 덧씌운다 */
+  /* 21쪽 FNR–r NO₂ 통제 장(종전 20-1 덧장)의 두 칸 틀 — .fnc 가 21쪽 배치를 덧씌운다 */
   .fnrx{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:stretch}
   .fnrx .fxp{min-height:0;background:var(--soft);border-top:7px solid var(--accent);padding:27px 30px;display:flex;flex-direction:column;gap:17px}
   .fnrx .fxp.right{border-top-color:var(--gray-d)}
@@ -371,11 +398,11 @@
   .fnrx .fxp li span{display:block;font-size:19px;font-weight:500;color:var(--mut);margin-top:3px}
   .fxsum{margin-top:17px;padding:13px 17px;border-top:2px solid var(--rule);font-size:21px;line-height:1.4}
   .fxsum b{color:var(--accent)}
-  /* 20쪽 NO₂ 통제 · 28쪽 기준장 비교(2026-10-25) — 수치는 graph/fnr_control.js 를 아래 스크립트가 [data-fc] 에 채운다 */
+  /* 21쪽 NO₂ 통제 · 29쪽 기준장 비교(2026-10-25) — 수치는 graph/fnr_control.js 를 아래 스크립트가 [data-fc] 에 채운다 */
   .fnrx.fnc{grid-template-columns:minmax(0,.82fr) minmax(0,1.38fr);gap:28px}
   .fnc .fxp{padding:22px 26px;gap:13px} .fnc h3{font-size:27px}
   .fnc .fxmath{font-size:23px;padding:13px 16px;line-height:1.6}
-  /* 20 · 28쪽 개조식(2026-10-25 사용자 지시 — 쉬운 대기환경 용어) — .fxp li 의 번호 원을 쓰지 않는다 */
+  /* 21 · 29쪽 개조식(2026-10-25 사용자 지시 — 쉬운 대기환경 용어) — .fxp li 의 번호 원을 쓰지 않는다 */
   .fnc .fxp ul.fl li, .fnb .fxp ul.fl li{counter-increment:none}
   ul.fl{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
   .fnc .fxp ul.fl li, .fnb ul.fl li{position:relative;padding-left:22px;font-size:22px;font-weight:600;line-height:1.38;color:var(--ink)}
@@ -441,7 +468,7 @@
   .oxside .pts li{position:relative;padding-left:20px;font-size:20px;line-height:1.45}
   .oxside .pts li::before{content:"";position:absolute;left:0;top:.6em;width:9px;height:9px;background:var(--brand)}
   .oxside .pts li.sub{font-size:18px;color:var(--mut)} .oxside .pts li.sub::before{background:var(--gray-l)}
-  /* 24쪽 fresh – 배경 Δ 해설(2026-10-24 사용자 지시) — 두 분면의 정의 카드 + 뺄셈 + 읽는 법. 근거 박사논문 §3.7.2(1) · §6.1.5(3) · §6.2.3 */
+  /* 25쪽 fresh – 배경 Δ 해설(2026-10-24 사용자 지시) — 두 분면의 정의 카드 + 뺄셈 + 읽는 법. 근거 박사논문 §3.7.2(1) · §6.1.5(3) · §6.2.3 */
   .oxside .cmp.sm th,.oxside .cmp.sm td{padding:5px 12px}
   .oxexp{display:flex;flex-direction:column;gap:8px;padding:12px 14px;background:var(--soft);border-top:3px solid var(--ink)}
   .oxexp .t{margin:0;font-size:19px;font-weight:800;letter-spacing:-.01em}
@@ -598,7 +625,7 @@
   .memo code{font-family:Consolas,'D2Coding',monospace;font-size:.92em;color:var(--gray-d)}
   body.nomemo .memo{display:none}
   /* 중간 결과 띠 — 진행 중 수치·그림이 든 장에는 반드시 단다(CLAUDE.md 절대 규칙). 메모와 달리 발표에도 남는다 */
-  /* ── 13쪽 검증 설계 — 시간 독립 · 공간 5-fold 의 두 가림(추론 단계 · 학습 단계) + 북부 5-fold 분할 지도(학습 단계 가림 표는 15쪽 .ho2) ── */
+  /* ── 14쪽 검증 설계 — 시간 독립 · 공간 5-fold 의 두 가림(추론 단계 · 학습 단계) + 북부 5-fold 분할 지도(학습 단계 가림 표는 16쪽 .ho2) ── */
   .ho{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) 600px;grid-template-rows:auto auto;align-content:center;gap:26px 34px;padding-top:14px}
   .ho-c{display:flex;flex-direction:column;gap:14px}
   .ho-row{display:grid;grid-template-columns:190px minmax(0,1fr);gap:14px;align-items:center;padding:14px 14px;background:var(--soft);border-left:5px solid var(--gray)}
@@ -636,10 +663,10 @@
   .ho-v3 .s small{color:var(--dim);font-size:14.5px}
   .ho-v3 .s{font-size:16.5px;color:var(--ink);line-height:1.4}
   .ho-nc{margin:6px 0 0;font-size:15px;color:var(--dim)}
-  /* 15쪽 좌하 — 추론 단계 가림(14쪽) 대 학습 단계 가림(이 표) 5종 평균. 조건이 달라 화살표로 잇지 않는다(CLAUDE.md 짝비교 금지) */
+  /* 16쪽 좌하 — 추론 단계 가림(15쪽) 대 학습 단계 가림(이 표) 5종 평균. 조건이 달라 화살표로 잇지 않는다(CLAUDE.md 짝비교 금지) */
   .ho-cmp{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
   .ho-cmp > div{padding:8px 14px;background:var(--soft);border-top:4px solid var(--gray);display:flex;flex-direction:column;gap:1px}
-  .ho-cmp .a{border-top-color:var(--ink)} .ho-cmp .b{border-top-color:var(--accent)}   /* 추론 단계 가림 = 먹색 · 학습 단계 가림 = 녹색(2026-10-24 사용자 지시, 13 · 14 · 15쪽 공통 — 단 14쪽 헤드라인 글자는 녹색 · 2026-10-26 사용자 지시) */
+  .ho-cmp .a{border-top-color:var(--ink)} .ho-cmp .b{border-top-color:var(--accent)}   /* 추론 단계 가림 = 먹색 · 학습 단계 가림 = 녹색(2026-10-24 사용자 지시, 14 · 15 · 16쪽 공통 — 단 15쪽 헤드라인 글자는 녹색 · 2026-10-26 사용자 지시) */
   .ho-cmp span{font-size:16px;font-weight:700;color:var(--ink)} .ho-cmp .b span, .ho-cmp .b b{color:var(--accent)}
   .ho-cmp b{font-size:34px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:var(--ink);line-height:1.15}
   .ho-cmp small{font-size:14px;color:var(--dim);line-height:1.35}
@@ -647,11 +674,11 @@
   .ho-alt .ref{display:block;margin-top:3px;font-size:14px;color:var(--dim)}   /* 서지 = data/refs_holdout.json(scripts/build_refs_holdout.py, Crossref 기계 생성) */
   .ho-key{grid-column:1 / -1;margin:0;padding:12px 18px;border-left:6px solid var(--ink);background:var(--soft);font-size:21px;line-height:1.45;color:var(--ink)}
   .ho-key em{font-style:normal;font-weight:800;color:var(--ink);text-decoration:underline;text-underline-offset:4px}
-  /* 15쪽 학습 단계 가림 — 왼쪽 5-fold 표 · 오른쪽 fold0 v2 → v3 막대 */
+  /* 16쪽 학습 단계 가림 — 왼쪽 5-fold 표 · 오른쪽 fold0 v2 → v3 막대 */
   .ho2{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,1fr);gap:34px;align-items:start;align-content:center;padding-top:6px}
   .ho2 table.cmp.hot{font-size:19.5px} .ho2 .cmp.hot th,.ho2 .cmp.hot td{padding:8px 10px} .ho2 .cmp.hot tbody th{font-size:18.5px}
   .ho2 .htop{grid-column:1 / -1;margin:0}
-  /* 14 · 15쪽 헤드라인 — 두 장이 같은 크기로 '추론 단계 가림' 대 '학습 단계 가림'을 맞세운다(2026-10-24 사용자 지시 — 머릿말 우측에서 본문으로) */
+  /* 15 · 16쪽 헤드라인 — 두 장이 같은 크기로 '추론 단계 가림' 대 '학습 단계 가림'을 맞세운다(2026-10-24 사용자 지시 — 머릿말 우측에서 본문으로) */
   h2.htop.hoh{font-size:44px} h2.htop.hoh em{text-decoration:underline;text-decoration-thickness:4px;text-underline-offset:8px}
   .ho2 .htop .sub{font-size:17px} .ho2 .htop .sub b{color:var(--ink);font-weight:800}
   .hbar{display:grid;grid-template-columns:150px minmax(0,1fr) 62px;gap:6px 10px;align-items:center;margin:6px 0 2px;font-size:16px}
@@ -667,7 +694,7 @@
   .closing h2{margin:0;font-size:64px;letter-spacing:-.04em;line-height:1.15}
   .closing p{margin:0;font-size:20px;line-height:1.6;color:var(--mut);max-width:62ch}
   .closing .ack{border-top:2px solid var(--ink);padding-top:14px}
-  .closing .authors{font-size:26px;color:var(--ink);font-weight:700} .closing .affil{margin-top:-18px;font-size:19px}   /* 26쪽 저자 · 소속 — 표지와 같은 짜임 */
+  .closing .authors{font-size:26px;color:var(--ink);font-weight:700} .closing .affil{margin-top:-18px;font-size:19px}   /* 27쪽 저자 · 소속 — 표지와 같은 짜임 */
   /* 맺음 — 왼쪽 인사 · 연락처 · 사사, 오른쪽 표지와 같은 지구본(2026-10-24 사용자 지시 — eia 덱 46장처럼). 마지막 두 장에 있을 때만 불러온다 */
   .endw{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:30px;align-items:stretch}
   .closing .mail{display:inline-flex;align-items:baseline;gap:12px;font-size:24px;color:var(--ink);font-weight:600;letter-spacing:.01em}
@@ -692,6 +719,12 @@
     font-variant-numeric:tabular-nums;min-width:6em;text-align:center}
   .nav .pg b{color:var(--ink);font-weight:700}
   @media (prefers-reduced-motion: reduce){ .nav,.nav .tri{transition:none} }
+
+  /* ── 휴대폰 세로 — 무대 아래 레터박스에 회전 · 넘기기 안내(무대 밖이라 배율을 받지 않는다) ── */
+  body.portrait{background:var(--soft)}
+  .rotate-hint{display:none;position:fixed;left:16px;right:16px;bottom:max(20px,env(safe-area-inset-bottom));margin:0;
+    text-align:center;font:600 14px/1.5 var(--f);color:var(--mut)}
+  body.portrait .rotate-hint{display:block}
 </style>
 </head>
 <body>
@@ -858,10 +891,44 @@
   <div class="foot"><span>대기오염 농도장 — 수백 km 종관 수송에서 1 km 국지 배출까지 다중 규모 과정의 중첩</span><span class="r"></span></div>
 </section>
 
+<!-- 6쪽 — 자료동화 관점의 재해석(2026-10-27 사용자 지시). 원고 docs/아키텍처/2026-10-27_1장_설계관점_…_2쪽안.md 의 A안에 B안의 '배경장 출처' 축을 합쳤다 — 검토 결과는 그 문서 끝 '검토' 절.
+     박사논문 · KOSAE 42(2) 에 없는 새 해석이다 — 결과가 아니라 설계 해석으로만 세운다(htop .sub).
+     근거 — 분석식은 교과서 형식(OI · 선형 H 의 3D-Var · 칼만 필터 갱신 단계가 같은 꼴). E2E 식 · Two-Stage 식은 11쪽과 같다(박사논문 식 (3.3) · (3.5)).
+       CMAQ-DA = 자료동화가 적용된 CMAQ(박사논문 §1 · 3.5), Stage 1 은 그 지식증류 emulator(학습 교사만, 추론 입력 아님).
+       측정소 → 격자 간선 거리 감쇠 σ 30 km · 근거리 30 km 이내 · 원거리 30–80 km — 동결 test70 · test304 description(reference/03 · 04).
+       동결 코드 test120_stage1.yaml 머리 주석 "전통 자료동화(OI) 개념을 GNN 으로 구현" 이 선례다(논문에는 미수록). 교란 요인 · 통제 비교는 32쪽(보조) -->
+<section class="slide" id="s-da">
+  <div class="head"><span class="rh"><span class="n">1</span>연구 배경 및 설계 관점</span>
+    <span class="r">자료동화 관점의 재해석</span></div>
+  <div class="body">
+    <h2 class="htop">CTM 배경장 + 희소 관측 → 분석장 — <em>학습된 관측 조건부 보정</em><span class="sub">설계 해석 — 기능적 대응이며 자료동화의 구현 · 성능 동등성 주장 아님</span></h2>
+    <div class="daeq">
+      <div><b>자료동화 분석 — OI · 3D-Var · 칼만 필터 갱신</b><span class="f">x<sub>a</sub> = x<sub>b</sub> + K (y − H x<sub>b</sub>)</span><span class="n">K = B H<sup>T</sup>(H B H<sup>T</sup> + R)<sup>−1</sup> — 배경 · 관측 오차 공분산이 가중 결정</span></div>
+      <div class="a1"><b>Arch 1 · E2E</b><span class="f">ŷ = softplus(α · C<sub>CTM</sub> + β + δ)</span><span class="n">C<sub>CTM</sub> GEOS-CF, δ 관측 · 기상 · 배출 · 지형 결합</span></div>
+      <div class="a2"><b>Arch 2 · Two-Stage</b><span class="f">ŷ = softplus(α · ŷ<sub>LF</sub><sup>1km</sup> + β + Δŷ<sub>HF</sub>)</span><span class="n">ŷ<sub>LF</sub> 학습 배경장, Δŷ<sub>HF</sub> 측정소 조건 1 km 잔차</span></div>
+    </div>
+    <table class="cmp da">
+      <thead><tr><th></th><th class="dz">자료동화 분석</th><th class="a1">E2E</th><th class="a2">Two-Stage</th></tr></thead>
+      <tbody>
+        <tr><th>배경장 x<sub>b</sub></th><td>CTM 예측장</td><td>GEOS-CF 직접 — 선형 보정 α · c + β</td><td>Stage 1 배경장 — CMAQ-DA(자료동화 재분석) 지식증류</td></tr>
+        <tr><th>관측 y</th><td>동시각 관측 · 관측 연산자 H</td><td colspan="2" class="c">측정소 노드의 관측 시계열 — 그래프 입력</td></tr>
+        <tr><th>공간 전파</th><td>B 의 상관 길이 · 국지화 반경</td><td colspan="2" class="c">측정소 → 격자 메시지 전달 — 거리 감쇠 σ 30 km · 80 km 이내 간선</td></tr>
+        <tr><th>보정 연산</th><td>선형 이득 K — 시각마다 최적화 · 갱신</td><td colspan="2" class="c">학습된 비선형 연산 — 1회 학습 후 시각별 순전파 추론</td></tr>
+        <tr class="h"><th>산출</th><td>모델 격자 분석장 + 분석 오차 공분산</td><td colspan="2" class="c">1 km 지표 농도장 — 분석 오차 미산출, 1 km = 출력 격자 간격</td></tr>
+      </tbody>
+    </table>
+    <ul class="phil">
+      <li><b>공통</b><span>CTM 광역 정보를 희소 지상 관측으로 조건화 — <em>관측 조건부 다변수 비선형 재구성 + 통계적 초해상화</em></span></li>
+      <li><b>차이</b><span>B · R 명시 없음 · 비용함수 최적화 없음 — 3D-Var 를 구현한 모델 아님, 두 구조는 배경장 출처와 결합 위치가 다름(2절)</span></li>
+    </ul>
+  </div>
+  <div class="foot"><span>자료동화와 목적은 닮고 수단은 다르다 — 공분산 최적화 대신 학습된 그래프 보정</span><span class="r"></span></div>
+</section>
+
 <!-- ═══════════════ Ⅱ 아키텍처 설계 ═══════════════ -->
 
-<!-- 절 2 갑지(2026-10-23 사용자 지시) — eia 덱 16쪽(.divider.d2)의 조판을 옮겼다. 우측 그림은 eia 갑지 2 그대로(세 층 이종 그래프 · 메시지 전달, 개념도).
-     두 구조의 한 줄 이름은 7쪽 .fullname 과 같다 -->
+<!-- 절 2 갑지(2026-10-23 사용자 지시) — eia 덱 17쪽(.divider.d2)의 조판을 옮겼다. 우측 그림은 eia 갑지 2 그대로(세 층 이종 그래프 · 메시지 전달, 개념도).
+     두 구조의 한 줄 이름은 8쪽 .fullname 과 같다 -->
 <section class="slide divider d2" data-sec="2">
   <div class="dvl">
     <div class="dn">2</div>
@@ -879,7 +946,7 @@
   <div class="dvr"><canvas aria-hidden="true"></canvas></div>
 </section>
 
-<!-- 7쪽 — 두 아키텍처 비교 영상(2026-10-23 사용자 지시 — 8 · 9쪽 지도가 과밀해 큰 그림을 영상으로 먼저 보인다).
+<!-- 8쪽 — 두 아키텍처 비교 영상(2026-10-23 사용자 지시 — 9 · 10쪽 지도가 과밀해 큰 그림을 영상으로 먼저 보인다).
      graph/03-arch_compare_anim.html 을 화면 가득 연다(Enter · 재생 버튼, Esc 닫기). 계획 · 원고 plan/arch-compare-film/.
      조판은 eia 덱 19장(.cuewrap)이고, 우측 '용어 풀이' 대신 영상 대표 장면 4개(scripts/build_film_thumbs.py 가 찍는다). -->
 <section class="slide" id="s-film" data-film="graph/03-arch_compare_anim.html">
@@ -906,7 +973,7 @@
   <div class="foot"><span>다중 규모 정보를 하나의 잠재 공간에서 섞을 것인가, 배경과 국지를 나누어 쌓을 것인가</span><span class="r"></span></div>
 </section>
 
-<!-- 8쪽 — 초록 A5 전반. Arch 1 전체 아키텍처 지도(21 레포 A1-000 구성). 다음 키로 9단계 —
+<!-- 9쪽 — 초록 A5 전반. Arch 1 전체 아키텍처 지도(21 레포 A1-000 구성). 다음 키로 9단계 —
      0 본문 자리 · 1 전체 화면(머릿말 · 꼬릿말까지 덮음) · 2–4 Phase 1–3 · 5 skip · 6 304 융합 · 7 CTM prior · 8 최종 농도식.
      그림은 아래 archMap 스크립트가 #arch8 에 SVG 로 그린다. -->
 <section class="slide" id="s-arch1">
@@ -917,7 +984,7 @@
   <div class="archwrap" id="arch8" role="img" aria-label="Arch 1 End-to-End 전체 아키텍처 — Phase 1 노드 인코딩, Phase 2 이종 GNN, Phase 3 정제 · 융합 · 리드아웃, skip · CTM prior 경로, 최종 농도식"></div>
 </section>
 
-<!-- 9쪽 — 초록 A5 후반. Arch 2 전체 아키텍처 지도(21 레포 a21-004 Stage 1 · a22-102A Stage 2). 다음 키로 9단계 —
+<!-- 10쪽 — 초록 A5 후반. Arch 2 전체 아키텍처 지도(21 레포 a21-004 Stage 1 · a22-102A Stage 2). 다음 키로 9단계 —
      0 본문 자리 · 1 전체 화면 · 2 Stage 1 입력 · 3 Stage 1 학습 · 4 산출(z_LF 7 · h_LF 48) · 인터페이스 · 5 Stage 2 인코딩 · 6 GNN · 7 skip · readout · 8 최종 농도식 -->
 <section class="slide" id="s-arch2">
   <div class="head"><span class="rh"><span class="n c2">2</span>아키텍처 설계</span>
@@ -927,7 +994,7 @@
   <div class="archwrap" id="arch9" role="img" aria-label="Arch 2 Two-Stage 전체 아키텍처 — Stage 1 CMAQ-DA emulator, 산출 z_LF 7물질 · h_LF 48ch, Stage 2 1 km 잔차 HeteroGNN, 최종 농도식"></div>
 </section>
 
-<!-- 10쪽 — 두 구조 대조. 보고서 §2.4 · §6.5 -->
+<!-- 11쪽 — 두 구조 대조. 보고서 §2.4 · §6.5 -->
 <section class="slide">
   <div class="head"><span class="rh"><span class="n c2">2</span>아키텍처 설계</span>
     <span class="r">동일 정보, 상이한 결합 경로</span></div>
@@ -944,7 +1011,7 @@
         <tr><th>배경 정보 경로</th><td>잠재 특징 + GEOS-CF 원단위 선형 보정(α·c + β)</td><td>동결 Stage 1 배경장 z_LF 선형 보정(α·c + β) + 잔차 경로 입력</td></tr>
         <tr><th>기대 효과</th><td>배경 · 국지 정보 상호작용의 자유로운 학습, 관측 조건에 따른 정보 비중 적응</td><td>희소 관측에서 역할 중복 억제, 무관측 지역의 배경장 하한, CMAQ-DA 지식의 학습 시 전이</td></tr>
         <!-- 농도 계산식 · 손실 — 박사논문 최종제본 식 (3.3) · (3.5) · (3.4), Two-Stage 손실은 번호 식이 없어 §5.3.2 본문 · Table 5.3 의 가중치를 식으로 적었다(2026-10-26 사용자 지시로 강점 · 위험 가설 줄을 바꿈).
-             손실 줄도 박사논문 판이다 — 한때 21 프로토콜 v2 판(L_station 제거 · 가린 측정소 병치 셀)으로 바꿨다가 14 · 15쪽 결과(test70 · test304)와 학습 손실이 어긋나 되돌렸다(2026-10-26 사용자 지시).
+             손실 줄도 박사논문 판이다 — 한때 21 프로토콜 v2 판(L_station 제거 · 가린 측정소 병치 셀)으로 바꿨다가 15 · 16쪽 결과(test70 · test304)와 학습 손실이 어긋나 되돌렸다(2026-10-26 사용자 지시).
              박사논문 판은 E2E 에 측정소 노드 예측 헤드(L_station)가 있고, L_grid · Stage 2 L_station 은 전 측정소 병치 셀에서 계산한다 -->
         <tr class="h fx"><th>농도 계산식</th><td><span class="f">ŷ = softplus(α · C<sub>CTM</sub> + β + δ)</span><span class="n">C<sub>CTM</sub> GEOS-CF 7물질, δ GNN 잔차</span></td>
           <td><span class="f">ŷ = softplus(α · ŷ<sub>LF</sub><sup>1km</sup> + β + Δŷ<sub>HF</sub>)</span><span class="n">ŷ<sub>LF</sub><sup>1km</sup> Stage 1 배경장 상향보간, Δŷ<sub>HF</sub> 1 km 잔차</span></td></tr>
@@ -958,7 +1025,7 @@
 
 <!-- ═══════════════ Ⅳ 검증과 결과 ═══════════════ -->
 
-<!-- 절 3 갑지(11쪽) — 종전 10장(관측 부재 지역의 검증 체계)을 갑지 조판으로 바꿨다(2026-10-23 사용자 지시). 글은 종전 10장 그대로이고, 장 목록 대신 3층 검증 셋을 둔다.
+<!-- 절 3 갑지(12쪽) — 종전 10장(관측 부재 지역의 검증 체계)을 갑지 조판으로 바꿨다(2026-10-23 사용자 지시). 글은 종전 10장 그대로이고, 장 목록 대신 3층 검증 셋을 둔다.
      근거(종전 memo) — 초록 "시간 및 공간 독립 검증" · "위성 연직 칼럼과 지표 산화제 분배의 공간적 대응으로 교차 검토" · 보고서 §4.1 표 · §4.2 · §4.3 · §4.4 · §4.5.
        1층의 2023 시간 독립 · 군집 기반 5-fold 공간 홀드아웃은 박사논문 §5.2.1 · §5.2.2(Stage 2 · E2E 2022 학습, 2023 평가 · K-Means 군집, 시드 42). 시간 0:50.
      우측 그림은 3층 검증 세 줄 — 통계(R² · RMSE 개념 산점도) · 화학 레짐(FNR 레짐 막대, 구간 · 비중은 Fig. 6.11(e)) · 위성(GEMS · TROPOMI 위성 사진이 움직이는 모식) -->
@@ -984,7 +1051,7 @@
   <div class="dvr"><canvas aria-hidden="true"></canvas></div>
 </section>
 
-<!-- 12쪽 — 초록 A3 · A8. 20 동결. 다음 키로 3단계 — 0 NO₂ · O₃ 6패널 영상 둘을 작게(장 본문) · 1 NO₂ 전체 화면 · 2 O₃ 전체 화면(2026-10-23 사용자 지시, 확정).
+<!-- 13쪽 — 초록 A3 · A8. 20 동결. 다음 키로 3단계 — 0 NO₂ · O₃ 6패널 영상 둘을 작게(장 본문) · 1 NO₂ 전체 화면 · 2 O₃ 전체 화면(2026-10-23 사용자 지시, 확정).
      종전 본문의 지구본 모듈 두 지도(2023-03 사례)는 같은 날 영상 둘로 바꿨다.
      영상은 박사논문 졸업발표 애니메이션(20 레포 docs/doctoral_dissertation/2-stage/ppt- Graduation_presentation/animation/anim_{no2,o3}_72h.mp4 —
      scripts/package_assets.py 가 video/ 로 복사)이다. PM₂.₅ 는 뺐다(사용자 지시). -->
@@ -1008,9 +1075,9 @@
 </section>
 
 <!-- 13장 — 통계 검증의 설계(2026-10-24 사용자 지시 — R² 표 앞에 끼움). 시간 독립 · 공간 5-fold 개념 + 후속 연구(21) 북부 5-fold 분할 지도.
-     같은 날 사용자 지시로 학습 단계 가림 표 · v3 상자는 15쪽(#s-holdout2)으로 옮겼다. 아래 2 의 근거는 15쪽이 쓴다.
-     1 이 발표의 공간 홀드아웃 R²(14 · 27쪽)는 '추론 단계 가림'이다 — 박사논문 §5.2.2(:466) "동일 체크포인트를 사용하되 각 fold에서 도메인 관측소의 약 20%를 마스킹한 상태로 추론" · §6.1.1(:769).
-     2 학습 단계 가림의 근거 · 표 · 판 구분은 15쪽 주석(#s-holdout2)이 쓴다.
+     같은 날 사용자 지시로 학습 단계 가림 표 · v3 상자는 16쪽(#s-holdout2)으로 옮겼다. 아래 2 의 근거는 16쪽이 쓴다.
+     1 이 발표의 공간 홀드아웃 R²(15 · 28쪽)는 '추론 단계 가림'이다 — 박사논문 §5.2.2(:466) "동일 체크포인트를 사용하되 각 fold에서 도메인 관측소의 약 20%를 마스킹한 상태로 추론" · §6.1.1(:769).
+     2 학습 단계 가림의 근거 · 표 · 판 구분은 16쪽 주석(#s-holdout2)이 쓴다.
      3 지도 — 21 레포 configs/splits/spatial_folds_north.json(core 262 · KMeans 20 군집 · seed 42) 실제 분할. 박사논문 수치의 fold 구성원이 이 파일과 같은지는 확인하지 못했다(같은 방식 · 같은 seed) -->
 <section class="slide" id="s-holdout">
   <div class="head"><span class="rh"><span class="n c3">3</span>검증 및 결과</span>
@@ -1032,12 +1099,12 @@
     <figure class="ho-m" style="margin:0"><h3>후속 연구(21) 북부 5-fold 분할<span>core 262개소 · K-Means 20 군집 · seed 42</span></h3>
       <svg id="ho-map" role="img" aria-label="후속 연구의 북부 도메인 측정소 262곳을 5개 fold 로 나눈 분할 지도 — 군집 단위로 묶여 한 fold 가 공간적으로 모여 있다"></svg>
       <figcaption class="ho-lg" id="ho-lg"></figcaption></figure>
-    <p class="ho-key"><b>이 발표의 공간 홀드아웃 R²(14 · 27쪽)</b> = 전 측정소로 학습한 모델 하나에서 <em>추론 단계에만</em> fold 측정소의 관측 입력을 가린 결과 — 학습 단계 가림은 15쪽</p>
+    <p class="ho-key"><b>이 발표의 공간 홀드아웃 R²(15 · 28쪽)</b> = 전 측정소로 학습한 모델 하나에서 <em>추론 단계에만</em> fold 측정소의 관측 입력을 가린 결과 — 학습 단계 가림은 16쪽</p>
   </div>
   <div class="foot"><span>추론 단계 가림 — 관측 입력만 차단, 학습 단계 가림 — 학습에서도 제외(더 엄격)</span><span class="r"></span></div>
 </section>
 
-<!-- 14쪽 — 추론 단계 가림 홀드아웃(전체 학습 · 두 구조 비교). 2022 학습 → 2023 시간 독립 · 2023 5-fold 공간 홀드아웃. Fig. 6.23 원 그림 + §6.3 · 표 6.8 요약 수치.
+<!-- 15쪽 — 추론 단계 가림 홀드아웃(전체 학습 · 두 구조 비교). 2022 학습 → 2023 시간 독립 · 2023 5-fold 공간 홀드아웃. Fig. 6.23 원 그림 + §6.3 · 표 6.8 요약 수치.
      ⚠ 그림의 Δ 표기와 표 6.8 은 셋째 자리에서 다르다(+0.204 / +0.205 등) — 화면 수치는 본문 · 표 값만 쓴다. 2026-10-23 확정(크리깅 서술 제외) -->
 <section class="slide">
   <div class="head"><span class="rh"><span class="n c3">3</span>검증 및 결과</span>
@@ -1062,10 +1129,10 @@
 </section>
 
 
-<!-- 15쪽 — 학습 단계 가림 홀드아웃(2026-10-24 사용자 지시 — 13쪽 하단을 옮겨 추론 단계 가림 장 다음에 끼움). 학습에서도 fold 측정소를 뺀 엄격한 조건에서
+<!-- 16쪽 — 학습 단계 가림 홀드아웃(2026-10-24 사용자 지시 — 14쪽 하단을 옮겨 추론 단계 가림 장 다음에 끼움). 학습에서도 fold 측정소를 뺀 엄격한 조건에서
      Two-Stage(Stage 2 v2) 0.666 이 보간 기준선(0.733–0.749) 아래이고, 관측 배선 개선(v3)으로 fold0 격차가 0.076 → 0.019 로 준 것.
      근거 21 docs/report/baseline_vs_model/report.md §2 · §7 · §8 · 표 table_e1_baseline · table_e1_n0plus · table_g1_recovery(사본 data/holdout/, 21 커밋 61d6ba8). 전부 개발 지위.
-     ⚠ 14쪽 0.735(박사논문 test304 · 추론 단계 가림 · fold 평균)와 화살표로 잇지 않는다 — 모델 판 · 레짐 · 지표가 달라 CLAUDE.md '조건이 다른 run 짝비교 금지'.
+     ⚠ 15쪽 0.735(박사논문 test304 · 추론 단계 가림 · fold 평균)와 화살표로 잇지 않는다 — 모델 판 · 레짐 · 지표가 달라 CLAUDE.md '조건이 다른 run 짝비교 금지'.
      'v3' 는 보고서 이름으로 '프로토콜 v3' — 층 · 폭 · 손실 · 파라미터 수는 v2 와 같고 그래프의 station→region 배선과 가림을 바꿨다(§7.1). 화면은 '그래프 관측 배선 개선'으로 쓴다.
      막대 폭 = 값 × 100 %(축 0–1, 2026-10-24 사용자 지시 — 종전 0.60–0.80 은 차이를 부풀려 보였다) -->
 <section class="slide" id="s-holdout2">
@@ -1087,7 +1154,7 @@
         </tbody>
       </table>
       <div class="ho-cmp">
-        <div class="a"><span>추론 단계 가림 · 14쪽</span><b>0.735</b><small>박사논문 Two-Stage(test304) · 북부 5-fold · fold 평균 R²</small></div>
+        <div class="a"><span>추론 단계 가림 · 15쪽</span><b>0.735</b><small>박사논문 Two-Stage(test304) · 북부 5-fold · fold 평균 R²</small></div>
         <div class="b"><span>학습 단계 가림 · 이 표</span><b>0.666</b><small>후속 연구 Two-Stage(Stage 2 v2) · 북부 5-fold · pooled R²</small></div>
       </div>
       <p class="ho-nc">같은 북부 · 2023 · 5종 평균이지만 모델 판 · 지표가 달라 가림 방식만 바꾼 짝비교는 아님 — 학습에서도 가리면 더 엄격한 시험이 됨을 보이는 참고 대비</p>
@@ -1111,7 +1178,7 @@
   <div class="foot"><span>엄격한 가림에서는 아직 보간 기준선 아래 — 그래프 관측 배선 개선으로 격차가 크게 줄어 성능 향상 여지가 열려 있다</span><span class="r"></span></div>
 </section>
 
-<!-- 16쪽 — 검증 프로토콜 목록(2026-10-23 사용자 지시). 근거 Table 4.4(검증 계층과 해석 범위) · §3.7 · §6.1–§6.2. 이 덱 수록 항목은 쪽 번호, 미수록은 '—' -->
+<!-- 17쪽 — 검증 프로토콜 목록(2026-10-23 사용자 지시). 근거 Table 4.4(검증 계층과 해석 범위) · §3.7 · §6.1–§6.2. 이 덱 수록 항목은 쪽 번호, 미수록은 '—' -->
 <section class="slide" id="s-proto">
   <div class="head"><span class="rh"><span class="n c3">3</span>검증 및 결과</span>
     <span class="r">관측 희소 공간의 검증 프로토콜</span></div>
@@ -1120,20 +1187,20 @@
     <table class="proto">
       <thead><tr><th>계층</th><th>검증</th><th>지표</th><th>판정 원리</th><th>쪽</th></tr></thead>
       <tbody>
-          <tr class="in"><th rowspan="4" class="lv a"><b>통계 직접 검증</b><span>측정망이 있는 공간</span></th><td class="nm">시간 독립 검증</td><td>2022 학습 → 2023 · 측정소 R² · RMSE 5종</td><td>시간 일반화</td><td class="pg">13 · 14 · 27</td></tr>
-          <tr class="in"><td class="nm">5-fold 공간 홀드아웃</td><td>2023 · 가린 측정소 R² · RMSE · 내륙 3개 도메인</td><td>관측 차단 위치의 공간 일반화</td><td class="pg">13–15 · 27</td></tr>
+          <tr class="in"><th rowspan="4" class="lv a"><b>통계 직접 검증</b><span>측정망이 있는 공간</span></th><td class="nm">시간 독립 검증</td><td>2022 학습 → 2023 · 측정소 R² · RMSE 5종</td><td>시간 일반화</td><td class="pg">14 · 15 · 28</td></tr>
+          <tr class="in"><td class="nm">5-fold 공간 홀드아웃</td><td>2023 · 가린 측정소 R² · RMSE · 내륙 3개 도메인</td><td>관측 차단 위치의 공간 일반화</td><td class="pg">14–16 · 28</td></tr>
           <tr><td class="nm">Split-conformal 예측구간</td><td>2023 상반기 보정 → 하반기 · PICP · MPIW</td><td>불확실성 · 환경기준 초과 판정</td><td class="pg">—</td></tr>
           <tr><td class="nm">Stage 1 CMAQ-DA 에뮬레이션</td><td>5 km 연평균 공간 Pearson r · NMB</td><td>교사장 재현 품질(독립 검증 아님)</td><td class="pg">—</td></tr>
           <tr><th rowspan="8" class="lv b"><b>대기화학 정합성</b><span>측정망이 없는 1 km 전역</span></th><td class="nm">Ox 보존</td><td>토지피복별 CV(Ox) / CV(O₃)</td><td>광화학 정상상태(NO–O₃–NO₂)</td><td class="pg">—</td></tr>
           <tr><td class="nm">NOx–Ox 회귀</td><td>토지피복 × 계절 기울기 · 절편</td><td>산화제 생성 · 적정 구조 · 배경 Ox</td><td class="pg">—</td></tr>
-          <tr class="in"><td class="nm">주말효과</td><td>JJA 주간 주말 − 주중 ΔO₃ · ΔNO₂</td><td>NOx 감축 자연실험 · 적정 포화</td><td class="pg">17</td></tr>
+          <tr class="in"><td class="nm">주말효과</td><td>JJA 주간 주말 − 주중 ΔO₃ · ΔNO₂</td><td>NOx 감축 자연실험 · 적정 포화</td><td class="pg">18</td></tr>
           <tr><td class="nm">도시–산림 O₃ 시간 구조</td><td>일변화 · 월변화 진폭 · 위상</td><td>환경별 시간 역학</td><td class="pg">—</td></tr>
           <tr><td class="nm">PM fine fraction</td><td>PM₂.₅/PM₁₀ 공간 · 계절 분포</td><td>에어로졸 입경 구조</td><td class="pg">—</td></tr>
-          <tr class="in"><td class="nm">1 km 산화제 분배 · r–NO 4분면</td><td>r = NO₂/Ox 3분류 · 토지피복별 분면</td><td>분배 구조 · 도시–산림 전이</td><td class="pg">24</td></tr>
-          <tr class="in"><td class="nm">동서 횡단면</td><td>37.4–37.6°N r · Ox · FNR 프로파일</td><td>화학적 전이 경계의 1 km 특정</td><td class="pg">22</td></tr>
-          <tr class="in"><td class="nm">연도 간 재현성</td><td>2020–2023 후향 적용 · 전이 경도 · 중위 r</td><td>반복적 대기화학 구조</td><td class="pg">23</td></tr>
-          <tr class="in"><th rowspan="4" class="lv c"><b>외부 자료 교차 검증</b><span>위성 · 재분석 · 에피소드</span></th><td class="nm">이중 위성 FNR</td><td>GEMS · TROPOMI FNR ↔ r Spearman ρ</td><td>민감도 체제 공간 순서의 방향적 일관성</td><td class="pg">18–20</td></tr>
-          <tr class="in"><td class="nm">4개 자료 3분류 일치</td><td>관측 · E2E · CMAQ-DA · GEMS FNR</td><td>분배 분류의 수렴적 타당성</td><td class="pg">21</td></tr>
+          <tr class="in"><td class="nm">1 km 산화제 분배 · r–NO 4분면</td><td>r = NO₂/Ox 3분류 · 토지피복별 분면</td><td>분배 구조 · 도시–산림 전이</td><td class="pg">25</td></tr>
+          <tr class="in"><td class="nm">동서 횡단면</td><td>37.4–37.6°N r · Ox · FNR 프로파일</td><td>화학적 전이 경계의 1 km 특정</td><td class="pg">23</td></tr>
+          <tr class="in"><td class="nm">연도 간 재현성</td><td>2020–2023 후향 적용 · 전이 경도 · 중위 r</td><td>반복적 대기화학 구조</td><td class="pg">24</td></tr>
+          <tr class="in"><th rowspan="4" class="lv c"><b>외부 자료 교차 검증</b><span>위성 · 재분석 · 에피소드</span></th><td class="nm">이중 위성 FNR</td><td>GEMS · TROPOMI FNR ↔ r Spearman ρ</td><td>민감도 체제 공간 순서의 방향적 일관성</td><td class="pg">19–21</td></tr>
+          <tr class="in"><td class="nm">4개 자료 3분류 일치</td><td>관측 · E2E · CMAQ-DA · GEMS FNR</td><td>분배 분류의 수렴적 타당성</td><td class="pg">22</td></tr>
           <tr><td class="nm">CMAQ-DA 9 km 비교</td><td>9 km 블록 평균 공간 R² · 편차</td><td>독립 외부 참조(E2E 기준)</td><td class="pg">—</td></tr>
           <tr><td class="nm">산불 고농도 에피소드</td><td>2022 강릉 · 울진 — GEMS L4 PM₂.₅ · 측정소 시계열</td><td>국지 고강도 배출원의 시공간 추적</td><td class="pg">—</td></tr>
       </tbody>
@@ -1142,7 +1209,7 @@
   <div class="foot"><span>통계 직접 검증 + 대기화학 정합성 + 외부 자료 교차 검증 — 3계층 다층 검증</span><span class="r"></span></div>
 </section>
 
-<!-- 17쪽 — E2E 분석 결과 1/5(2026-10-23 사용자 지시). 그림 image/fig6_3_weekend_effect.png(package_assets.py REF_FIGS) -->
+<!-- 18쪽 — E2E 분석 결과 1/5(2026-10-23 사용자 지시). 그림 image/fig6_3_weekend_effect.png(package_assets.py REF_FIGS) -->
 <section class="slide" id="s-anl-weekend">
   <div class="head"><span class="rh"><span class="n c3">3</span>검증 및 결과</span>
     <span class="r">주말효과 — NOx 감축의 자연실험</span></div>
@@ -1163,7 +1230,7 @@
   <div class="foot"><span>측정소 밖 1 km 격자에서도 도시 적정 포화 구조 재현</span><span class="r"></span></div>
 </section>
 
-<!-- 18쪽 — 산화제 분배비 r · 위성 FNR 의 3분류 기준(2026-10-23 사용자 지시, 위성 FNR 장 앞). 근거 §3.7.2 · §6.1.5 · §6.1.8 ·
+<!-- 19쪽 — 산화제 분배비 r · 위성 FNR 의 3분류 기준(2026-10-23 사용자 지시, 위성 FNR 장 앞). 근거 §3.7.2 · §6.1.5 · §6.1.8 ·
      참고문헌 줄은 scripts/build_refs_fnr.py 가 Crossref 에서 만든 data/refs_fnr.json 그대로(손 입력 없음) -->
 <section class="slide" id="s-crit">
   <div class="head"><span class="rh"><span class="n c3">3</span>검증 및 결과</span>
@@ -1203,7 +1270,7 @@
   <div class="foot"><span>FNR 은 칼럼 민감도 대리, r 은 지표 분배 — 방향적 일관성으로 교차 진단</span><span class="r"></span></div>
 </section>
 
-<!-- 19쪽 — E2E 분석 결과 2/5(2026-10-23 사용자 지시). 그림 image/fig6_11_dual_satellite_fnr.png(package_assets.py REF_FIGS) -->
+<!-- 20쪽 — E2E 분석 결과 2/5(2026-10-23 사용자 지시). 그림 image/fig6_11_dual_satellite_fnr.png(package_assets.py REF_FIGS) -->
 <section class="slide" id="s-anl-fnr">
   <div class="head"><span class="rh"><span class="n c3">3</span>검증 및 결과</span>
     <span class="r">위성 FNR 과의 방향적 일관성</span></div>
@@ -1215,19 +1282,19 @@
           <li>지표 r 과 위성 FNR — 단조 역관계<br><span class="q">Spearman ρ — GEMS −0.378 · TROPOMI −0.429 (n = 7,066 · 0.05°)</span></li>
           <li>두 위성 — 도시 저 FNR → 산림 고 FNR 구배 일관<br><span class="q">GEMS–TROPOMI Spearman ρ +0.702 (위성 간 정합)</span></li>
           <li>해양 제외 육상 셀(<span data-fc="stats/matched/block_ci/e2e_vs_gems/n" data-fmt="int"></span>)만 — 역상관 더 뚜렷<br><span class="q">GEMS <span data-fc="stats/matched/block_ci/e2e_vs_gems/rho" data-fmt="r2"></span>(<span data-fc="stats/matched/block_ci/e2e_vs_gems/ci_0.5deg" data-fmt="ci2"></span>) · TROPOMI <span data-fc="stats/matched/block_ci/e2e_vs_tropomi/rho" data-fmt="r2"></span>(<span data-fc="stats/matched/block_ci/e2e_vs_tropomi/ci_0.5deg" data-fmt="ci2"></span>), 위성 시각 일치, 괄호 = 95 % 신뢰구간, E2E 해양 불연속 제외</span></li>
-          <li>그 크기는 NO₂ 공간 구배와 구분되지 않는다 → 20쪽<br><span class="q">20쪽 · 보조 28–30쪽 수치는 모두 육상 셀, 위성 NO₂ · HCHO 유효 시각 일치 기준</span></li>
+          <li>그 크기는 NO₂ 공간 구배와 구분되지 않는다 → 21쪽<br><span class="q">21쪽 · 보조 29–31쪽 수치는 모두 육상 셀, 위성 NO₂ · HCHO 유효 시각 일치 기준</span></li>
         </ul>
       </div>
       <figure class="anl-f"><img src="image/fig6_11_dual_satellite_fnr.png" alt="위성 FNR 과의 방향적 일관성"><figcaption>E2E r = NO₂/Ox vs 위성 FNR(HCHO/NO₂) · 2023년 5–9월</figcaption></figure>
     </div>
   </div>
-  <div class="foot"><span>광역 방향성 정합 — 그 크기의 해석은 NO₂ 공간 구배 점검(20쪽)을 거친다</span><span class="r"></span></div>
+  <div class="foot"><span>광역 방향성 정합 — 그 크기의 해석은 NO₂ 공간 구배 점검(21쪽)을 거친다</span><span class="r"></span></div>
 </section>
 
 
-<!-- 20쪽 — FNR–r 역상관의 NO₂ 공통구배 통제(2026-10-25 사용자 지시 — 종전 20-1 덧장을 본 장으로, A안 결과 반영).
+<!-- 21쪽 — FNR–r 역상관의 NO₂ 공통구배 통제(2026-10-25 사용자 지시 — 종전 20-1 덧장을 본 장으로, A안 결과 반영).
      수치는 모두 graph/fnr_control.js(scripts/build_fnr_control_js.py ← stats_fnr_control.py ← 서버 build_fnr_cells.py)에서 읽는다 — 화면에 손으로 적지 않는다.
-     19쪽 박사논문 Fig. 6.11 수치(−0.3778 · −0.4290 · n 7,066)를 같은 격자 · 기간 · QA 로 재현한 셀 표에서 육상 셀(남한 시도 경계 · 3,995)만 골라 통제했다(E2E 해양 불연속 — 사용자 지시). 학습 · 추론 없음.
+     20쪽 박사논문 Fig. 6.11 수치(−0.3778 · −0.4290 · n 7,066)를 같은 격자 · 기간 · QA 로 재현한 셀 표에서 육상 셀(남한 시도 경계 · 3,995)만 골라 통제했다(E2E 해양 불연속 — 사용자 지시). 학습 · 추론 없음.
      판정 문구는 docs/2026-10-25_FNR-r_…재검증계획.md §6 '결과별 허용 표현'의 둘째 줄(NO₂·지리 통제 후 관계 소실 → 공통구배 지배 가능성 강하게 시사, 원인 확정 아님). -->
 <section class="slide" id="s-fnr-caveat">
   <div class="head"><span class="rh"><span class="n c3">3</span>검증 및 결과</span>
@@ -1255,17 +1322,17 @@
         <ul class="fl res">
           <li>지리 · 도시화 제거 — 역상관 유지<span class="q">GEMS <span data-fc="stats/matched/partial/gems/geo_urban/r_e2e" data-fmt="r2"></span> · TROPOMI <span data-fc="stats/matched/partial/tropomi/geo_urban/r_e2e" data-fmt="r2"></span></span></li>
           <li><strong>위성 NO₂ 칼럼 제거 — 0 근처로 소멸</strong><span class="q">GEMS <span data-fc="stats/matched/partial/gems/sat_no2/r_e2e" data-fmt="r2"></span> · TROPOMI <span data-fc="stats/matched/partial/tropomi/sat_no2/r_e2e" data-fmt="r2"></span>, CTM(GEOS-CF · CMAQ-DA) r 도 크게 줄어듦</span></li>
-          <li>CTM 배경장 역상관이 E2E 보다 강함 → <strong>역상관 크기 ≠ 모델 정확도</strong>(28쪽)<span class="q">면적 평균 대표성과 일부 부합(점 관측 역상관 최약), 규모를 맞춰도 CTM 우위는 남음(29쪽)</span></li>
+          <li>CTM 배경장 역상관이 E2E 보다 강함 → <strong>역상관 크기 ≠ 모델 정확도</strong>(29쪽)<span class="q">면적 평균 대표성과 일부 부합(점 관측 역상관 최약), 규모를 맞춰도 CTM 우위는 남음(30쪽)</span></li>
         </ul>
       </div>
     </div>
-    <div class="fxsum"><b>판정</b> 19쪽 역상관의 대부분은 <strong>도시–배경 NO₂ 공간 구배</strong>에 기인 — 오존 생성 체제 재현의 직접 근거로 보기 어려움, 단 NO₂ 제거 시 광화학 신호도 일부 함께 제거될 수 있음(원인 확정 아님), Ox 와 위성 HCHO 직접 비교 → 30쪽</div>
+    <div class="fxsum"><b>판정</b> 20쪽 역상관의 대부분은 <strong>도시–배경 NO₂ 공간 구배</strong>에 기인 — 오존 생성 체제 재현의 직접 근거로 보기 어려움, 단 NO₂ 제거 시 광화학 신호도 일부 함께 제거될 수 있음(원인 확정 아님), Ox 와 위성 HCHO 직접 비교 → 31쪽</div>
   </div>
   <div class="foot"><span>역상관의 대부분은 NO₂ 공간 구배 — 오존 생성 체제 재현의 직접 근거로 보기 어렵다</span><span class="r"></span></div>
 </section>
 
 
-<!-- 21쪽 — E2E 분석 결과 3/5(2026-10-23 사용자 지시). 그림 image/fig6_12_4way_matrix.png(package_assets.py REF_FIGS) -->
+<!-- 22쪽 — E2E 분석 결과 3/5(2026-10-23 사용자 지시). 그림 image/fig6_12_4way_matrix.png(package_assets.py REF_FIGS) -->
 <section class="slide" id="s-anl-matrix">
   <div class="head"><span class="rh"><span class="n c3">3</span>검증 및 결과</span>
     <span class="r">다원 자료 교차 정합 — 독립성 수준 구분</span></div>
@@ -1277,7 +1344,7 @@
         <ul class="pts">
           <li>지표 3분류 일치 87.9–96.4 %<br><span class="q">E2E–CMAQ-DA 96.4 % · E2E–관측 93.9 % · CMAQ-DA–관측 87.9 %</span></li>
           <li>관측 r 기준 — E2E 93.9 % &gt; CMAQ-DA 87.9 %<br><span class="q">자료동화 재분석장보다 관측 분배 분류를 충실히 재현</span></li>
-          <li>지표–칼럼 45.3–69.6 %, 위성 간 81.3 %<br><span class="q">우연 일치 보정 — E2E–GEMS 67.3 % 는 우연 <span data-fc="stats/kappa/r_e2e_vs_gems/chance_agreement" data-fmt="pct"></span> 과 비슷(κ <span data-fc="stats/kappa/r_e2e_vs_gems/kappa" data-fmt="f2"></span>) — r 이 한 분류에 몰림(28쪽)</span></li>
+          <li>지표–칼럼 45.3–69.6 %, 위성 간 81.3 %<br><span class="q">우연 일치 보정 — E2E–GEMS 67.3 % 는 우연 <span data-fc="stats/kappa/r_e2e_vs_gems/chance_agreement" data-fmt="pct"></span> 과 비슷(κ <span data-fc="stats/kappa/r_e2e_vs_gems/kappa" data-fmt="f2"></span>) — r 이 한 분류에 몰림(29쪽)</span></li>
           <li class="sub">운영적 임계값 r 0.2 / 0.5 · FNR 1 / 3.5 — Spearman 순위 상관은 임계값 무관, κ 는 같은 남한 마스크(n 3,995)에서 다시 셈</li>
         </ul>
       </div>
@@ -1286,7 +1353,7 @@
   <div class="foot"><span>교차 자료의 공간 분류 유사성 — 공통 입력·NO₂ 구조·표본 불균형 고려</span><span class="r"></span></div>
 </section>
 
-<!-- 22쪽 — E2E 분석 결과 4/5(2026-10-23 사용자 지시). 그림 image/fig6_13_we_transect.png(package_assets.py REF_FIGS) -->
+<!-- 23쪽 — E2E 분석 결과 4/5(2026-10-23 사용자 지시). 그림 image/fig6_13_we_transect.png(package_assets.py REF_FIGS) -->
 <section class="slide" id="s-anl-transect">
   <div class="head"><span class="rh"><span class="n c3">3</span>검증 및 결과</span>
     <span class="r">동서 횡단 — 1 km 화학 전이대</span></div>
@@ -1307,7 +1374,7 @@
   <div class="foot"><span>1 km 추론장의 전이대 묘사 — 위성 FNR로 국지 경계 정확도 검증 불가</span><span class="r"></span></div>
 </section>
 
-<!-- 23쪽 — E2E 분석 결과 5/5(2026-10-23 사용자 지시). 그림 image/fig6_14_interannual.png(package_assets.py REF_FIGS) -->
+<!-- 24쪽 — E2E 분석 결과 5/5(2026-10-23 사용자 지시). 그림 image/fig6_14_interannual.png(package_assets.py REF_FIGS) -->
 <section class="slide" id="s-anl-years">
   <div class="head"><span class="rh"><span class="n c3">3</span>검증 및 결과</span>
     <span class="r">연도 간 재현성 — 2020–2023</span></div>
@@ -1328,11 +1395,11 @@
   <div class="foot"><span>단일 연도 우연이 아닌 반복적 도시–배경 대기화학 구조</span><span class="r"></span></div>
 </section>
 
-<!-- 24쪽 — 초록 A7 · A9. 박사논문 6장 · KOSAE 42(2) -->
+<!-- 25쪽 — 초록 A7 · A9. 박사논문 6장 · KOSAE 42(2) -->
 <section class="slide">
   <div class="head"><span class="rh"><span class="n c3">3</span>검증 및 결과</span>
     <span class="r">도시–산림 산화제 분배의 공간 전이</span></div>
-  <!-- 24쪽 — 박사논문 Fig. 6.9(a) · 6.20(a)를 잘라 붙인 image/ox_partition_pair.png(scripts/build_ox_partition_pair.py) + §6.2.3(3) 비교 수치 · §6.1.6 위성. -->
+  <!-- 25쪽 — 박사논문 Fig. 6.9(a) · 6.20(a)를 잘라 붙인 image/ox_partition_pair.png(scripts/build_ox_partition_pair.py) + §6.2.3(3) 비교 수치 · §6.1.6 위성. -->
   <div class="body">
     <div class="oxr">
       <figure class="oxfig">
@@ -1357,7 +1424,7 @@
             <div class="bg"><b>배경 O₃ 우세</b><code>r &lt; 0.2 · NO 하위 25 % (&lt; 1.80 ppb)</code>NO 가 적어 O₃ 적정 손실이 약한 곳 — 청정 배경 환경<span class="m">E2E 평균 NO 1.43 ppb · r 0.072</span></div>
           </div>
           <p class="eq">Δ = fresh 평균 − 배경 평균 &nbsp;→&nbsp; ΔNO 7.07 − 1.43 = <b>+5.64 ppb</b> · Δr 0.250 − 0.072 = <b>+0.178</b> (E2E)</p>
-          <p class="mn"><b>Δr 의미</b> 배출 많은 도시와 청정 배경 사이 <em>O₃ 적정의 대비</em> — 산화제 중 NO₂ 몫이 fresh 약 4분의 1 · 배경 약 7 %, r 은 분배 지표라 NOx 제한 여부는 위성 FNR(18 · 19쪽)로 본다</p>
+          <p class="mn"><b>Δr 의미</b> 배출 많은 도시와 청정 배경 사이 <em>O₃ 적정의 대비</em> — 산화제 중 NO₂ 몫이 fresh 약 4분의 1 · 배경 약 7 %, r 은 분배 지표라 NOx 제한 여부는 위성 FNR(19 · 20쪽)로 본다</p>
           <p class="rd">부호는 정의상 양수(r · NO 기준으로 나눈 두 무리) — 비교할 것은 <em>크기</em>, E2E +5.64 ppb · +0.178 대 Two-Stage +3.93 ppb · +0.160 — 같은 자릿수,
             NO 가 많은 격자에서 NO₂ 몫이 큰 <em>적정과 부합하는 패턴</em>, Two-Stage 가 조금 작은 것은 Stage 1 의 5 km 광역 평활 영향으로 해석</p>
         </div>
@@ -1371,7 +1438,7 @@
 <section class="slide">
   <div class="head"><span class="rh"><span class="n c3">3</span>검증 및 결과</span>
     <span class="r">결론 — 잠재 공간 융합 · 명시적 분해</span></div>
-  <!-- 25쪽 — 초록 마지막 문장 + 박사논문 표 6.9(적용 조건) · §6.3.3 · §6.3.4 · 보고서 §3.4(유보할 결론). -->
+  <!-- 26쪽 — 초록 마지막 문장 + 박사논문 표 6.9(적용 조건) · §6.3.3 · §6.3.4 · 보고서 §3.4(유보할 결론). -->
   <div class="body">
     <h2 class="htop">두 접근 모두 <em>미관측 지역</em> 농도장 추론에 활용 가능성을 시사<span class="sub">잠재 공간 암묵적 융합 · 배경장–잔차 명시적 분해 — 상보적 적용 조건</span></h2>
     <table class="cmp cc">
@@ -1385,10 +1452,10 @@
     </table>
     <ul class="phil">
       <li><b>의의</b><span>두 아키텍처 모두 대기오염의 <em>다중 규모 중첩</em>을 잠재 공간 융합 · 명시적 분해 학습으로 표현 — 1 km 고해상도 농도장 추론 가능성 검토</span></li>
-      <li><b>한계</b><span>화학 정합성 · 위성 교차 검증은 방향적 일관성 확인 — 위성 FNR 상관은 NO₂ 공간 구배와 구분되지 않고(20쪽) <em>1 km 농도 구배가 맞는지</em>는 보여 주지 못함 → 관측 희소 지역의 독립 실측 검증 필요</span></li>
+      <li><b>한계</b><span>화학 정합성 · 위성 교차 검증은 방향적 일관성 확인 — 위성 FNR 상관은 NO₂ 공간 구배와 구분되지 않고(21쪽) <em>1 km 농도 구배가 맞는지</em>는 보여 주지 못함 → 관측 희소 지역의 독립 실측 검증 필요</span></li>
     </ul>
-    <!-- 현업화 과제(2026-10-23 사용자 지시). 근거 — E2E 경계 불연속은 12쪽(해양 · 도메인 경계 NO₂ 불연속), 배경 지역의 CTM 종속은 §3(관측 영향이 없는 격자에서 δ → 0, CTM 배경에 수렴),
-         E2E 배경장 입력 GEOS-CF 7 · CAMS FC 6 은 §3 대기 경로, Two-Stage 평활은 12쪽(광역 배경 평활 경향), 관측 희소 지역 추론 성능은 14 · 27쪽(관측 차단 시 공간 홀드아웃 R² 하락 · §6.1.1) · 15쪽(학습 단계 가림).
+    <!-- 현업화 과제(2026-10-23 사용자 지시). 근거 — E2E 경계 불연속은 13쪽(해양 · 도메인 경계 NO₂ 불연속), 배경 지역의 CTM 종속은 §3(관측 영향이 없는 격자에서 δ → 0, CTM 배경에 수렴),
+         E2E 배경장 입력 GEOS-CF 7 · CAMS FC 6 은 §3 대기 경로, Two-Stage 평활은 13쪽(광역 배경 평활 경향), 관측 희소 지역 추론 성능은 15 · 28쪽(관측 차단 시 공간 홀드아웃 R² 하락 · §6.1.1) · 16쪽(학습 단계 가림).
          '예측(예보) 성능'은 같은 날 사용자 지시로 바꿨다 — 이 연구는 예보가 아닌 후향적 복원이다(§4).
          '한계' 줄(2026-10-24 사용자 지시) — 박사논문 §6.1.1(:786 '1km 격자 전체 추론 공간의 농도장 타당성을 직접 보장하지는 않는다') · §6.3.3(2)(:1231 '약 99% 미관측 격자의 절대 농도 직접 검증 불가능') · 21 baseline_vs_model §9('측정소 사이의 1 km 구조가 맞는지는 이 평가로 알 수 없다').
          Two-Stage 둘째 줄(2026-10-24 사용자 지시) — 박사논문 §6.3.3(1)(:1225 'Stage 1 에뮬레이터의 편향이 Stage 2로 순차 전파될 위험') · (2)(:1231 'Two-Stage 고유는 Stage 1 오차의 순차 전파') -->
@@ -1402,7 +1469,7 @@
   <div class="foot"><span>두 접근 모두 미관측 지역 농도장 추론에 활용 가능성을 시사</span><span class="r"></span></div>
 </section>
 
-<!-- 26쪽 — 맺음 · 사사(초록 원문) -->
+<!-- 27쪽 — 맺음 · 사사(초록 원문) -->
 <section class="slide" id="s-end">
   <div class="body endw">
     <div class="closing">
@@ -1421,7 +1488,7 @@
   <div class="foot"><span>질의응답</span><span class="r"></span></div>
 </section>
 
-<!-- 27쪽(보조) — 물질별 R² · RMSE 표(2026-10-23 사용자 지시 — 농도장 장 다음에 끼움 · 2026-10-26 본편 14쪽에서 보조로 넘김). 박사논문 Table 6.1(E2E, PDF 90쪽) · Table 6.7(Two-Stage, PDF 119쪽)의
+<!-- 28쪽(보조) — 물질별 R² · RMSE 표(2026-10-23 사용자 지시 — 농도장 장 다음에 끼움 · 2026-10-26 본편 14쪽에서 보조로 넘김). 박사논문 Table 6.1(E2E, PDF 90쪽) · Table 6.7(Two-Stage, PDF 119쪽)의
      전 열(전국 R² · 전국 RMSE · 홀드아웃 R² 북부 · 중부 · 남부) 그대로 — 2026-10-23 최종제본 PDF 대조. 차이(Δ) · RMSE 평균은 적지 않는다(재계산 금지 · 단위가 달라 평균 없음).
      2026-10-23 사용자 지적으로 두 층으로 고쳤다 — 시간 독립은 정답 측정소의 관측이 입력에 들어간 상한 지표(§4 · 3.7.3 · §7 한계: E2E ±24 h, Two-Stage 과거 24 h)라 옅게,
      공간 홀드아웃(관측 차단)은 굵게 = 도메인별 나은 쪽(모두 Two-Stage). 홀드아웃 RMSE 는 Two-Stage 표에 열이 없어 싣지 않는다 -->
@@ -1454,9 +1521,9 @@
   <div class="foot"><span>관측 위치 재현은 상한 지표 — 구조 간 차이는 관측 차단 위치의 외삽에서 드러난다</span><span class="r"></span></div>
 </section>
 
-<!-- 28쪽(보조) — 기준장 대비 · 관측 r 재현 · 강건성(2026-10-25 사용자 지시, A안 새 장 · 2026-10-26 본편 22쪽에서 보조로 넘김). 수치는 graph/fnr_control.js.
+<!-- 29쪽(보조) — 기준장 대비 · 관측 r 재현 · 강건성(2026-10-25 사용자 지시, A안 새 장 · 2026-10-26 본편 22쪽에서 보조로 넘김). 수치는 graph/fnr_control.js.
      육상 셀만(해양 제외 — 2026-10-25 사용자 지시). 기준장 = 같은 육상 셀의 Two-Stage(test304) · GEOS-CF(모델 입력 residual_geoscf) · CMAQ-DA(03_cmaq, use_cmaq: false) · E2E NO₂ 단독 null.
-     관측 r 재현은 측정소가 있는 셀(관측이 입력에 들어간 위치 — 상한)과 북부 추론 단계 가림 5-fold(덱 14쪽과 같은 지위)를 나눠 적는다.
+     관측 r 재현은 측정소가 있는 셀(관측이 입력에 들어간 위치 — 상한)과 북부 추론 단계 가림 5-fold(덱 15쪽과 같은 지위)를 나눠 적는다.
      판정 문구는 재검증계획 §6 첫째 줄(단순 NO₂/CTM null 에서도 유사한 역상관 → 광역 NO₂ 공간구배와 방향성 부합에 한정). -->
 <section class="slide" id="s-fnr-base">
   <div class="head"><span class="rh"><span class="n c3">3</span>검증 및 결과 — 추가 자료</span>
@@ -1476,7 +1543,7 @@
         <h3>관측 재현 정확도 — 측정소 지점 비교</h3>
         <p class="fb-s">전 측정소 <span data-fc="stats/station/all/n" data-fmt="int"></span>곳 — 관측 r 과의 순위 상관 <small>1 km 화소 · CTM 원 격자점, 그 관측이 입력에 들어간 자리(상한)</small></p>
         <div class="hbar fb-bar" id="fc-obs"></div>
-        <p class="fb-s">가린 측정소 <span data-fc="stats/station/holdout/n" data-fmt="int"></span>곳 — 관측 r 과의 순위 상관 · (평균 절대 오차) <small>북부 5-fold 추론 단계 가림(14쪽과 같은 조건), 같은 측정소</small></p>
+        <p class="fb-s">가린 측정소 <span data-fc="stats/station/holdout/n" data-fmt="int"></span>곳 — 관측 r 과의 순위 상관 · (평균 절대 오차) <small>북부 5-fold 추론 단계 가림(15쪽과 같은 조건), 같은 측정소</small></p>
         <div class="hbar fb-bar ho" id="fc-hold"></div>
         <ul class="fl">
           <li>관측을 가리면 E2E 순위 상관 <span data-fc="stats/station/all/r_e2e/rho" data-fmt="f2"></span> → <span data-fc="stats/station/holdout/r_e2e_ho/rho" data-fmt="f2"></span></li>
@@ -1485,8 +1552,8 @@
       </div>
     </div>
     <div class="fbx">
-      <div><b>시각 미일치(19쪽 정의)로도</b>E2E r — GEMS <span data-fc="stats/partial/gems/none/r_e2e" data-fmt="r2"></span> · TROPOMI <span data-fc="stats/partial/tropomi/none/r_e2e" data-fmt="r2"></span><small>위성 NO₂ 통제 <span data-fc="stats/partial/gems/sat_no2/r_e2e" data-fmt="r2"></span> · <span data-fc="stats/partial/tropomi/sat_no2/r_e2e" data-fmt="r2"></span> — 결론 동일</small></div>
-      <div><b>격자 규모 확대</b>0.05° → 0.5° — 29쪽<small>대표성(면적 평균) 오차 점검</small></div>
+      <div><b>시각 미일치(20쪽 정의)로도</b>E2E r — GEMS <span data-fc="stats/partial/gems/none/r_e2e" data-fmt="r2"></span> · TROPOMI <span data-fc="stats/partial/tropomi/none/r_e2e" data-fmt="r2"></span><small>위성 NO₂ 통제 <span data-fc="stats/partial/gems/sat_no2/r_e2e" data-fmt="r2"></span> · <span data-fc="stats/partial/tropomi/sat_no2/r_e2e" data-fmt="r2"></span> — 결론 동일</small></div>
+      <div><b>격자 규모 확대</b>0.05° → 0.5° — 30쪽<small>대표성(면적 평균) 오차 점검</small></div>
       <div><b>3분류 일치율</b><span data-fc="stats/kappa/r_e2e_vs_gems/agreement" data-fmt="pct"></span> ≈ 우연 일치 <span data-fc="stats/kappa/r_e2e_vs_gems/chance_agreement" data-fmt="pct"></span><small>E2E r 대부분이 O₃ 우세 한 분류에 집중</small></div>
     </div>
   </div>
@@ -1494,7 +1561,7 @@
 </section>
 
 
-<!-- 29쪽(보조) — 공간 규모와 FNR 상관 · 대표성(면적 평균) 오차 점검(2026-10-26 본편 23쪽에서 보조로 넘김 · 2026-10-25 사용자 지시 — CTM 의 위성 상관이 높은 이유가 대표성 오차인지).
+<!-- 30쪽(보조) — 공간 규모와 FNR 상관 · 대표성(면적 평균) 오차 점검(2026-10-26 본편 23쪽에서 보조로 넘김 · 2026-10-25 사용자 지시 — CTM 의 위성 상관이 높은 이유가 대표성 오차인지).
      모두 육상 셀(해양 제외 — E2E 해양 불연속). 수치는 graph/fnr_control.js 의 stats.obs_cells(측정소 격자) · stats.scale(0.05–0.5° 집계).
      판정은 결과 그대로 — 대표성은 일부(특히 TROPOMI)만 설명, GEMS–CTM 격차의 나머지 원인은 미확인으로 적는다. -->
 <section class="slide" id="s-fnr-scale">
@@ -1532,9 +1599,9 @@
   <div class="foot"><span>점 관측보다 면적 자료가 위성 FNR 과 잘 맞지만 규모를 맞춰도 CTM 우위는 남는다 — 상관은 정확도의 척도가 아니다</span><span class="r"></span></div>
 </section>
 
-<!-- 30쪽 — 보조 장(질의응답용, 2026-10-25 사용자 지시): Ox 가 VOC(위성 HCHO)를 대리하는가 — 직접 비교. 수치는 graph/fnr_control.js 의 stats.ox_hcho
+<!-- 31쪽 — 보조 장(질의응답용, 2026-10-25 사용자 지시): Ox 가 VOC(위성 HCHO)를 대리하는가 — 직접 비교. 수치는 graph/fnr_control.js 의 stats.ox_hcho
      (scripts/stats_fnr_control.py sec_ox_hcho — 육상 0.05° 셀, E2E 지표 셀 평균 vs 위성 대류권 HCHO 칼럼, 0.5° 블록 95 % 구간).
-     박사논문이 Ox 를 VOC 대리물로 가정했다는 서술은 정본에서 확인하지 않았다 — 질문 형식으로만 세운다(18쪽 · §3.7.2 는 r 을 산화제 분배 상태로 적는다). -->
+     박사논문이 Ox 를 VOC 대리물로 가정했다는 서술은 정본에서 확인하지 않았다 — 질문 형식으로만 세운다(19쪽 · §3.7.2 는 r 을 산화제 분배 상태로 적는다). -->
 <section class="slide" id="s-ox-hcho">
   <div class="head"><span class="rh"><span class="n c3">3</span>검증 및 결과 — 추가 자료</span>
     <span class="r">Ox 는 VOC 를 대리하는가 — 위성 HCHO 와 직접 비교</span></div>
@@ -1562,18 +1629,53 @@
     </div>
     <div class="fxsum"><b>판정</b> 지표 Ox 가 위성 HCHO 와 공유하는 공간 정보는 <strong>대부분 NO₂</strong> — 남는 몫은 약해(+0.1 내외) Ox 를 VOC 대리로 쓰기 어려움, 단서: 지표 농도 vs 칼럼 · 위성 HCHO 잡음 · 산림 생물 기원 HCHO</div>
   </div>
-  <div class="foot"><span>보조 — r 의 O₃ 몫이 FNR 정합을 더하지 않는 이유(20 · 28쪽)</span><span class="r"></span></div>
+  <div class="foot"><span>보조 — r 의 O₃ 몫이 FNR 정합을 더하지 않는 이유(21 · 29쪽)</span><span class="r"></span></div>
+</section>
+
+<!-- 32쪽(보조, 질의응답) — 6쪽 자료동화 관점의 단서(2026-10-27 사용자 지시). 원고 B안(배경장 품질 vs 분리 학습)과 질의응답용 최소 통제 실험을 옮겼다.
+     근거 — 박사논문 §3.5 · 5.3.2(E2E 는 CMAQ-DA 를 입력 · 교사 어디에도 쓰지 않음, Stage 1 은 CMAQ-DA 지식증류), test211 description(Stage 1 감독 CMAQ-DA λ 1.0 + 측정소 λ 0.1),
+       21 레포 MASTER_PLAN §2 정보 레짐 R0 · R1 · 서술 규칙(R0 는 GEOS-CF · CAMS 상류 자료동화까지 없다는 뜻 아님). 통제 비교는 모두 미수행 — 결과로 쓰지 않는다.
+     '3D' 의 뜻 — 3D-Var 는 한 분석 시각의 3차원 공간 분석, 시간 창을 쓰면 4D-Var(교과서 정의). 이 덱의 두 구조는 지표 1 km 장을 내고 관측 시계열 창을 입력한다 -->
+<section class="slide" id="s-da2">
+  <div class="head"><span class="rh"><span class="n">1</span>연구 배경 및 설계 관점 — 추가 자료</span>
+    <span class="r">배경장 품질인가, 분리 학습인가</span></div>
+  <div class="body">
+    <h2 class="htop">Two-Stage 의 공간 홀드아웃 우위 — <em>두 요인이 함께 다르다</em><span class="sub">6쪽 자료동화 관점의 단서 — 배경장 출처 · 결합 방식이 동결 판(test70 · test304)에서 동시에 다름</span></h2>
+    <div class="da2">
+      <div>
+        <h3>겹친 두 요인</h3>
+        <ul>
+          <li><b>배경장 출처</b> — E2E: GEOS-CF 직접 / Two-Stage: CMAQ-DA 자료동화 재분석을 학습한 배경장<span class="q">E2E 는 CMAQ-DA 를 입력 · 교사 어디에도 쓰지 않음</span></li>
+          <li><b>결합 방식</b> — E2E: 단일 손실 공동 최적화 / Two-Stage: Stage 1 학습 · 동결 → 1 km 잔차<span class="q">배경 역할 명시 ↔ Stage 1 편향의 Stage 2 전파 가능성</span></li>
+          <li>15 · 28쪽 차이 → <em>구조만의 효과로 귀속 불가</em><span class="q">좋은 배경장 ≠ 좋은 최종장 — 배경 편향 · 관측 정보량 · 보정망 표현력에 좌우</span></li>
+        </ul>
+      </div>
+      <div class="ctl">
+        <h3>분리하려면 — 통제 비교(미수행)</h3>
+        <ul>
+          <li>같은 공간 홀드아웃 · 시각 · 관측 접근에서 <em>배경장 단독 skill</em>과 최종장 skill 을 함께 보고</li>
+          <li>배경장 → 최종장 증분 개선량 비교<span class="q">완전한 인과 분해 아님</span></li>
+          <li>공통 배경장 공급 · 같은 정보 레짐 요인 통제<span class="q">CMAQ-DA 교사 유무(R0 · R1) — 진행 중 연구, 결과 미확정</span></li>
+        </ul>
+      </div>
+    </div>
+    <ul class="phil">
+      <li><b>범위</b><span>3D-Var 의 3D = 한 분석 시각의 3차원 공간(시간 창은 4D-Var) — 두 구조는 지표 1 km 장 산출 · 관측 시계열 창 입력, 시간 동역학 제약 없음</span></li>
+    </ul>
+  </div>
+  <div class="foot"><span>보조 — 자료동화 관점의 단서(6쪽): 배경장 품질과 분리 학습의 효과는 통제 비교로 가른다</span><span class="r"></span></div>
 </section>
 
 <button type="button" class="fsfab" id="fs-fab" title="전체 화면으로 보아야 화면이 바르게 나온다">⛶ 전체 화면 (F11)</button>
 <nav class="nav" aria-label="장 이동">
   <button class="pv" type="button" aria-label="이전 장"><span class="tri"></span></button>
-  <span class="pg"><b id="cur">1</b> / <span id="tot">30</span></span>
+  <span class="pg"><b id="cur">1</b> / <span id="tot">32</span></span>
   <button class="nx" type="button" aria-label="다음 장"><span class="tri"></span></button>
 </nav>
 
 </div><!-- #stage -->
-<!-- 영상 막 — 7쪽 비교 영상. 한 프레임을 돌려 쓰고 src 만 갈아 끼운다(eia 덱 규약). 닫기는 Esc · 단추 · 영상 안 Esc({deck:'film-close'}) -->
+<p class="rotate-hint" aria-hidden="true">⟳ 가로로 돌리면 크게 보입니다 · 좌우로 밀어 넘기기</p>
+<!-- 영상 막 — 8쪽 비교 영상. 한 프레임을 돌려 쓰고 src 만 갈아 끼운다(eia 덱 규약). 닫기는 Esc · 단추 · 영상 안 Esc({deck:'film-close'}) -->
 <iframe id="film" allow="autoplay" title="두 아키텍처 비교 영상"></iframe>
 <button id="film-close" type="button">✕ 닫기 (Esc)</button>
 <video id="bigvid" muted loop playsinline preload="none" aria-label="6패널 비교 영상 전체 화면 — NO₂ · O₃"></video>
@@ -1582,9 +1684,13 @@
      --K 는 표지 지구본 iframe 이 제 해상도로 그리도록 거꾸로 줄이는 데 쓴다(CSS .heroglobe). */
   (function fitStage(){
     const st = document.getElementById('stage');
-    const fit = () => { const w = innerWidth, h = innerHeight, a = w / h, wide = a >= 16 / 9;
-      const SW = wide ? 900 * a : 1600, SH = wide ? 900 : 1600 / a, K = w / SW;
-      st.style.width = SW + 'px'; st.style.height = SH + 'px'; st.style.transform = `scale(${K})`;
+    /* 세로 화면(휴대폰 세로)은 무대를 늘리지 않는다 — 장 배치가 900 높이 기준이라 늘린 만큼 빈칸이 된다.
+       1600×900 을 폭에 맞춰 위아래 가운데 두고(레터박스), 가로로 돌리라는 안내를 띄운다 */
+    const fit = () => { const w = innerWidth, h = innerHeight, a = w / h, wide = a >= 16 / 9, portrait = a < 1;
+      const SW = wide ? 900 * a : 1600, SH = wide || portrait ? 900 : 1600 / a, K = w / SW;
+      const ty = portrait ? Math.max(0, (h - SH * K) / 2) : 0;
+      st.style.width = SW + 'px'; st.style.height = SH + 'px'; st.style.transform = `translate(0,${ty}px) scale(${K})`;
+      document.body.classList.toggle('portrait', portrait);
       document.documentElement.style.setProperty('--K', K.toFixed(5)); };
     fit(); addEventListener('resize', fit);
   })();
@@ -1603,7 +1709,7 @@
 
 </script>
 <script>
-  /* 8 · 9쪽 아키텍처 지도 — 1600 × 900 SVG 하나를 본문 자리 ↔ 전체 화면(머릿말 · 꼬릿말까지 덮음)으로 옮기고, 단계마다 해당 블록만 진하게 남긴다.
+  /* 9 · 10쪽 아키텍처 지도 — 1600 × 900 SVG 하나를 본문 자리 ↔ 전체 화면(머릿말 · 꼬릿말까지 덮음)으로 옮기고, 단계마다 해당 블록만 진하게 남긴다.
      단계 0 본문 · 1 전체 화면 · 2… 구간별 설명. cfg.draw(h) 가 h.box · h.arr · h.lab · h.T · h.G · h.el 로 그린다(data-k = 그 블록이 켜지는 단계 키). */
   function archMap(cfg){
     const wrap = document.getElementById(cfg.id); if (!wrap) return;
@@ -1667,7 +1773,7 @@
     LIVE.push(api);
   }
 
-  /* 8쪽 설명 판 그림 — 304 융합 폭의 구성(막대 길이 = 차원) · 최종 농도식의 세 단계(개념 곡선, 실측 아님) */
+  /* 9쪽 설명 판 그림 — 304 융합 폭의 구성(막대 길이 = 차원) · 최종 농도식의 세 단계(개념 곡선, 실측 아님) */
   const amVizFuse = (() => { const k = 1.71, x0 = 14, seg = [['GNN 128', 128, '#2753A5'], ['local 128', 128, '#1F7A5C'], ['region 32', 32, '#0E7490'], ['LC 16', 16, '#7A4BA0']];
     let x = x0, o = '';
     seg.forEach(([t, d, c], i) => { const w = d * k; o += `<rect x="${x}" y="40" width="${w - 2}" height="46" rx="4" fill="${c}"/>`;
@@ -1684,7 +1790,7 @@
     o += ar(hx + 4, hx + 26) + `<rect x="${hx + 28}" y="134" width="150" height="30" rx="4" fill="#fff" stroke="#1E3F86" stroke-width="2"/><text x="${hx + 103}" y="155" text-anchor="middle" font-size="14" font-weight="800" fill="#1E3F86">헤드 × 7 · 128 → 1</text>`;
     o += ar(hx + 182, hx + 204) + `<rect x="${hx + 206}" y="134" width="150" height="30" rx="4" fill="#B4234F"/><text x="${hx + 281}" y="155" text-anchor="middle" font-size="15" font-weight="800" fill="#fff">δ  G × 7</text>`;
     return `<svg viewBox="0 0 600 166">${o}</svg>`; })();
-  /* 8 · 9쪽 8/8 최종 농도식 카드(2026-10-25 사용자 지시) — 공용. COL = [기호, 차원, [설명 두 줄], 색] 다섯 칸 */
+  /* 9 · 10쪽 8/8 최종 농도식 카드(2026-10-25 사용자 지시) — 공용. COL = [기호, 차원, [설명 두 줄], 색] 다섯 칸 */
   const amFormulaCard = (title, COL, note, cSym = 'c') => ({ g, T, el }) => {
     el('rect', { x: 230, y: 206, width: 1140, height: 398, rx: 18, class: 'cbg' }, g);
     T(g, 800, 256, title, 'ck');
@@ -1696,7 +1802,7 @@
       ln.forEach((l, k) => T(g, x, 504 + k * 22, l, 'cl')); });
     T(g, 800, 588, note, 'cn');
   };
-  /* 9쪽 2/8 Stage 1 U-Net — 21 레포 a21-004(src2/models/stage1_unet.py · src2/configs/a21-004_stage1_full.yaml ·
+  /* 10쪽 2/8 Stage 1 U-Net — 21 레포 a21-004(src2/models/stage1_unet.py · src2/configs/a21-004_stage1_full.yaml ·
      docs/report/arch2/a21_stage1_cases/tables/tab01_run_record.md a21004_full 행, 커밋 61d6ba8). 막대 높이 = 수준(깊이), 숫자 = 채널 */
   const amVizUnet = (() => {
     const B = [[8, 18, '87', '#1F7A5C'], [60, 18, '48', '#5E8A0F'], [112, 54, '96', '#5E8A0F'], [164, 90, '192', '#5E8A0F'], [216, 126, '384', '#2753A5'],
@@ -1737,7 +1843,7 @@
     return `<svg viewBox="0 0 600 166">${o}</svg>`;
   };
 
-  /* 9쪽 설명 판 그림 — Stage 1 산출의 5 km → 1 km bilinear 보간과 A/B 인터페이스 · Stage 2 GNN 엣지(개념도, 실측 아님) */
+  /* 10쪽 설명 판 그림 — Stage 1 산출의 5 km → 1 km bilinear 보간과 A/B 인터페이스 · Stage 2 GNN 엣지(개념도, 실측 아님) */
   const amVizIf = (() => {
     const f = (x, y) => 14 + 9 * Math.sin(x * 2.4 + .6) * Math.cos(y * 2.1 - .3) + 6 * Math.exp(-((x - .35) ** 2 + (y - .4) ** 2) / .03);
     const col = v => { const t = Math.max(0, Math.min(1, v / 30)), st = [[0, [30, 64, 175]], [.25, [6, 182, 212]], [.5, [52, 211, 153]], [.75, [250, 204, 21]], [1, [239, 68, 68]]];
@@ -1778,7 +1884,7 @@
     o += `<text x="345" y="134" font-size="13.5" font-weight="700" fill="#2b3640">R→G broadcast(점선) · grid kNN 12</text>`;
     return `<svg viewBox="0 0 600 166">${o}</svg>`; })();
 
-  /* 8쪽 Arch 1 — 21 레포 A1-000 case0(hidden 128). 근거 docs/아키텍처/2026-10-06_A1_피처차원과_임베딩차원_데이터흐름.md(21 commit 1334c6d 정적 추적).
+  /* 9쪽 Arch 1 — 21 레포 A1-000 case0(hidden 128). 근거 docs/아키텍처/2026-10-06_A1_피처차원과_임베딩차원_데이터흐름.md(21 commit 1334c6d 정적 추적).
      원형 ppt/graph_html_e2e/03-amr_hgn_architecture_deepdive.html 프롤로그 — 측정소 리드아웃을 빼고(station_readout=false) 관측 창을 t−23 … t 로 바꿨다 */
   archMap({ id: 'arch8', title: 'Arch 1 · End-to-End — 전체 아키텍처 지도', sub: '공통 잠재 공간 · hidden 128 · 출력 7물질',
     panels: [[22, 650, 'Phase 1 — 특징 추출 · 노드 인코딩', '#00753A'], [688, 268, 'Phase 2 — 메시지 패싱', '#2753A5'], [972, 606, 'Phase 3 — 정제 · 융합 · 리드아웃', '#7A4BA0']],
@@ -1855,7 +1961,7 @@
     },
     KEY: ['p1', 'p2', 'p3', 'skip', 'fuse', 'ctm', 'out', 'formula'] });
 
-  /* 9쪽 Arch 2 — 21 레포 Stage 1 a21-004(e3, 확정) · Stage 2 a22-102A(프로토콜 v3, 인터페이스 A 본선). 근거(읽기만)
+  /* 10쪽 Arch 2 — 21 레포 Stage 1 a21-004(e3, 확정) · Stage 2 a22-102A(프로토콜 v3, 인터페이스 A 본선). 근거(읽기만)
      src2/models/stage1_unet.py(입력 87 · 3-branch stem · U-Net 48 · h_LF 48 투영 없음) · src2/configs/a21-004_stage1_full.yaml(λ_cmaq 1.0 · λ_station 0.1)
      src2/configs/a22-102A_stage2_fold0.yaml(local 55 · met anomaly 4 · bg_dim 7 · station_dim 350 · GNN 4층 · obs 24 h) · src2/models/stage2_gnn.py(softplus(α·c + β + δ), B 는 z_decode 48→7)
      experiments/arch2/a22-102A_method1_concentration_v3/description.md(A 만 돈다 · B 는 a22-002B 를 SI 로 보존) */
@@ -2727,7 +2833,7 @@
   })();
 </script>
 <script>
-  /* ── 20 · 28 · 29 · 30쪽 FNR–r 통제 분석(2026-10-25) — graph/fnr_control.js(window.FNR_CONTROL)를 [data-fc] 칸과 그림에 채운다.
+  /* ── 21 · 29 · 30 · 31쪽 FNR–r 통제 분석(2026-10-25) — graph/fnr_control.js(window.FNR_CONTROL)를 [data-fc] 칸과 그림에 채운다.
      값은 data/fnr-control/*.json 그대로다. 화면에 수치를 손으로 적지 않는다(값이 없으면 '?' 가 보인다). */
   (function(){
     const D = window.FNR_CONTROL; if (!D) return;
@@ -2749,7 +2855,7 @@
     const whisk = (svg, x0, x1, y, col) => { E(svg, 'line', { x1: x0, x2: x1, y1: y, y2: y, stroke: col, 'stroke-width': 2.4 });
       [x0, x1].forEach(x => E(svg, 'line', { x1: x, x2: x, y1: y - 6, y2: y + 6, stroke: col, 'stroke-width': 2.4 })); };
 
-    /* 20쪽 — 통제 단계 × 두 위성. E2E 막대 + 95 % 구간 */
+    /* 21쪽 — 통제 단계 × 두 위성. E2E 막대 + 95 % 구간 */
     { const svg = document.getElementById('fc-partial'); if (svg) { svg.classList.add('fcs');
       /* 2026-10-25 사용자 지시로 단순화 — 세 단계만, CTM 표식은 본문 줄로 옮겼다(값은 JSON 에 그대로 있다) */
       const P = D.stats.matched.partial, ROWS = [['none', ['제거 없음']], ['geo_urban', ['지리 · 도시화', '제거']], ['sat_no2', ['위성 NO₂ 칼럼', '제거']]];
@@ -2770,7 +2876,7 @@
       ROWS.forEach(([, lines], i) => label(svg, 0, y0 + i * dy, lines, 'lb'));
     } }
 
-    /* 28쪽 — r 자료별 FNR 순위 상관(점 + 95 % 구간), GEMS ● · TROPOMI ■ */
+    /* 29쪽 — r 자료별 FNR 순위 상관(점 + 95 % 구간), GEMS ● · TROPOMI ■ */
     { const svg = document.getElementById('fc-base'); if (svg) { svg.classList.add('fcs');
       /* 2026-10-25 사용자 지시로 단순화 — 네 자료 · 점과 값만(구간 선 · Two-Stage 는 JSON 에 그대로 있다) */
       const B = D.stats.matched.baselines, ROWS = [['r_e2e', ['E2E r']], ['no2_e2e', ['E2E NO₂ 농도만']],
@@ -2788,7 +2894,7 @@
       });
     } }
 
-    /* 29쪽 왼쪽 — 측정소 격자에서 점(관측) → 1 km → 9 km → 0.25° 순 FNR 역상관, 점 + 95 % 구간 */
+    /* 30쪽 왼쪽 — 측정소 격자에서 점(관측) → 1 km → 9 km → 0.25° 순 FNR 역상관, 점 + 95 % 구간 */
     { const svg = document.getElementById('fc-point'); if (svg) { svg.classList.add('fcs');
       const B = D.stats.matched.obs_cells, ROWS = [['r_obs', ['측정소 관측 r', '(점)']], ['r_e2e', ['E2E r', '(1 km)']], ['r_cmaq', ['CMAQ-DA r', '(9 km)']], ['r_geoscf', ['GEOS-CF r', '(0.25°)']]];
       const px = 230, W = 500, LO = -1, HI = 0, y0 = 34, dy = 54, sx = v => px + (v - LO) / (HI - LO) * W, yb = y0 + dy * (ROWS.length - 1);
@@ -2804,7 +2910,7 @@
       });
     } }
 
-    /* 29쪽 오른쪽 — 집계 규모(0.05 · 0.1 · 0.25 · 0.5°)별 FNR 역상관, GEMS · TROPOMI 두 칸 */
+    /* 30쪽 오른쪽 — 집계 규모(0.05 · 0.1 · 0.25 · 0.5°)별 FNR 역상관, GEMS · TROPOMI 두 칸 */
     { const svg = document.getElementById('fc-scale'); if (svg) { svg.classList.add('fcs');
       const SC = D.stats.matched.scale, BS = SC.scales_deg, LINES = [['r_e2e', C_E2E, 'sq', ''], ['r_cmaq', C_INK, 'ci', ''], ['r_geoscf', C_GD, 'di', '6 4']];
       const LO = -1, HI = -0.5, top = 40, h = 190, sy = v => top + (HI - v) / (HI - LO) * h;
@@ -2830,7 +2936,7 @@
       E(svg, 'text', { x: 320, y: top + h + 52, 'text-anchor': 'middle', class: 'ax' }, '집계 격자 크기 — 0.25° = GEOS-CF 격자 · 칸 아래로 갈수록 역상관 강함');
     } }
 
-    /* 30쪽 — Ox · O₃ · NO₂ 와 위성 HCHO 의 순위 상관 · NO₂ 통제 편상관(GEMS ● · TROPOMI ■, 점 + 95 % 구간) */
+    /* 31쪽 — Ox · O₃ · NO₂ 와 위성 HCHO 의 순위 상관 · NO₂ 통제 편상관(GEMS ● · TROPOMI ■, 점 + 95 % 구간) */
     { const svg = document.getElementById('fc-oxh'); if (svg && D.stats.matched) { svg.classList.add('fcs');
       const B = D.stats.matched.ox_hcho, ROWS = [['ox_e2e', ['E2E Ox']], ['o3_e2e', ['E2E O₃']], ['no2_e2e', ['E2E NO₂']], ['vcd_no2_sat', ['위성 NO₂ 칼럼']],
         ['ox_e2e|own_no2', ['Ox · E2E NO₂', '통제']], ['ox_e2e|sat_no2', ['Ox · 위성 NO₂', '통제']]];
@@ -2846,11 +2952,11 @@
           E(svg, 'text', { x: tx, y: yy + 5, 'text-anchor': neg ? 'end' : 'start', class: 'pt' }, s(r.rho, 2)); }); });
     } }
 
-    /* 28쪽 오른쪽 — 막대 두 묶음(.hbar 격자: 이름 · 막대 · 값) */
+    /* 29쪽 오른쪽 — 막대 두 묶음(.hbar 격자: 이름 · 막대 · 값) */
     const bars = (id, rows, max, ticks, dec) => { const el = document.getElementById(id); if (!el) return;
       el.innerHTML = rows.map(([nm, v, cls, ex]) => `<span>${nm}</span><i class="${cls}" style="width:${(v / max * 100).toFixed(1)}%"></i><b>${f(v, dec)}${ex ? `<small> (${ex})</small>` : ''}</b>`).join('')
         + `<span class="ax">${ticks.map(t => `<em>${t}</em>`).join('')}</span>`; };
-    /* 28쪽 오른쪽 — 측정소 단위 매칭(build_station_r.py, 2026-10-25 사용자 지시로 0.05° 셀 평균 비교를 바꿨다) */
+    /* 29쪽 오른쪽 — 측정소 단위 매칭(build_station_r.py, 2026-10-25 사용자 지시로 0.05° 셀 평균 비교를 바꿨다) */
     const SA = D.stats.station.all, SH = D.stats.station.holdout;
     bars('fc-obs', [['E2E', SA.r_e2e.rho, 'e'], ['Two-Stage', SA.r_ts.rho, 't'], ['CMAQ-DA', SA.r_cmaq.rho, 'c'], ['GEOS-CF', SA.r_geoscf.rho, 'n']], 1, ['0', '0.5', '1'], 2);
     // 막대 = 순위 상관(위 그래프와 같은 축) · 괄호 = 평균 절대 오차(2026-10-25 사용자 지시)
@@ -2872,9 +2978,9 @@
 
   let i = 0, dir = 1;   // dir — 장에 들어선 방향(뒤로 들어서면 단계 그림은 마지막 단계에서 시작한다)
   function swap(n){
-    bigOff();                        // 12쪽 전체 화면 영상 — 장을 넘기면 걷는다(들어선 장의 단계 장치가 다시 띄운다)
+    bigOff();                        // 13쪽 전체 화면 영상 — 장을 넘기면 걷는다(들어선 장의 단계 장치가 다시 띄운다)
     i = Math.max(0, Math.min(S.length - 1, n));
-    S.forEach((sl, k) => sl.querySelectorAll('.mvid video').forEach(v => { if (k === i) { v.currentTime = 0; v.play().catch(() => {}); } else v.pause(); }));   // 11쪽 작은 영상 — 그 장에서만
+    S.forEach((sl, k) => sl.querySelectorAll('.mvid video').forEach(v => { if (k === i) { v.currentTime = 0; v.play().catch(() => {}); } else v.pause(); }));   // 12쪽 작은 영상 — 그 장에서만
     S.forEach((s, k) => s.classList.toggle('on', k === i));
     cur.textContent = PNO(i);
     pv.disabled = (i === 0);
@@ -2885,7 +2991,7 @@
     try { history.replaceState(null, '', '#' + PNO(i)); } catch (e) {}   // 쪽 번호를 주소에 남긴다 — 새로 고쳐도 그 장으로 돌아온다
     clearTimeout(preloadTimer); preloadTimer = setTimeout(preload, 700);   // 영상 예열 — 교차 페이드가 끝난 뒤에
   }
-  /* 12쪽 전체 화면 영상 — 장의 data-vids(영상 경로를 | 로)가 단계 1 · 2 … 에 하나씩 대응한다. 단계 0 은 장 본문.
+  /* 13쪽 전체 화면 영상 — 장의 data-vids(영상 경로를 | 로)가 단계 1 · 2 … 에 하나씩 대응한다. 단계 0 은 장 본문.
      소리 없이 반복 재생 · 처음부터. 단계 장치(LIVE.steps)라 다음 · 이전 키가 먼저 영상을 넘기고, Esc 는 단계 0 으로 돌린다 */
   const bigvid = document.getElementById('bigvid');
   function bigOff(){ bigvid.classList.remove('on'); bigvid.pause(); }
@@ -2952,6 +3058,7 @@
   }
   addEventListener('mousemove', wake, {passive:true});
   addEventListener('keydown', wake);
+  addEventListener('touchstart', wake, {passive:true});
   wake();
 
   /* ── 전체 화면 ── 단추(Fullscreen API) · display-mode · 창 = 화면 크기(F11)를 함께 본다 */
@@ -2981,6 +3088,15 @@
     if (e.key === 'm' || e.key === 'M') document.body.classList.toggle('nomemo');
   });
   /* 화면 아무 데나 클릭해 넘기는 동작은 두지 않는다 — 발표 중 무심코 클릭하면 장이 넘어간다 */
+  /* ── 터치 — 한 손가락으로 좌우 60px 넘게 밀면 장(단계)을 넘긴다. 두 손가락(확대)이거나 확대된 상태면 넘기지 않는다
+     — 확대한 화면을 끌어 옮기는 손짓과 겹친다. 모듈 iframe 안의 터치는 덱까지 오지 않는다 */
+  { let tx = null, ty = 0;
+    const zoomed = () => (window.visualViewport ? visualViewport.scale : 1) > 1.05;
+    addEventListener('touchstart', e => { tx = e.touches.length === 1 && !zoomed() ? e.touches[0].clientX : null; ty = e.touches[0].clientY; }, {passive:true});
+    addEventListener('touchmove', e => { if (e.touches.length > 1) tx = null; }, {passive:true});
+    addEventListener('touchend', e => { if (tx === null || filmOn) return;
+      const t = e.changedTouches[0], dx = t.clientX - tx, dy = t.clientY - ty; tx = null;
+      if (Math.abs(dx) > 60 && Math.abs(dx) > 1.5 * Math.abs(dy)) advance(dx < 0 ? 1 : -1); }); }
 </script>
 <script>
   /* 맺음 배경 지구본 — 마지막 두 장(결론 · 맺음)에 있을 때만 불러오고 그 밖에선 비운다(eia 덱 46장과 같은 규약).
@@ -2997,7 +3113,7 @@
   })();
 </script>
 <script>
-  /* 13쪽 — 북부 5-fold 실제 분할 지도. 자료 graph/holdout_folds.js(scripts/build_holdout_folds.py). 등장방형 + cos(위도) 보정 */
+  /* 14쪽 — 북부 5-fold 실제 분할 지도. 자료 graph/holdout_folds.js(scripts/build_holdout_folds.py). 등장방형 + cos(위도) 보정 */
   (() => {
     const D = typeof HOLDOUT_FOLDS !== 'undefined' ? HOLDOUT_FOLDS : null, svg = document.getElementById('ho-map');
     if (!D || !svg) return;
