@@ -709,6 +709,7 @@
   .hbar span{color:var(--mut)} .hbar b{font-variant-numeric:tabular-nums;text-align:right;font-size:18px}
   .hbar i{display:block;height:20px;background:var(--gray-l)} .hbar i.v2{background:#9fb8a8} .hbar i.v3{background:var(--accent)} .hbar i.bl{background:var(--ink)}
   .hbar .ax em{font-style:normal}
+  .ho-v3 .hbar{grid-template-columns:205px minmax(0,1fr) 62px} .hbar i.v2a{background:repeating-linear-gradient(45deg,#9fb8a8 0 6px,#c9d7cd 6px 12px)}   /* 15쪽 — v2 5-fold 는 평가 범위가 달라 빗금(2026-10-28) */
   .hbar .ax{grid-column:2;display:flex;justify-content:space-between;font-size:13px;color:var(--dim)}
   .ho-imp{margin:0;padding:10px 14px;background:var(--soft);font-size:17px;line-height:1.45;color:var(--ink)} .ho-imp b{color:var(--accent)}
   .midband{display:inline-block;margin-left:12px;padding:3px 12px;font-size:16px;font-weight:700;letter-spacing:.04em;color:#fff;background:#5E8A0F;vertical-align:middle}
@@ -1164,12 +1165,13 @@
     </div>
     <div class="ho-r">
       <div class="ho-v3">
-        <h3>그래프 관측 배선 개선 — v2 → v3 · 같은 fold0 53개소 · 5종 평균 R²<span class="midband">fold0 · 1회 실행</span></h3>
+        <h3>그래프 관측 배선 개선 — v2 → v3 · 5종 평균 R²<span class="midband">fold0 · 1회 실행</span></h3>
         <span class="k">층 · 파라미터는 그대로, station → region 관측 배선(구역이 80 km 안의 보이는 측정소를 고름), 군집 단위 가림 학습만 바꿈</span>
         <div class="hbar">
-          <span>v2 (a22-002A)</span><i class="v2" style="width:68.1%"></i><b>0.681</b>
-          <span>v3 (a22-102A)</span><i class="v3" style="width:73.7%"></i><b>0.737</b>
-          <span>크리깅 + 배경장</span><i class="bl" style="width:75.6%"></i><b>0.756</b>
+          <span>v2 (5-fold)</span><i class="v2a" style="width:66.6%"></i><b>0.666</b>
+          <span>v2 (fold0)</span><i class="v2" style="width:68.1%"></i><b>0.681</b>
+          <span>v3 (fold0)</span><i class="v3" style="width:73.7%"></i><b>0.737</b>
+          <span>크리깅 + 배경장 (fold0)</span><i class="bl" style="width:75.6%"></i><b>0.756</b>
           <span class="ax"><em>0</em><em>0.5</em><em>1</em></span>
         </div>
         <span class="s">그래프 관측 배선 개선 실험으로 성능 개선 — 기준선과의 격차 0.076 → 0.019, NO₂ · NO 는 기준선 수준</span>
