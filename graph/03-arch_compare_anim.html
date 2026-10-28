@@ -100,6 +100,38 @@
   .lab small { display:block; font-size:12px; font-weight:500; color:var(--muted); margin-top:2px; }
   #lab-l { left:30%; color:#fbbf24; border-color:rgba(251,191,36,.45); }
   #lab-r { left:70%; color:#bef264; border-color:rgba(163,230,53,.45); }
+  #cv { touch-action:none; }   /* 터치로 끌어도 페이지가 아니라 지도 · 3D 가 움직이게 */
+
+  /* ── 휴대폰(좁거나 낮은 창) — 오른쪽 단계 목록을 걷어 지도가 폭을 다 쓰고, 머리 · 바닥 막대와 지도 위 글을 줄인다.
+     단계 이름은 바닥 막대(세로 화면은 진행 막대 눈금)가 맡는다. 발표장 화면(1600 이상)은 이 규칙에 걸리지 않는다 ── */
+  @media (max-width: 900px), (max-height: 520px) {
+    #panel { display:none; }
+    #header { padding:6px 12px; align-items:center; }
+    #header h1 { font-size:15px; }
+    #header .sub { display:none; }
+    #theme-toggle { padding:3px 8px; font-size:11px; }
+    #bottom-bar { padding:6px 10px; gap:8px; }
+    #play-btn { padding:6px 14px; min-width:72px; font-size:12px; }
+    #stop-btn { padding:6px 10px; font-size:12px; }
+    .speed-btn { padding:4px 6px; font-size:10px; }
+    #ptime { min-width:0; font-size:11px; }
+    #pinfo { min-width:0; font-size:11px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:34%; }
+    #compass, #concept { display:none !important; }   /* 나침반은 스크립트가 style.display 로 켠다 */
+    #zoom-ctrl button { width:26px; height:26px; font-size:14px; }
+    #chip { bottom:8px; left:8px; padding:6px 10px; font-size:10.5px; line-height:1.45; max-width:calc(100% - 130px); }
+    #cbar { bottom:8px; right:8px; padding:5px 8px; font-size:9px; }
+    #cbar .g { width:90px; height:7px; }
+    #subtitle { bottom:10px; width:calc(100% - 24px); font-size:14px; }
+    #title-card .k { font-size:11px; }
+    #title-card .t { font-size:22px; white-space:normal; width:90vw; }
+    #banner { top:8px; padding:6px 12px; font-size:12px; white-space:normal; width:max-content; max-width:calc(100% - 90px); text-align:center; }
+    .lab { bottom:64px; padding:5px 10px; font-size:12px; }
+    .lab small { display:none; }
+  }
+  @media (max-width: 600px) {
+    .speed-btn:not(.active) { display:none; }
+    #pinfo { display:none; }
+  }
 </style>
 </head>
 
@@ -455,11 +487,13 @@ function glow(v, c, x, y, rpx, sp, a = 1) { const [sx, sy] = toScr(v, c, x, y); 
 function line(v, c, a, b, col, wpx, al) { const [x0, y0] = toScr(v, c, a.x, a.y), [x1, y1] = toScr(v, c, b.x, b.y); setScr();
   g.globalAlpha = al; g.strokeStyle = col; g.lineWidth = wpx; g.beginPath(); g.moveTo(x0, y0); g.lineTo(x1, y1); g.stroke(); g.globalAlpha = 1; }
 // 글자는 모두 위 글자 층(#hud)에 쓴다 — 3D 층 위에도 보이게
+// FS — 판이 작으면(휴대폰) 글자를 함께 줄인다. 발표장 판(폭 1100 · 높이 560 이상)은 1 이라 종전과 같다
+const hFS = () => clamp(Math.min(W / 1100, H / 560), .62, 1);
 function sText(s, x, y, col, size, a = 1, weight = 700, align = 'center') { a *= HA; if (a < .01) return; hx.setTransform(DPR, 0, 0, DPR, 0, 0); hx.globalAlpha = a;
-  hx.font = `${weight} ${size}px 'Noto Sans KR','Inter',sans-serif`; hx.textAlign = align; hx.textBaseline = 'middle';
+  hx.font = `${weight} ${size * hFS()}px 'Noto Sans KR','Inter',sans-serif`; hx.textAlign = align; hx.textBaseline = 'middle';
   hx.lineWidth = 3; hx.strokeStyle = 'rgba(2,6,23,.8)'; hx.strokeText(s, x, y); hx.fillStyle = col; hx.fillText(s, x, y); hx.globalAlpha = 1; }
-function hLabel(s, x, y, col, size, a, align = 'left') { hx.font = `700 ${size}px 'Noto Sans KR','Inter',sans-serif`; const w = hx.measureText(s).width + 16, x0 = align === 'left' ? x - 8 : align === 'right' ? x - w + 8 : x - w / 2;
-  hBox(x0, y - size * .9, w, size * 1.8, col, a * .9); sText(s, x, y, col, size, a, 700, align); }
+function hLabel(s, x, y, col, size, a, align = 'left') { const z = size * hFS(); hx.font = `700 ${z}px 'Noto Sans KR','Inter',sans-serif`; const w = hx.measureText(s).width + 16, x0 = align === 'left' ? x - 8 : align === 'right' ? x - w + 8 : x - w / 2;
+  hBox(x0, y - z * .9, w, z * 1.8, col, a * .9); sText(s, x, y, col, size, a, 700, align); }
 function hBox(x, y, w, h, col, a) { a *= HA; if (a < .01) return; hx.setTransform(DPR, 0, 0, DPR, 0, 0); hx.globalAlpha = a; hx.fillStyle = 'rgba(6,11,24,.84)';
   hx.beginPath(); hx.roundRect(x, y, w, h, 10); hx.fill(); hx.strokeStyle = col; hx.lineWidth = 1.4; hx.stroke(); hx.globalAlpha = 1; }
 function hLine(x0, y0, x1, y1, col, w, a) { a *= HA; if (a < .01) return; hx.setTransform(DPR, 0, 0, DPR, 0, 0); hx.globalAlpha = a; hx.strokeStyle = col; hx.lineWidth = w;
@@ -705,10 +739,13 @@ function makeG3() {
   const OX = (BB.x0 + BB.x1) / 2, OY = (BB.y0 + BB.y1) / 2, BW = BB.x1 - BB.x0, BD = BB.y1 - BB.y0;
   const wX = x => x - OX, wZ = y => -(y - OY);
   const H_GR = 28, H_RG = 56, H_LAT = 26, AMP = 20, D2R = Math.PI / 180;
+  let TH = Math.tan(20 * D2R);   // 세로 반시야 tan — size() 가 판 비율로 고친다. 위에서 내려다본 거리(TOP)가 2D 지도와 맞게 같은 값을 쓴다
   const US = { value: 1000 };   // 점 크기(km) → 화면 px
   let VW = 1, VH = 1;
   function size(w, h, dpr) { VW = w; VH = h; renderer.setPixelRatio(dpr); renderer.setSize(w, h, false); composer.setPixelRatio(dpr); composer.setSize(w, h);
-    camera.aspect = w / Math.max(1, h); camera.updateProjectionMatrix(); US.value = h * dpr / (2 * Math.tan(20 * D2R)); }
+    // 판이 1.6 보다 좁으면(휴대폰 세로) 세로 시야를 넓혀 가로 시야를 1.6 판만큼 지킨다 — 3D 좌우 비교가 잘리지 않게. 발표장 판은 40° 그대로
+    const asp = w / Math.max(1, h), th = TH = Math.tan(20 * D2R) * Math.max(1, 1.6 / asp);
+    camera.aspect = asp; camera.fov = 2 * Math.atan(th) / D2R; camera.updateProjectionMatrix(); US.value = h * dpr / (2 * th); }
 
   // ── 텍스처 ──
   function canvasTex(c, nearest) { const t = new T.CanvasTexture(c); t.colorSpace = T.SRGBColorSpace;
@@ -844,7 +881,7 @@ function makeG3() {
 
   // ── 카메라 — 목표점 둘레의 구면 좌표 열쇠틀. 위에서 내려다본 판(pitch 89.9)이 2D 지도와 같은 틀이다 ──
   const K = (t, tgt, r, yaw, pitch) => ({ t, tgt, r, yaw, pitch });
-  const TOP = (t, vh) => K(t, [0, 0, 0], vh / (2 * Math.tan(20 * D2R)), 0, 89.9);
+  const TOP = (t, vh) => K(t, [0, 0, 0], vh / (2 * TH), 0, 89.9);
   function keyAt(keys, t) { let i = 0; while (i < keys.length - 2 && t > keys[i + 1].t) i++; const a = keys[i], b = keys[i + 1] || a, f = smooth((t - a.t) / Math.max(.001, b.t - a.t));
     return { tgt: a.tgt.map((v, j) => lerp(v, b.tgt[j], f)), r: Math.exp(lerp(Math.log(a.r), Math.log(b.r), f)), yaw: lerp(a.yaw, b.yaw, f), pitch: lerp(a.pitch, b.pitch, f) }; }
   const KEYS = [];
