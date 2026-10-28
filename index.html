@@ -280,6 +280,7 @@
   /* ── 6쪽 자료동화 관점(#s-da) · 32쪽 보조(#s-da2) — 2026-10-27. 위 분석식 셋(자료동화 · E2E · Two-Stage, 11쪽과 같은 색) · 대응표(.cmp) · 아래 .phil ── */
   #s-da .body,#s-da2 .body{justify-content:flex-start;gap:14px}
   #s-da h2.htop,#s-da2 h2.htop{margin-bottom:2px}
+  #s-da h2.htop{font-size:46px}   /* 2026-10-28 제목이 길어져 한 줄에 들게 줄인다 */
   .daeq{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:12px}
   .daeq > div{background:var(--soft);border-top:5px solid var(--gray-d);padding:8px 16px 10px}
   .daeq > div.a1{border-top-color:#3E86D6} .daeq > div.a2{border-top-color:var(--accent)}
@@ -291,6 +292,24 @@
   .cmp.da thead th.dz{background:var(--gray-d)} .cmp.da tbody th{width:150px}
   .cmp.da td.c{text-align:center}
   #s-da .phil,#s-da2 .phil{margin-top:6px} #s-da .phil li,#s-da2 .phil li{font-size:22px}
+  /* 6쪽 가운데 설계 관점 문장(2026-10-28) — 위 줄(자료동화)이 아래 줄(AMR-HGN)을 받친다. 그대로 소리 내 읽게 세 줄 모두 38px(사용자 지시) */
+  #s-da .body{justify-content:center;gap:14px}
+  .dalead{background:var(--soft);border-left:8px solid var(--accent);padding:12px 30px 12px}
+  .dalead p{margin:0} .dalead b{display:inline-block;min-width:140px;font-size:20px;font-weight:800;letter-spacing:.04em;vertical-align:.15em}
+  .dalead .da0{font-size:38px;line-height:1.32;letter-spacing:-.02em;color:var(--mut);font-weight:600} .dalead .da0 b{color:var(--gray-d)}
+  .dalead .da1{margin-top:6px;font-size:38px;line-height:1.32;font-weight:700;color:var(--ink);letter-spacing:-.02em;padding-left:140px;text-indent:-140px}
+  .dalead .da1 b{color:var(--accent);text-indent:0} .dalead .da1 em{font-style:normal;color:var(--accent)}
+  .dalead .da1 strong{font-weight:800;color:var(--accent)}
+  .dalead .dav{margin-top:6px;padding-left:140px;font-size:16px;color:var(--dim)}
+  /* 압축 대응표 — 산출식은 위 카드(.daeq, 11쪽과 같은 식)가 맡는다 */
+  #s-da .daeq .f{font-size:23px} #s-da .daeq > div{padding:6px 16px 8px} #s-da .daeq .n{font-size:16px}
+  table.cmp.dac{font-size:17px;line-height:1.35} .cmp.dac th,.cmp.dac td{padding:6px 12px} .cmp.dac thead th{font-size:17px;padding:6px 12px}
+  .cmp.dac tbody th{width:118px;color:var(--mut)}
+  .cmp.dac tr.fx td{font-family:'Cambria Math','Times New Roman',serif;font-size:21px;color:var(--ink);white-space:nowrap}
+  .cmp.dac thead th.dz{width:36%}
+  .dapc{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:17px;color:var(--mut)}
+  .dapc li{border-left:4px solid var(--gray-l);padding:2px 12px} .dapc li:first-child{border-left-color:var(--accent)}
+  .dapc b{margin-right:10px;color:var(--ink);font-weight:800}
   /* 32쪽 — 좌 교란 요인 · 우 통제 비교(미수행) */
   .da2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
   .da2 > div{background:var(--soft);border-top:5px solid var(--gray-d);padding:10px 18px 12px}
@@ -901,28 +920,34 @@
   <div class="head"><span class="rh"><span class="n">1</span>연구 배경 및 설계 관점</span>
     <span class="r">자료동화 관점의 재해석</span></div>
   <div class="body">
-    <h2 class="htop">CTM 배경장 + 희소 관측 → 분석장 — <em>학습된 관측 조건부 보정</em><span class="sub">설계 해석 — 기능적 대응이며 자료동화의 구현 · 성능 동등성 주장 아님</span></h2>
+    <h2 class="htop"><em>1 km 초해상화</em> — CTM 배경장 · 관측 보정은 자료동화와 개념적으로 유사</h2>
+    <!-- 2026-10-28 사용자 지시 — 가운데 설계 관점 문장을 그대로 읽게 크게. 원고 docs/아키텍처/2026-10-27_…_2쪽안.md l.15 · 44 -->
+    <div class="dalead">
+      <p class="da0"><b>자료동화</b>CTM 배경장을 관측자료로 보정해 분석장을 만들듯이,</p>
+      <p class="da1"><b>AMR-HGN</b>CTM 배경장을 <em>다변수 입력</em> · <em>관측자료</em>와 결합해 1 km 농도장으로 보정하는<br><strong>그래프 기반 비선형 자료동화형 초해상화</strong></p>
+      <p class="dav">다변수 입력 — 기상 · 배출 · 지형 · 토지피복 · 관측 이력 &nbsp;|&nbsp; 1 km = 출력 격자 간격, 검증된 유효해상도와 별개</p>
+    </div>
+    <!-- 종전 산출식 카드(사용자 지시로 되살림) · 대응표 · 공통/차이 — 표와 공통/차이는 압축(2026-10-28 사용자 지시) -->
     <div class="daeq">
       <div><b>자료동화 분석 — OI · 3D-Var · 칼만 필터 갱신</b><span class="f">x<sub>a</sub> = x<sub>b</sub> + K (y − H x<sub>b</sub>)</span><span class="n">K = B H<sup>T</sup>(H B H<sup>T</sup> + R)<sup>−1</sup> — 배경 · 관측 오차 공분산이 가중 결정</span></div>
       <div class="a1"><b>Arch 1 · E2E</b><span class="f">ŷ = softplus(α · C<sub>CTM</sub> + β + δ)</span><span class="n">C<sub>CTM</sub> GEOS-CF, δ 관측 · 기상 · 배출 · 지형 결합</span></div>
       <div class="a2"><b>Arch 2 · Two-Stage</b><span class="f">ŷ = softplus(α · ŷ<sub>LF</sub><sup>1km</sup> + β + Δŷ<sub>HF</sub>)</span><span class="n">ŷ<sub>LF</sub> 학습 배경장, Δŷ<sub>HF</sub> 측정소 조건 1 km 잔차</span></div>
     </div>
-    <table class="cmp da">
-      <thead><tr><th></th><th class="dz">자료동화 분석</th><th class="a1">E2E</th><th class="a2">Two-Stage</th></tr></thead>
+    <table class="cmp da dac">
+      <thead><tr><th></th><th class="dz">자료동화 분석</th><th class="a1">Arch 1 · E2E</th><th class="a2">Arch 2 · Two-Stage</th></tr></thead>
       <tbody>
-        <tr><th>배경장 x<sub>b</sub></th><td>CTM 예측장</td><td>GEOS-CF 직접 — 선형 보정 α · c + β</td><td>Stage 1 배경장 — CMAQ-DA(자료동화 재분석) 지식증류</td></tr>
-        <tr><th>관측 y</th><td>동시각 관측 · 관측 연산자 H</td><td colspan="2" class="c">측정소 노드의 관측 시계열 — 그래프 입력</td></tr>
-        <tr><th>공간 전파</th><td>B 의 상관 길이 · 국지화 반경</td><td colspan="2" class="c">측정소 → 격자 메시지 전달 — 거리 감쇠 σ 30 km · 80 km 이내 간선</td></tr>
-        <tr><th>보정 연산</th><td>선형 이득 K — 시각마다 최적화 · 갱신</td><td colspan="2" class="c">학습된 비선형 연산 — 1회 학습 후 시각별 순전파 추론</td></tr>
-        <tr class="h"><th>산출</th><td>모델 격자 분석장 + 분석 오차 공분산</td><td colspan="2" class="c">1 km 지표 농도장 — 분석 오차 미산출, 1 km = 출력 격자 간격</td></tr>
+        <tr><th>배경장 x<sub>b</sub></th><td>CTM 예측장</td><td>GEOS-CF 직접 — 선형 보정 α · c + β</td><td>Stage 1 — CMAQ-DA(자료동화 재분석) 지식증류</td></tr>
+        <tr><th>관측 · 전파</th><td>동시각 관측 · H — B 의 상관 길이 · 국지화</td><td colspan="2" class="c">측정소 관측 시계열 → 격자 메시지 전달 — 거리 감쇠 σ 30 km · 80 km 이내</td></tr>
+        <tr><th>보정 연산</th><td>선형 이득 K — 시각마다 최적화 · 갱신</td><td colspan="2" class="c">학습된 비선형 그래프 연산 — 1회 학습 후 시각별 순전파</td></tr>
+        <tr class="h"><th>산출</th><td>모델 격자 분석장 + 분석 오차 공분산</td><td colspan="2" class="c">1 km 지표 농도장 — 분석 오차 미산출</td></tr>
       </tbody>
     </table>
-    <ul class="phil">
-      <li><b>공통</b><span>CTM 광역 정보를 희소 지상 관측으로 조건화 — <em>관측 조건부 다변수 비선형 재구성 + 통계적 초해상화</em></span></li>
-      <li><b>차이</b><span>B · R 명시 없음 · 비용함수 최적화 없음 — 3D-Var 를 구현한 모델 아님, 두 구조는 배경장 출처와 결합 위치가 다름(2절)</span></li>
+    <ul class="dapc">
+      <li><b>공통</b>CTM 광역 정보를 희소 지상 관측으로 조건화 — 관측 조건부 다변수 비선형 재구성</li>
+      <li><b>차이</b>B · R 명시 · 비용함수 최적화 없음 — 두 구조는 배경장 출처 · 결합 위치가 다름</li>
     </ul>
   </div>
-  <div class="foot"><span>자료동화와 목적은 닮고 수단은 다르다 — 공분산 최적화 대신 학습된 그래프 보정</span><span class="r"></span></div>
+  <div class="foot"><span>목적은 1 km 초해상화 — CTM 배경장 · 관측 보정 구조가 자료동화와 닮았다</span><span class="r"></span></div>
 </section>
 
 <!-- ═══════════════ Ⅱ 아키텍처 설계 ═══════════════ -->
