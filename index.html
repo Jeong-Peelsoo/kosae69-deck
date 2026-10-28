@@ -393,6 +393,17 @@
   .anl .pts li::before{content:"";position:absolute;left:0;top:.6em;width:9px;height:9px;background:var(--brand)}
   .anl .pts .q{display:block;font-size:20px;color:var(--mut);line-height:1.42;margin-top:2px}
   .anl .pts li.sub{font-size:19px;color:var(--mut)} .anl .pts li.sub::before{background:var(--gray-l)}
+  /* 19쪽 — 육상 셀 줄 강조(5쪽 .vw 띠 상자와 같은 꼴) */
+  .anl .pts li.vw{background:var(--soft);border-left:5px solid var(--accent);padding:9px 14px 9px 18px}
+  .anl .pts li.vw::before{display:none}
+  /* 19쪽 — 상관계수 해석 관례 띠(Schober 외 2018, Table) — 칸 폭 = |ρ| 구간 폭 */
+  .rsc{margin-top:6px}
+  .rsc .rb{display:flex;height:26px}
+  .rsc .rb i{display:flex;align-items:center;justify-content:center;font-style:normal;font-size:14px;font-weight:700;color:#fff;border-right:2px solid #fff}
+  .rsc .rb i:last-child{border-right:0}
+  .rsc .rx{display:flex;font-size:13px;color:var(--dim);margin-top:3px}
+  .rsc .rx span{text-align:center;white-space:nowrap;letter-spacing:-.02em}
+  .rsc .rc{margin-top:4px;font-size:13px;color:var(--dim)}
   .anl-f{margin:0;min-height:0;height:100%;display:flex;flex-direction:column;justify-content:center}
   .anl-f img{display:block;width:100%;min-height:0;max-height:590px;object-fit:contain}
   .anl-f figcaption{margin-top:8px;font-size:15px;color:var(--dim);text-align:center}
@@ -1294,9 +1305,14 @@
         <ul class="pts">
           <li>지표 r 과 위성 FNR — 단조 역관계<br><span class="q">Spearman ρ — GEMS −0.378 · TROPOMI −0.429 (n = 7,066 · 0.05°)</span></li>
           <li>두 위성 — 도시 저 FNR → 산림 고 FNR 구배 일관<br><span class="q">GEMS–TROPOMI Spearman ρ +0.702 (위성 간 정합)</span></li>
-          <li>해양 제외 육상 셀(<span data-fc="stats/matched/block_ci/e2e_vs_gems/n" data-fmt="int"></span>)만 — 역상관 더 뚜렷<br><span class="q">GEMS <span data-fc="stats/matched/block_ci/e2e_vs_gems/rho" data-fmt="r2"></span>(<span data-fc="stats/matched/block_ci/e2e_vs_gems/ci_0.5deg" data-fmt="ci2"></span>) · TROPOMI <span data-fc="stats/matched/block_ci/e2e_vs_tropomi/rho" data-fmt="r2"></span>(<span data-fc="stats/matched/block_ci/e2e_vs_tropomi/ci_0.5deg" data-fmt="ci2"></span>), 위성 시각 일치, 괄호 = 95 % 신뢰구간, E2E 해양 불연속 제외</span></li>
+          <li class="vw">해양 제외 육상 셀(<span data-fc="stats/matched/block_ci/e2e_vs_gems/n" data-fmt="int"></span>)만 — 역상관 더 뚜렷<br><span class="q">GEMS <span data-fc="stats/matched/block_ci/e2e_vs_gems/rho" data-fmt="r2"></span>(<span data-fc="stats/matched/block_ci/e2e_vs_gems/ci_0.5deg" data-fmt="ci2"></span>) · TROPOMI <span data-fc="stats/matched/block_ci/e2e_vs_tropomi/rho" data-fmt="r2"></span>(<span data-fc="stats/matched/block_ci/e2e_vs_tropomi/ci_0.5deg" data-fmt="ci2"></span>), 위성 시각 일치, 괄호 = 95 % 신뢰구간, E2E 해양 불연속 제외</span></li>
           <li>그 크기는 NO₂ 공간 구배와 구분되지 않는다 → 20쪽<br><span class="q">20쪽 · 부록 5–7 수치는 모두 육상 셀, 위성 NO₂ · HCHO 유효 시각 일치 기준</span></li>
         </ul>
+        <div class="rsc" aria-label="상관계수 크기 해석 관례">
+          <div class="rb"><i style="width:10%;background:#c9dccf;color:#2b3a30">무시</i><i style="width:30%;background:#8fbf9f">약함</i><i style="width:30%;background:#3f9a63">중간</i><i style="width:20%;background:#00753A">강함</i><i style="width:10%;background:#0b4a2a">매우 강함</i></div>
+          <div class="rx"><span style="width:10%">0.00–0.10</span><span style="width:30%">0.10–0.39</span><span style="width:30%">0.40–0.69</span><span style="width:20%">0.70–0.89</span><span style="width:10%">0.90–1.00</span></div>
+          <p class="rc">|ρ| 해석 관례(예시) — Schober 외 (2018), <i>Anesth. Analg.</i> 126(5), Table</p>
+        </div>
       </div>
       <figure class="anl-f"><img src="image/fig6_11_dual_satellite_fnr.png" alt="위성 FNR 과의 방향적 일관성"><figcaption>E2E r = NO₂/Ox vs 위성 FNR(HCHO/NO₂) · 2023년 5–9월</figcaption></figure>
     </div>
@@ -1329,7 +1345,7 @@
         </ul>
       </div>
       <div class="fxp right fcp">
-        <h3>공통 변수 제거 후 남는 역상관<span class="midband">추가 분석 · 학습 없음</span></h3>
+        <h3>육상 셀 — 공통 변수 제거 후 남는 역상관<span class="midband">추가 분석 · 학습 없음</span></h3>
         <div class="fc-leg"><span class="e"><i></i>E2E r 과 위성 FNR 의 편상관</span><span class="nt">끝 선 = 95 % 신뢰구간</span></div>
         <svg id="fc-partial" viewBox="0 0 860 300" role="img" aria-label="공통 변수 제거 단계별 편상관"></svg>
         <ul class="fl res">
@@ -2895,7 +2911,7 @@
     /* 21쪽 — 통제 단계 × 두 위성. E2E 막대 + 95 % 구간 */
     { const svg = document.getElementById('fc-partial'); if (svg) { svg.classList.add('fcs');
       /* 2026-10-25 사용자 지시로 단순화 — 세 단계만, CTM 표식은 본문 줄로 옮겼다(값은 JSON 에 그대로 있다) */
-      const P = D.stats.matched.partial, ROWS = [['none', ['제거 없음']], ['geo_urban', ['지리 · 도시화', '제거']], ['sat_no2', ['위성 NO₂ 칼럼', '제거']]];
+      const P = D.stats.matched.partial, ROWS = [['none', ['원 상관']], ['geo_urban', ['지리 · 도시화', '제거']], ['sat_no2', ['위성 NO₂ 칼럼', '제거']]];
       const PAN = [['gems', 'GEMS', 190], ['tropomi', 'TROPOMI', 545]], W = 280, LO = -1, HI = 0.5, y0 = 76, dy = 70;
       PAN.forEach(([key, name, px]) => {
         const sx = v => px + (v - LO) / (HI - LO) * W;
