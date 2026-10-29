@@ -233,7 +233,6 @@ const CUES = PH.map((_, p) => (NARR[p] && NARR[p].cues ? NARR[p].cues : [{ t: 0,
 const cue = (p, i) => { const c = CUES[p]; return i < c.length ? c[i].t : LEAD + NDUR[p] * i / (i + 1); };
 // 문장 안의 구절 시각 — 그 문장 길이의 비율로 잡는다(원고를 다시 합성해도 따라 움직인다)
 const along = (p, i, f) => lerp(cue(p, i), i + 1 < CUES[p].length ? cue(p, i + 1) : LEAD + NDUR[p], f);
-// 원고 구절의 시각 — 문장 길이 비율로 잡는다(원고를 다시 합성해도 따라 움직인다)
 const Q = { p0a: along(0, 0, .06), p0b: along(0, 0, .46), p0c: along(0, 0, .86), p0s: cue(0, 1),
   p1g: along(1, 0, .36), p1k: along(1, 0, .78),
   p2c0: cue(2, 0), p2g: along(2, 0, .25), p2d: along(2, 0, .6), p2f: along(2, 0, .85), p2a: along(2, 1, .62), p2s: along(2, 1, .82),
@@ -372,8 +371,7 @@ function rasterFrom(vals, alphaFn) { const c = mkCanvas(NX, NY), x = c.getContex
   for (const k of LAND) { const a = alphaFn ? alphaFn(k) : 1; if (a <= 0) continue; const q = (clamp(vals(k)) * 255) | 0, o = k * 4;
     d[o] = LUT[q * 3]; d[o + 1] = LUT[q * 3 + 1]; d[o + 2] = LUT[q * 3 + 2]; d[o + 3] = 235 * a; }
   x.putImageData(im, 0, 0); return c; }
-const C1S = landBlur(C1, 1), C1B = landBlur(C1, 6);
-const IM_AMR = rasterFrom(k => C1[k]), IM_OUT = rasterFrom(k => C1S[k]), IM_PRI = rasterFrom(k => PRI[k]);
+const IM_AMR = rasterFrom(k => C1[k]), IM_PRI = rasterFrom(k => PRI[k]);
 const IM_LOC = rasterFrom(k => L1[k], k => clamp((L1[k] - .03) * 3));
 // Two-Stage — 배경장(5 km 블록을 1 km 로 매끈하게 = bilinear 보간의 그림) · 잔차(참값 − 배경, ±) · Stage 1 시작장(거친 25 km 입력)
 const PRIS = landBlur(PRI, 3, 2), IM_PRIS = rasterFrom(k => PRIS[k]);
@@ -427,14 +425,6 @@ const ATT = (() => { const st = ST.map(s => ({ ...s, d: Math.hypot(s.x - TGT.x, 
   const nb = [...st, { ...rg, d: Math.hypot(rg.x - TGT.x, rg.y - TGT.y), kind: 'r' }, ...cells.map(c => ({ ...c, d: 1, kind: 'c' }))];
   nb.forEach(n => { const ux = (TGT.x - n.x) / (n.d || 1), uy = (TGT.y - n.y) / (n.d || 1); n.e = -n.d / 3 + 1.1 * (ux * WD[0] + uy * WD[1]) + (n.kind === 'r' ? .4 : 0); });
   const m = Math.max(...nb.map(n => n.e)), z = nb.reduce((a, n) => a + Math.exp(n.e - m), 0); nb.forEach(n => { n.a = Math.exp(n.e - m) / z; }); return nb; })();
-// FGNO 가림 측정소 · 임의 좌표 질의 (2D 대체 화면)
-const S5V = { cx: 212, cy: 598, vh: 140 };
-const MASKED = new Set(ST.map((s, i) => i).filter(i => Math.abs(ST[i].x - S5V.cx) < 80 && Math.abs(ST[i].y - S5V.cy) < 58 && i % 13 === 4));
-const QRY = [[188.3, 611.7], [223.9, 590.2], [247.1, 622.4], [201.6, 574.8], [169.2, 588.9], [236.4, 648.3], [259.2, 571.6]].filter(([x, y]) => onLand(x, y));
-const valAt = (x, y) => { const k = cellOf(x, y); return k >= 0 ? C1[k] : 0; };
-const sampleB = (x, y) => { const u = x - D.x0 - .5, v = D.y1 - y - .5, i = Math.floor(u), j = Math.floor(v), fx = u - i, fy = v - j;
-  const at = (ii, jj) => { const k = clamp(jj, 0, NY - 1) * NX + clamp(ii, 0, NX - 1); return C1B[k]; };
-  return lerp(lerp(at(i, j), at(i + 1, j), fx), lerp(at(i, j + 1), at(i + 1, j + 1), fx), fy); };
 // 0단계 국지 짚기 — CAPSS·토지피복에서 자리를 고른다(수도권)
 function pickCell(x0, x1, y0, y1, score) { let best = null, bs = -1e9;
   for (let x = x0; x < x1; x++) for (let y = y0; y < y1; y++) { const k = cellOf(x + .5, y + .5); if (k < 0 || !mask[k]) continue; const s = score(k); if (s > bs) { bs = s; best = { x: x + .5, y: y + .5 }; } }
@@ -502,34 +492,21 @@ function hDot(x, y, r, col, a, stroke = false) { a *= HA; if (a < .01) return; h
   if (stroke) { hx.strokeStyle = col; hx.lineWidth = 1.6; hx.stroke(); } else { hx.fillStyle = col; hx.fill(); } hx.globalAlpha = 1; }
 // 바람 입자 — 시각 t 의 닫힌 식(되감기해도 같은 자리)
 const PARTS = (() => { const r = rng(88); return Array.from({ length: 1400 }, () => ({ a: r() * 700, c: -300 + r() * 620, sp: .75 + .5 * r(), ph: r() * 6.28 })); })();
+const PN = 6, PXY = new Float64Array(PARTS.length * PN * 2);   // 입자 꼬리 화면 좌표 — 매 프레임 배열을 새로 만들지 않게 미리 잡아 둔다
 function partPos(p, t) { const a = ((p.a + t * 14 * p.sp) % 700 + 700) % 700 - 60, c = p.c + 7 * Math.sin((p.a + t * 14 * p.sp) / 55 + p.ph);
   return [D.x0 - 40 + a * WD[0] + c * NRM[0], 560 + a * WD[1] + c * NRM[1]]; }
 function drawParticles(v, c, t, al) { if (al < .01) return; setScr(); g.globalCompositeOperation = 'lighter'; g.lineCap = 'round'; g.strokeStyle = '#bae6fd'; g.lineWidth = 1.2;
-  const sc = v.h / c.vh, step = clamp(7 / (14 * sc), .05, .5), N = 6;   // 꼬리 한 마디 ≈ 7 px
-  const P = PARTS.map(p => { const q = []; for (let k = 0; k < N; k++) { const [x, y] = partPos(p, t - k * step); q.push(toScr(v, c, x, y)); } return q; });
+  const sc = v.h / c.vh, step = clamp(7 / (14 * sc), .05, .5), N = PN;   // 꼬리 한 마디 ≈ 7 px
+  for (let i = 0; i < PARTS.length; i++) for (let k = 0; k < N; k++) { const [x, y] = partPos(PARTS[i], t - k * step), [sx, sy] = toScr(v, c, x, y), o = (i * N + k) * 2; PXY[o] = sx; PXY[o + 1] = sy; }
   for (let k = 1; k < N; k++) { g.globalAlpha = al * (1 - k / N) * .5; g.beginPath();   // 마디 순번마다 한 번에 긋는다(1,400개 × 5 → 5번)
-    for (const q of P) { const a = q[k - 1], b = q[k]; if (a[0] < v.x - 10 || a[0] > v.x + v.w + 10) continue; if (Math.abs(a[0] - b[0]) + Math.abs(a[1] - b[1]) < 40) { g.moveTo(a[0], a[1]); g.lineTo(b[0], b[1]); } } g.stroke(); }
+    for (let i = 0; i < PARTS.length; i++) { const a = (i * N + k - 1) * 2, b = a + 2, ax = PXY[a], ay = PXY[a + 1], bx = PXY[b], by = PXY[b + 1];
+      if (ax < v.x - 10 || ax > v.x + v.w + 10) continue; if (Math.abs(ax - bx) + Math.abs(ay - by) < 40) { g.moveTo(ax, ay); g.lineTo(bx, by); } } g.stroke(); }
   g.globalCompositeOperation = 'source-over'; g.globalAlpha = 1; }
-// 푸리에 모드 — 장 전체에 겹친 옅은 물결 띠(개념). 격자선처럼 보이지 않게 부드러운 사인 띠로 그린다
-function ripples(v, c, t, a) { if (a < .01) return; const s = v.h / c.vh, cx = v.x + v.w / 2, cy = v.y + v.h / 2, half = Math.hypot(v.w, v.h) / 2;
-  setKm(v, c); g.save(); g.clip(CTP); setScr(); g.globalCompositeOperation = 'lighter';
-  [[36, .45, [125, 211, 252]], [18, 1.35, [196, 181, 253]], [11, 2.5, [249, 168, 212]]].forEach(([lam, ang, [r, gg, b]], i) => {
-    const dx = Math.cos(ang), dy = -Math.sin(ang), lp = lam * s, ph = ((t * (5 + 3 * i)) * s) % lp;
-    const gr = g.createLinearGradient(cx - dx * (half + ph), cy - dy * (half + ph), cx + dx * (half - ph), cy + dy * (half - ph));
-    const n = Math.min(240, Math.ceil(2 * half / lp * 6));
-    for (let k = 0; k <= n; k++) { const f = k / n, w = .5 + .5 * Math.cos(2 * Math.PI * f * 2 * half / lp); gr.addColorStop(f, `rgba(${r},${gg},${b},${(w * w * .16 * a).toFixed(3)})`); }
-    g.fillStyle = gr; g.fillRect(v.x, v.y, v.w, v.h); });
-  g.restore(); g.globalAlpha = 1; g.globalCompositeOperation = 'source-over'; }
 const HEAD = 34, SUBL = 62;   // 지도 위 제목 줄 · 보조 줄 (화면 px)
 
 // ═════════ 카메라 (2D) ═════════
-const FULL = { cx: 268, cy: 405, vh: 670 }, SEOUL = { cx: 210, cy: 604, vh: 80 }, GANG = { cx: 318, cy: 575, vh: 64 };
-const CAPT = { cx: 208, cy: 592, vh: 118 }, SPLITC = { cx: 265, cy: 410, vh: 700 }, FG5 = { cx: 210, cy: 604, vh: 150 };
+const FULL = { cx: 268, cy: 405, vh: 670 }, SEOUL = { cx: 210, cy: 604, vh: 80 }, CAPT = { cx: 208, cy: 592, vh: 118 };
 const lerpCam = (a, b, t) => ({ cx: lerp(a.cx, b.cx, t), cy: lerp(a.cy, b.cy, t), vh: Math.exp(lerp(Math.log(a.vh), Math.log(b.vh), t)) });
-const fitVh = () => Math.max(245, 370 * H / Math.max(1, W));   // 권역 상자 하나(동서 350 km · 남북 160 km)가 여백을 두고 들어오는 높이
-const DCAM = [() => ({ cx: 265, cy: 612, vh: fitVh() }), () => ({ cx: 265, cy: 456, vh: fitVh() }), () => ({ cx: 262, cy: 296, vh: fitVh() }), () => ({ cx: 166, cy: 140, vh: 120 })];
-function keyCam(keys, t) { let i = 0; while (i < keys.length - 2 && t > keys[i + 1][0]) i++; const [t0, a] = keys[i], [t1, b] = keys[i + 1];
-  return lerpCam(typeof a === 'function' ? a() : a, typeof b === 'function' ? b() : b, smooth((t - t0) / Math.max(.001, t1 - t0))); }
 function camTarget(p, t) {
   if (p === 0) return lerpCam(FULL, CAPT, ramp(t, Q.p0b + .1, 1.6) * (1 - ramp(t, Q.p0c + .2, 1.3)));
   if (p === 1 || p === 5 || p === 6) return SEOUL;
@@ -738,7 +715,7 @@ function makeG3() {
   const ADD = { transparent: true, depthWrite: false, blending: T.AdditiveBlending };
   const OX = (BB.x0 + BB.x1) / 2, OY = (BB.y0 + BB.y1) / 2, BW = BB.x1 - BB.x0, BD = BB.y1 - BB.y0;
   const wX = x => x - OX, wZ = y => -(y - OY);
-  const H_GR = 28, H_RG = 56, H_LAT = 26, AMP = 20, D2R = Math.PI / 180;
+  const H_GR = 28, H_RG = 56, D2R = Math.PI / 180;
   let TH = Math.tan(20 * D2R);   // 세로 반시야 tan — size() 가 판 비율로 고친다. 위에서 내려다본 거리(TOP)가 2D 지도와 맞게 같은 값을 쓴다
   const US = { value: 1000 };   // 점 크기(km) → 화면 px
   let VW = 1, VH = 1;
@@ -758,8 +735,6 @@ function makeG3() {
   const TX_C1 = bbTex((x, y) => { const k = landK(x, y); return k < 0 ? null : [...colOf(C1[k]), 255]; });
   const TX_LOC = bbTex((x, y) => { const k = landK(x, y); if (k < 0) return null; const l = Math.min(1, L1[k] * 1.4); return [255, 90 + 70 * l, 200, Math.round(18 + 200 * l)]; });
   const TX_BG5 = bbTex((x, y) => { const k = landK(x, y); if (k < 0) return null; const v = clamp((PRI[k] - .2) * 2); return [255, Math.round(150 + 70 * v), 40, Math.round(40 + 150 * v)]; }, 5);
-  const RAMP_TEX = (() => { const c = mkCanvas(256, 1), x = c.getContext('2d'), im = x.createImageData(256, 1); for (let q = 0; q < 256; q++) im.data.set([LUT[q * 3], LUT[q * 3 + 1], LUT[q * 3 + 2], 255], q * 4);
-    x.putImageData(im, 0, 0); const t = new T.CanvasTexture(c); t.colorSpace = T.SRGBColorSpace; t.generateMipmaps = false; t.minFilter = t.magFilter = T.LinearFilter; return t; })();
   function mapTex(x0, x1, y0, y1, s, frame) { const c = mkCanvas(Math.round((x1 - x0) * s), Math.round((y1 - y0) * s)), x = c.getContext('2d');
     x.fillStyle = '#050b18'; x.fillRect(0, 0, c.width, c.height); x.setTransform(s, 0, 0, -s, -x0 * s, y1 * s);
     x.fillStyle = '#0d1728'; x.fill(CTP); x.lineWidth = .25; x.strokeStyle = 'rgba(70,105,160,.45)'; x.stroke(SIG); x.lineWidth = .5; x.strokeStyle = 'rgba(150,175,210,.5)'; x.stroke(CTP);
@@ -1010,11 +985,12 @@ function loop(now) { const dt = Math.min(.1, (now - last) / 1000); last = now;
     if (phase === 6 && tau > 1e5) tau = DUR[6];   // 아주 오래 틀어 둔 경우만 되감는다
     syncAudio(); }
   if (playing || dirty) { dirty = false; render(); ui(false); } requestAnimationFrame(loop); }
+const GLC = $('gl');
 function render() { palette(); const m = mix3(phase, tau);
   setScr(); g.globalAlpha = 1; g.fillStyle = PAL.sea; g.fillRect(0, 0, W, H);
   hx.setTransform(1, 0, 0, 1, 0, 0); hx.clearRect(0, 0, hudCv.width, hudCv.height);
   if (m < .999) { HA = 1 - m; DRAW[phase](Math.min(tau, DUR[phase])); }
-  $('gl').style.opacity = m.toFixed(3);
+  GLC.style.opacity = m.toFixed(3);
   if (m > .001) { G3.frame(phase, tau); HA = m; G3.hud(phase, tau); }
   HA = 1; }
 
@@ -1025,26 +1001,29 @@ document.querySelectorAll('.phase-btn').forEach(b => b.addEventListener('click',
 START.slice(1).forEach(s => { const i = document.createElement('i'); i.className = 'tick'; i.style.left = (s / TOTAL * 100) + '%'; $('track').appendChild(i); });
 function setOp(el, a) { el.style.opacity = a.toFixed(3); }
 let lastKey = '';
+// ui() 는 매 프레임 돈다 — 요소를 한 번만 찾아 둔다
+const E_FILL = $('fill'), E_HANDLE = $('handle'), E_PTIME = $('ptime'), E_PLABEL = $('plabel'), E_PLAY_BTN = $('play-btn'), E_CHIP = $('chip'), E_TC_K = $('tc-k'), E_TC_T = $('tc-t'), E_TITLE_CARD = $('title-card'), E_SUBTITLE = $('subtitle'), E_BANNER = $('banner'), E_LAB_L = $('lab-l'), E_LAB_R = $('lab-r'), E_CBAR = $('cbar'), E_COMPASS = $('compass');
+
 function ui(force) {
   if (force) dirty = true;   // 상태가 바뀌었다 — 다음 프레임에 다시 그린다
   const gt = START[phase] + Math.min(tau, DUR[phase]), f = gt / TOTAL * 100;
-  $('fill').style.width = f + '%'; $('handle').style.left = f + '%';
-  $('ptime').textContent = `${fmt(gt)} / ${fmt(TOTAL)}`;
+  E_FILL.style.width = f + '%'; E_HANDLE.style.left = f + '%';
+  E_PTIME.textContent = `${fmt(gt)} / ${fmt(TOTAL)}`;
   const key = `${phase}|${playing}|${outro()}`;
   if (force || key !== lastKey) { lastKey = key;
     document.querySelectorAll('.phase-btn').forEach(b => b.classList.toggle('active', +b.dataset.p === phase));
-    $('plabel').textContent = outro() ? '끝 — 화면과 음악이 이어진다' : `${phase} / ${PH[phase].lb}`; $('play-btn').textContent = playing ? '❚❚ 일시정지' : '▶ 재생';
-    $('chip').innerHTML = PH[phase].chip; $('tc-k').textContent = `STAGE ${phase}`; $('tc-t').textContent = PH[phase].lb; }
-  setOp($('title-card'), win(tau, .1, 2.6, .5, .6));
+    E_PLABEL.textContent = outro() ? '끝 — 화면과 음악이 이어진다' : `${phase} / ${PH[phase].lb}`; E_PLAY_BTN.textContent = playing ? '❚❚ 일시정지' : '▶ 재생';
+    E_CHIP.innerHTML = PH[phase].chip; E_TC_K.textContent = `STAGE ${phase}`; E_TC_T.textContent = PH[phase].lb; }
+  setOp(E_TITLE_CARD, win(tau, .1, 2.6, .5, .6));
   const cs = CUES[phase]; let cur = -1; for (let i = 0; i < cs.length; i++) if (tau >= cs[i].t) cur = i;
   const end = LEAD + NDUR[phase] + .3, cEnd = cur >= 0 && cur + 1 < cs.length ? cs[cur + 1].t : end;
-  const live = playing || preview; setOp($('chip'), live ? 0 : 1);   // 재생 중엔 자막만, 멈추면 설명 칩만 — 아래쪽이 겹치지 않게
-  const sub = $('subtitle'); if (live && cur >= 0 && tau < end) { const tx = disp(cs[cur].text); if (sub.textContent !== tx) sub.textContent = tx; setOp(sub, Math.min(ramp(tau, cs[cur].t - .05, .2), 1 - ramp(tau, cEnd - .15, .15))); } else setOp(sub, 0);
-  setOp($('banner'), phase === 6 ? ramp(tau, cue(6, 0), 1) : 0);
-  setOp($('lab-l'), phase === 6 ? ramp(tau, Q.p6l, 1) : 0); setOp($('lab-r'), phase === 6 ? ramp(tau, Q.p6l + .4, 1) : 0);
-  const $l = $('lab-l'), $r = $('lab-r'); $l.style.left = G3 ? '30%' : '25%'; $r.style.left = G3 ? '70%' : '75%';
-  $('cbar').style.display = phase === 1 ? 'none' : 'block';
-  $('compass').style.display = phase === 0 || phase === 4 || (phase === 2 && mix3(2, tau) < .5) ? 'flex' : 'none';
+  const live = playing || preview; setOp(E_CHIP, live ? 0 : 1);   // 재생 중엔 자막만, 멈추면 설명 칩만 — 아래쪽이 겹치지 않게
+  const sub = E_SUBTITLE; if (live && cur >= 0 && tau < end) { const tx = disp(cs[cur].text); if (sub.textContent !== tx) sub.textContent = tx; setOp(sub, Math.min(ramp(tau, cs[cur].t - .05, .2), 1 - ramp(tau, cEnd - .15, .15))); } else setOp(sub, 0);
+  setOp(E_BANNER, phase === 6 ? ramp(tau, cue(6, 0), 1) : 0);
+  setOp(E_LAB_L, phase === 6 ? ramp(tau, Q.p6l, 1) : 0); setOp(E_LAB_R, phase === 6 ? ramp(tau, Q.p6l + .4, 1) : 0);
+  E_LAB_L.style.left = G3 ? '30%' : '25%'; E_LAB_R.style.left = G3 ? '70%' : '75%';
+  E_CBAR.style.display = phase === 1 ? 'none' : 'block';
+  E_COMPASS.style.display = phase === 0 || phase === 4 || (phase === 2 && mix3(2, tau) < .5) ? 'flex' : 'none';
 }
 // 타임라인 끌기
 const pw = $('progress-wrap'), tip = $('tip');
